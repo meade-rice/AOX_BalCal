@@ -41,9 +41,9 @@ addpath(genpath('AOX_RequiredSupportFiles'))
 %                       USER INPUT SECTION
 
 out = AOX_GUI; %Call GUI
-if out.cancel == 1
-    return
-end
+% if out.cancel == 1 **Akshay disabled this...was causing error. Not sure why
+%     return
+% end
 tic;
 
 FLAGS.mode=out.mode; %mode==1 for Balance Calibration, mode==2 for general approximation

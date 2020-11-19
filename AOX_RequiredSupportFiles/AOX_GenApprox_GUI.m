@@ -1,38 +1,38 @@
 %GUI created by Matlab 'GUIDE' program.  Called by main AOX_approx.m for
 %user inputs
 
-function varargout = AOX_Approx_GUI(varargin)
-% AOX_Approx_GUI MATLAB code for AOX_Approx_GUI.fig
-%      AOX_Approx_GUI, by itself, creates a new AOX_Approx_GUI or raises the existing
+function varargout = AOX_GenApprox_GUI(varargin)
+% AOX_GenApprox_GUI MATLAB code for AOX_GenApprox_GUI.fig
+%      AOX_GenApprox_GUI, by itself, creates a new AOX_GenApprox_GUI or raises the existing
 %      singleton*.
 %
-%      H = AOX_Approx_GUI returns the handle to a new AOX_Approx_GUI or the handle to
+%      H = AOX_GenApprox_GUI returns the handle to a new AOX_GenApprox_GUI or the handle to
 %      the existing singleton*.
 %
-%      AOX_Approx_GUI('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in AOX_Approx_GUI.M with the given input arguments.
+%      AOX_GenApprox_GUI('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in AOX_GenApprox_GUI.M with the given input arguments.
 %
-%      AOX_Approx_GUI('Property','Value',...) creates a new AOX_Approx_GUI or raises the
+%      AOX_GenApprox_GUI('Property','Value',...) creates a new AOX_GenApprox_GUI or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before AOX_Approx_GUI_OpeningFcn gets called.  An
+%      applied to the GUI before AOX_GenApprox_GUI_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to AOX_Approx_GUI_OpeningFcn via varargin.
+%      stop.  All inputs are passed to AOX_GenApprox_GUI_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help AOX_Approx_GUI
+% Edit the above text to modify the response to help AOX_GenApprox_GUI
 
-% Last Modified by GUIDE v2.5 17-Nov-2020 15:29:47
+% Last Modified by GUIDE v2.5 17-Nov-2020 15:29:57
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
     'gui_Singleton',  gui_Singleton, ...
-    'gui_OpeningFcn', @AOX_Approx_GUI_OpeningFcn, ...
-    'gui_OutputFcn',  @AOX_Approx_GUI_OutputFcn, ...
+    'gui_OpeningFcn', @AOX_GenApprox_GUI_OpeningFcn, ...
+    'gui_OutputFcn',  @AOX_GenApprox_GUI_OutputFcn, ...
     'gui_LayoutFcn',  [] , ...
     'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -47,13 +47,13 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before AOX_Approx_GUI is made visible.
-function AOX_Approx_GUI_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before AOX_GenApprox_GUI is made visible.
+function AOX_GenApprox_GUI_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to AOX_Approx_GUI (see VARARGIN)
+% varargin   command line arguments to AOX_GenApprox_GUI (see VARARGIN)
 set(handles.figure1, 'units', 'normalized', 'position', [0.15 0.1 0.7 0.7])
 set(handles.output_location,'String',pwd);
 global VERSION
@@ -70,12 +70,12 @@ try
     
 end
 
-% Choose default command line output for AOX_Approx_GUI
+% Choose default command line output for AOX_GenApprox_GUI
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-% UIWAIT makes AOX_Approx_GUI wait for user response (see UIRESUME)
+% UIWAIT makes AOX_GenApprox_GUI wait for user response (see UIRESUME)
 [CurrentPath,~,~] = fileparts(mfilename('fullpath'));
 fileName = [CurrentPath,filesep,'default_approx.ini'];
 
@@ -123,7 +123,7 @@ uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = AOX_Approx_GUI_OutputFcn(hObject, eventdata, handles)
+function varargout = AOX_GenApprox_GUI_OutputFcn(hObject, eventdata, handles)
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB

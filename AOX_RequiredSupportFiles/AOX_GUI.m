@@ -1,5 +1,7 @@
 %GUI created by Matlab 'GUIDE' program.  Called by main AOX_BalCal.m for
 %user inputs
+%% AKSHAY NAIK VERSION INCLUDING CSV DATA RANGES
+
 
 function varargout = AOX_GUI(varargin)
 % AOX_GUI MATLAB code for AOX_GUI.fig
@@ -25,7 +27,7 @@ function varargout = AOX_GUI(varargin)
 
 % Edit the above text to modify the response to help AOX_GUI
 
-% Last Modified by GUIDE v2.5 17-Apr-2020 15:07:25
+% Last Modified by GUIDE v2.5 17-Nov-2020 15:43:15
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -2909,3 +2911,59 @@ function QQ_FLAGcheck_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of QQ_FLAGcheck
+
+
+% --- Executes on button press in autocal.
+function autocal_Callback(hObject, eventdata, handles)
+% hObject    handle to autocal (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+autofill_type = "cal";
+[cr_c,nr_c,sr_c,lr_c,vr_c] = autoCSV(get(handles.calPath,'string'),autofill_type);
+% set capacity data range
+set(handles.c11,'string',cr_c(1));
+set(handles.c12,'string',cr_c(2));
+% set natural zeros data range
+set(handles.c21,'string',nr_c(1));
+set(handles.c22,'string',nr_c(2));
+% set series 1 column data range
+set(handles.c31,'string',sr_c(1));
+set(handles.c32,'string',sr_c(2));
+% set load array data range
+set(handles.c41,'string',lr_c(1));
+set(handles.c42,'string',lr_c(2));
+% set voltage array data range
+set(handles.c51,'string',vr_c(1));
+set(handles.c52,'string',vr_c(2));
+
+
+
+% --- Executes when figure1 is resized.
+function figure1_SizeChangedFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in autoval.
+function autoval_Callback(hObject, eventdata, handles)
+% hObject    handle to autoval (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+autofill_type = "val";
+[cr_v,nr_v,sr_v,lr_v,vr_v] = autoCSV(get(handles.valPath,'string'),autofill_type);
+% set capacity data range
+set(handles.v11,'string',cr_v(1));
+set(handles.v12,'string',cr_v(2));
+% set natural zeros data range
+set(handles.v21,'string',nr_v(1));
+set(handles.v22,'string',nr_v(2));
+% set series 1 column data range
+set(handles.v31,'string',sr_v(1));
+set(handles.v32,'string',sr_v(2));
+% set load array data range
+set(handles.v41,'string',lr_v(1));
+set(handles.v42,'string',lr_v(2));
+% set voltage array data range
+set(handles.v51,'string',vr_v(1));
+set(handles.v52,'string',vr_v(2));

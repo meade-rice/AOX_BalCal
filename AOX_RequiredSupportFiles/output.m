@@ -587,12 +587,21 @@ if strcmp(section,{'Calibration GRBF'})==1
         description='CALIBRATION GRBF COEFFICIENTS';
         print_dlmwrite(filename,input,precision,description,output_location);
         
-        %Output GRBF centers
+        %Output GRBF center INDICES
         filename = 'AOX_GRBF_Centers.csv';
         input=centerIndexHist;
         precision='%.16f';
         description='CALIBRATION GRBF CENTER INDICES';
         print_dlmwrite(filename,input,precision,description,output_location);
+        
+        %Output GRBF Centers for each load channel
+        for f=1:loaddimFlag % iterate over load channels (dim 3 of center_daHist)
+            filename = "AOX_GRBF_Centers_Channel" + string(f) + ".csv";
+            input = center_daHist(:,:,f);
+            precision = '%.16f';
+            description = "CALIBRATION GRBF CENTERS -- LOAD CHANNEL " + string(f);
+            print_dlmwrite(filename,input,precision,description,output_location);
+        end
         
         %Output GRBF h value
         filename = 'AOX_GRBF_h.csv';

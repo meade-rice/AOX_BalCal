@@ -27,6 +27,11 @@
 ######################
 */
 !AOX_RequiredSupportFiles
+# Prevent adding Akshay's testing files (storage and organization purposes)
+*/DevTestFiles/**
+*1MoreExamples/**
+*2ExamplesandPropDecks/**
+
 
 # Random Mac Files #
 ####################
