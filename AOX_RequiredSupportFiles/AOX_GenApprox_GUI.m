@@ -935,7 +935,7 @@ end
 
 
 % --- Executes on button press in pushbutton18.
-function pushbutton18_Callback(hObject, eventdata, handles)
+function autodetect_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton18 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)

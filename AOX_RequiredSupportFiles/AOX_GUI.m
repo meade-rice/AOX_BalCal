@@ -2918,23 +2918,35 @@ function autocal_Callback(hObject, eventdata, handles)
 % hObject    handle to autocal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-autofill_type = "cal";
-[cr_c,nr_c,sr_c,lr_c,vr_c] = autoCSV(get(handles.calPath,'string'),autofill_type);
-% set capacity data range
-set(handles.c11,'string',cr_c(1));
-set(handles.c12,'string',cr_c(2));
-% set natural zeros data range
-set(handles.c21,'string',nr_c(1));
-set(handles.c22,'string',nr_c(2));
-% set series 1 column data range
-set(handles.c31,'string',sr_c(1));
-set(handles.c32,'string',sr_c(2));
-% set load array data range
-set(handles.c41,'string',lr_c(1));
-set(handles.c42,'string',lr_c(2));
-% set voltage array data range
-set(handles.c51,'string',vr_c(1));
-set(handles.c52,'string',vr_c(2));
+if handles.gen_mode.value == 1 % current behavior: general approximation just modifies the "cal" section of the GUI
+    autofill_type = "gen";
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+    % set output array
+    set(handles.c41,'string',ranges.I(1));
+    set(handles.c42,'string',ranges.I(1));
+    % set output array
+    set(handles.c51,'string',ranges.O(1));
+    set(handles.c52,'string',ranges.O(2));
+elseif handles.bal_mode.value == 1
+    autofill_type = "cal";
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+    % set capacity data range
+    set(handles.c11,'string',ranges.cap(1));
+    set(handles.c12,'string',ranges.cap(2));
+    % set natural zeros data range
+    set(handles.c21,'string',ranges.nat(1));
+    set(handles.c22,'string',ranges.nat(2));
+    % set series 1 column data range
+    set(handles.c31,'string',ranges.s1(1));
+    set(handles.c32,'string',ranges.s1(2));
+    % set load array data range
+    set(handles.c41,'string',ranges.L(1));
+    set(handles.c42,'string',ranges.L(2));
+    % set voltage array data range
+    set(handles.c51,'string',ranges.V(1));
+    set(handles.c52,'string',ranges.V(2));
+end
+
 
 
 
