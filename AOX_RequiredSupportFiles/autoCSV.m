@@ -33,7 +33,7 @@ function [ranges] = autoCSV(fname,type)
     % structure of file)
     alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; % to map column numbers to letters--maybe change this to handle any number of excel columns?
     C = string(table2cell(readtable(fname,'Format','auto','ReadVariableNames',0))); %table gets correct size matching csv, convert to string via cell to read data
-    [nr,~] = size(C); % number of rows in entire sheet
+    [nr,nc] = size(C); % number of rows, columns in entire sheet
     
     %% detect name of first and last independent and dependent variables 
     % assume data is arranged as all independent vars followed by all dependent vars, columnwise left to right
@@ -62,6 +62,7 @@ function [ranges] = autoCSV(fname,type)
                 vcount = 1;
                 % iterate over independent and dependent variables (loops twice:
                 % 1st for indep., 2nd for dep. 
+                nv = []; % initialize array containing names of first and last variables
                 for i=1:size(V,1) 
                     % detect names of first and last variable
                     coms_i = strfind(V(i,:),','); % find commas to separate variable names
@@ -78,15 +79,15 @@ function [ranges] = autoCSV(fname,type)
                     end
                     nv1 = string(V(i,v1+1:v1end)); % NAME of first var
                     nv2 = string(V(i,v2start:v2-1)); % NAME of 2nd var, coms_i+2 because comma + space
-                    nv = [nv1 nv2];
+                    nv = [nv; [nv1 nv2]];
                     [vrow,~] = find(contains(C,nv1),1,'last'); %finds the row containing header for "data for analysis" portion
 
                     symbs = C(hrow,:);
                     %find columns of the first and last variable
                     vcol = zeros(1,2);
-                    for n=1:length(nv)
+                    for n=1:nv.size(2)
                         for j = 1:length(symbs)
-                            if strcmp(nv(n),symbs(j)) == 1 % find column of FIRST variable
+                            if strcmp(nv(i,n),symbs(j)) == 1 % find column of FIRST variable
                                 vcol(n) = j;
                             end
                         end
@@ -135,8 +136,7 @@ function [ranges] = autoCSV(fname,type)
 
             % finds and reads out the units for each variable (balcal specific)
             urow = hrow+2; % row that contains unit descriptions
-            units = C(urow,:);
-            [~,ucol] = find(contains(C(urow,:),"V"));
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
 
             % Range for Natural Zeros
             % natural zeros correspond to independent variable (for balcal: gage)
@@ -159,7 +159,7 @@ function [ranges] = autoCSV(fname,type)
                 lc2 = varlocs(4,2);
             end
             for ncheck = N:nr % iterate down the rows to find the end of natural zeros array
-                if isempty(char(C(ncheck,ucol(1)))) == 1 || strcmp(C(ncheck,ucol(1)),nv2) == 1
+                if isempty(char(C(ncheck,nc1))) == 1 || strcmp(C(ncheck,nc1),nv2) == 1
                     n_end = ncheck-1; % assigns the last row of the natural zeros array
                     break;
                 else
@@ -195,7 +195,8 @@ function [ranges] = autoCSV(fname,type)
             %% Variables Already Detected. Finds their locations and assigns data ranges.
              vcount = 1;
                 % iterate over independent and dependent variables (loops twice:
-                % 1st for indep., 2nd for dep. 
+                % 1st for indep., 2nd for dep.
+                nv = []; % initialize array containing names of variables (strings)
                 for i=1:size(V,1) 
                     % detect names of first and last variable
                     coms_i = strfind(V(i,:),','); % find commas to separate variable names
@@ -212,15 +213,15 @@ function [ranges] = autoCSV(fname,type)
                     end
                     nv1 = string(V(i,v1+1:v1end)); % NAME of first var
                     nv2 = string(V(i,v2start:v2-1)); % NAME of 2nd var, coms_i+2 because comma + space
-                    nv = [nv1 nv2];
+                    nv = [nv; [nv1 nv2]];
                     [vrow,~] = find(contains(C,nv1),1,'last'); %finds the row containing header for "data for analysis" portion
 
-                    symbs = C(hrow,:);
+                    symbs = C(vrow,:);
                     %find columns of the first and last variable
                     vcol = zeros(1,2);
-                    for n=1:length(nv)
-                        for j = 1:length(symbs)
-                            if strcmp(nv(n),symbs(j)) == 1 % find column of FIRST variable
+                    for n=1:nv.size(2)
+                        for j = 1:length(symbs) % checks along header row
+                            if strcmp(nv(i,n),symbs(j)) == 1 % find column of FIRST variable
                                 vcol(n) = j;
                             end
                         end

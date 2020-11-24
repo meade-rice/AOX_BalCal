@@ -853,7 +853,8 @@ if FLAGS.balCal == 2
     end
     %END SELF-TERMINATION INITIALIZATION
     
-    count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location
+    % count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location (original line: based counts on other var.)
+    count=zeros(size(targetMatrix0)); %Initialize matrix to count how many RBFs have been placed at each location (akshay: base counts on size of TARGET, because we are counting grbf's for target)
     for u=1:numBasis
         RBFs_added(not(self_Terminate))=u; %Counter for how many RBFs have been placed in each channel
         if FLAGS.VIF_selfTerm==1 %If self terminating based on VIF
@@ -959,7 +960,7 @@ if FLAGS.balCal == 2
         %Calculate Algebraic and RBF coefficients with calc_xcalib function
         [xcalib_RBF, ANOVA_GRBF, new_self_Terminate] = calc_xcalib(comIN0_RBF,targetMatrix0,series0,...
             nterms_RBF,nseries0,loaddimFlag,FLAGS_RBF,customMatrix_RBF,anova_pct,loadlist,'Direct w RBF',calc_channel);
-        
+        fprintf("checkxcalib \n")
         %Check on rank deficiency self termination
         if any(new_self_Terminate~=self_Terminate) %Check if any channel terminated due to rank deficiency
             dif_channel=new_self_Terminate~=self_Terminate; %Find logical vector of channels that are now terminated
