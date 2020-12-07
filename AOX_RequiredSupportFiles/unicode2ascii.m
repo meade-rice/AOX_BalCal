@@ -66,7 +66,7 @@ if(nargin == 2)
     fwrite(fin2, file, 'uchar');
     fclose(fin2);
 else
-    fclose(fin);
+    fclose('all');
     delete(sourceFile);
     fin = fopen(sourceFile,'w+');
     fwrite(fin, file, 'uchar');
