@@ -268,6 +268,9 @@ elseif FLAGS.model==5
     elseif balanceType==10
         termInclude([1,2,5])=1;
         algebraic_model={'BALANCE TYPE 2-F'};
+    elseif balanceType==11
+        termInclude(9:12)=1;
+        algebraic_model={'BALANCE TYPE 3-A'}; % include cubic polynomial terms only
     end
     %Assemble custom matrix
     customMatrix=customMatrix_builder(voltdimFlag,termInclude,loaddimFlag,FLAGS.glob_intercept);
@@ -854,8 +857,16 @@ if FLAGS.balCal == 2
     %END SELF-TERMINATION INITIALIZATION
     
     % count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location (original line: based counts on other var.)
-    count=zeros(size(targetMatrix0)); %Initialize matrix to count how many RBFs have been placed at each location (akshay: base counts on size of TARGET, because we are counting grbf's for target)
+    count=zeros(size(targetMatrix0)); %Initialize matrix to count how many RBFs have been placed at each location (akshay: base counts on size of TARGET, because we are counting grbf's for target
+    rbft1 = 0;
+    rbft2 = 0;
     for u=1:numBasis
+        % snippet to investigate long RBF processing times
+        rbft = rbft2 - rbft1;
+        rbft1 = toc;
+        checkhang = "Placed RBF # " + string(u) + ", t = " + num2str(rbft,"%.3f") + " s...\n" ;
+        fprintf(checkhang)
+        % start rbf processing
         RBFs_added(not(self_Terminate))=u; %Counter for how many RBFs have been placed in each channel
         if FLAGS.VIF_selfTerm==1 %If self terminating based on VIF
             comIN0_RBF_VIFtest=[comIN0_RBF,zeros(numpts0,1)]; %Initialize
@@ -1172,6 +1183,7 @@ if FLAGS.balCal == 2
             fprintf('\n');
             break %Exit loop placing RBFs
         end
+        rbft2 = toc;
     end
     final_RBFs_added=RBFs_added; %Initialize count of # RBFs/channel for final model
     
