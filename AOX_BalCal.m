@@ -41,9 +41,9 @@ addpath(genpath('AOX_RequiredSupportFiles'))
 %                       USER INPUT SECTION
 
 out = AOX_GUI; %Call GUI
-% if out.cancel == 1 **Akshay disabled this...was causing error. Not sure why
-%     return
-% end
+if out.cancel == 1
+    return
+end
 tic;
 
 FLAGS.mode=out.mode; %mode==1 for Balance Calibration, mode==2 for general approximation
@@ -213,6 +213,13 @@ if FLAGS.mode==1 && (exist('loadCapacities','var')==0 || any(loadCapacities==0))
 end
 
 series0 = series;
+
+series0_adjusted =series0;
+seriesVal = unique(series);
+for i = 1:length(seriesVal)
+    series0_adjusted(series0_adjusted == seriesVal(i)) = i;
+end
+
 series20=series2;
 pointID0=pointID;
 [~,s_1st0,~] = unique(series0);
@@ -268,9 +275,6 @@ elseif FLAGS.model==5
     elseif balanceType==10
         termInclude([1,2,5])=1;
         algebraic_model={'BALANCE TYPE 2-F'};
-    elseif balanceType==11
-        termInclude(9:12)=1;
-        algebraic_model={'BALANCE TYPE 3-A'}; % include cubic polynomial terms only
     end
     %Assemble custom matrix
     customMatrix=customMatrix_builder(voltdimFlag,termInclude,loaddimFlag,FLAGS.glob_intercept);
@@ -551,7 +555,7 @@ else
     tares=zeros(nseries0,loaddimFlag); %Else set to zero (no series intercepts)
 end
 intercepts=-tares;
-taretal=tares(series0,:);
+taretal=tares(series0_adjusted,:);
 aprxINminGZ=aprxIN+taretal; %Approximation that does not include intercept terms
 
 %    QUESTION: JRP; IS THIS NECESSARY/USEFUL?
@@ -571,7 +575,7 @@ if out.model~=0 %If any algebraic terms included
                 y_hat_PI(:,i)=ANOVA(i).y_hat_PI;
             end
         end
-        tareCheck(targetMatrix0,aprxINminGZ,series0,tares,FLAGS,targetRes,y_hat_PI,pointID0);
+        tareCheck(targetMatrix0,aprxINminGZ,series0,series0_adjusted,tares,FLAGS,targetRes,y_hat_PI,pointID0);
     end
     
     %Perform Shapiro-Wilk Test on residuals
@@ -627,6 +631,13 @@ if FLAGS.balVal == 1
         series2valid=ones(size(excessVecvalid,1),1);
     end
     [validSeries,s_1stV,~] = unique(seriesvalid); %Define series for validation data
+    
+    seriesvalid_adjusted =seriesvalid;
+    seriesVal = unique(seriesvalid);
+    for i = 1:length(seriesVal)
+        seriesvalid_adjusted(seriesvalid_adjusted == seriesVal(i)) = i;
+    end
+    
     
     % Dimensions of data
     [numptsvalid,voltdimFlagvalid] = size(excessVecvalid); %Number of datapoints and voltage channels
@@ -705,7 +716,7 @@ if FLAGS.balVal == 1
         end
         
         if FLAGS.tare_intercept==1
-            tareCheck(targetMatrixvalid,aprxINminGZvalid,seriesvalid,taresvalid,FLAGS,targetResvalid,loadPI_valid,pointIDvalid);
+            tareCheck(targetMatrixvalid,aprxINminGZvalid,seriesvalid,seriesvalid_adjusted,taresvalid,FLAGS,targetResvalid,loadPI_valid,pointIDvalid);
         end
         
         %OUTPUT FUNCTION
@@ -856,17 +867,8 @@ if FLAGS.balCal == 2
     end
     %END SELF-TERMINATION INITIALIZATION
     
-    % count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location (original line: based counts on other var.)
-    count=zeros(size(targetMatrix0)); %Initialize matrix to count how many RBFs have been placed at each location (akshay: base counts on size of TARGET, because we are counting grbf's for target
-    rbft1 = 0;
-    rbft2 = 0;
+    count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location
     for u=1:numBasis
-        % snippet to investigate long RBF processing times
-        rbft = rbft2 - rbft1;
-        rbft1 = toc;
-        checkhang = "Placed RBF # " + string(u) + ", t = " + num2str(rbft,"%.3f") + " s...\n" ;
-        fprintf(checkhang)
-        % start rbf processing
         RBFs_added(not(self_Terminate))=u; %Counter for how many RBFs have been placed in each channel
         if FLAGS.VIF_selfTerm==1 %If self terminating based on VIF
             comIN0_RBF_VIFtest=[comIN0_RBF,zeros(numpts0,1)]; %Initialize
@@ -971,7 +973,7 @@ if FLAGS.balCal == 2
         %Calculate Algebraic and RBF coefficients with calc_xcalib function
         [xcalib_RBF, ANOVA_GRBF, new_self_Terminate] = calc_xcalib(comIN0_RBF,targetMatrix0,series0,...
             nterms_RBF,nseries0,loaddimFlag,FLAGS_RBF,customMatrix_RBF,anova_pct,loadlist,'Direct w RBF',calc_channel);
-        % fprintf("checkxcalib \n") % debug to check when some errors happened
+        
         %Check on rank deficiency self termination
         if any(new_self_Terminate~=self_Terminate) %Check if any channel terminated due to rank deficiency
             dif_channel=new_self_Terminate~=self_Terminate; %Find logical vector of channels that are now terminated
@@ -1183,7 +1185,6 @@ if FLAGS.balCal == 2
             fprintf('\n');
             break %Exit loop placing RBFs
         end
-        rbft2 = toc;
     end
     final_RBFs_added=RBFs_added; %Initialize count of # RBFs/channel for final model
     
@@ -1333,7 +1334,7 @@ if FLAGS.balCal == 2
                 y_hat_PI2(:,i)=ANOVA_GRBF(i).y_hat_PI;
             end
         end
-        tareCheck(targetMatrix0,aprxINminGZ2,series0,taresGRBF,FLAGS,targetRes2,y_hat_PI2,pointID0);
+        tareCheck(targetMatrix0,aprxINminGZ2,series0,series0_adjusted,taresGRBF,FLAGS,targetRes2,y_hat_PI2,pointID0);
     end
     
     %Perform Shapiro-Wilk Test on residuals
@@ -1419,7 +1420,7 @@ if FLAGS.balCal == 2
         end
         
         if FLAGS.tare_intercept==1
-            tareCheck(targetMatrixvalid,aprxINminGZ2valid,seriesvalid,taresGRBFvalid,FLAGS,targetRes2valid,loadPI_valid_GRBF,pointIDvalid);
+            tareCheck(targetMatrixvalid,aprxINminGZ2valid,seriesvalid,seriesvalid_adjusted,taresGRBFvalid,FLAGS,targetRes2valid,loadPI_valid_GRBF,pointIDvalid);
         end
         
         %OUTPUT FUNCTION
@@ -1564,7 +1565,7 @@ xcalib_RBF(1,:)=realityShift; %Include global intercept for reality shift
 xcalib_RBF(nterms_RBF+1:end,:)=tareShift; %Series specific intercepts are for tares
 end
 
-function []=tareCheck(targetMatrix0,aprxINminGZ,series0,tares,FLAGS,targetRes,load_PI,pointID0)
+function []=tareCheck(targetMatrix0,aprxINminGZ,series0,series0_adjusted, tares,FLAGS,targetRes,load_PI,pointID0)
 %Check for agreement between tare loads calculated and tare load.
 %Essentially checking residuals at tare load datapoints (typically first
 %point in each series).  Flag if residual is large at these points
@@ -1584,7 +1585,7 @@ function []=tareCheck(targetMatrix0,aprxINminGZ,series0,tares,FLAGS,targetRes,lo
 %datapoint estimates
 
 tareLoad_points=find(all(targetMatrix0==0,2)); %Find tare load datapoints: datapoints where no target load is present
-tareDif=aprxINminGZ(tareLoad_points,:)-tares(series0(tareLoad_points),:); %Find difference between calculated tare loads and global load approximation at tare load datapoints
+tareDif=aprxINminGZ(tareLoad_points,:)-tares(series0_adjusted(tareLoad_points),:); %Find difference between calculated tare loads and global load approximation at tare load datapoints
 
 %Define acceptable margin for difference between tare loads and
 %load approximation
