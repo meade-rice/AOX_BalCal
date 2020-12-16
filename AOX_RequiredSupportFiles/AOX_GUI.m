@@ -2918,12 +2918,12 @@ function autocal_Callback(hObject, eventdata, handles)
 % hObject    handle to autocal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-if handles.gen_mode.Value == 1 % current behavior: general approximation just modifies the "cal" section of the GUI
+if handles.gen_mode.Value == 1 % current behavior: general approximation just modifies the "cal" section of the GUI, so autocal is for both calibration and general approx.
     autofill_type = "gen";
     ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
     % set output array
     set(handles.c41,'string',ranges.I(1));
-    set(handles.c42,'string',ranges.I(1));
+    set(handles.c42,'string',ranges.I(2));
     % set output array
     set(handles.c51,'string',ranges.O(1));
     set(handles.c52,'string',ranges.O(2));
