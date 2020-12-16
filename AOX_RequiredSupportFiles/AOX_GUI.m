@@ -66,7 +66,7 @@ VERSION = 16;
 try
     
     [nasalogo,~,aln] = imread('nasa.png','BackgroundColor',[0.941, 0.941, 0.941]);
-    axes(handles.axesNASA);
+    axes(handles.axesNASA);3
     imshow(nasalogo, []);
     
     [ricelogo,~,alr] = imread('rice.png','BackgroundColor',[0.941, 0.941, 0.941]);
@@ -1484,6 +1484,9 @@ function savePath = loadCSV(cva,output_location,mode)
 % reading.
 % Input: type - String that changes depending on whether loading
 % calibration, validation, or approximation data.
+
+unicode2ascii(convertCharsToStrings(cva.Path))
+
 switch cva.type
     case 'calibrate'
         cal = cva;
