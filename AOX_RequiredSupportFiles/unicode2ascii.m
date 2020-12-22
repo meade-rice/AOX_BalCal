@@ -27,7 +27,7 @@ end
 
 %does the file exist?
 if (~strout && fin == -1)
-    error(['File ' sourceFile ' not found!'])
+    error(strjoin(['File ' sourceFile ' not found!']))
     return;
 end
 
