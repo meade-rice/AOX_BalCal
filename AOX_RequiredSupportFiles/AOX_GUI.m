@@ -1485,7 +1485,7 @@ function savePath = loadCSV(cva,output_location,mode)
 % Input: type - String that changes depending on whether loading
 % calibration, validation, or approximation data.
 
-unicode2ascii(convertCharsToStrings(cva.Path))
+% unicode2ascii(convertCharsToStrings(cva.Path))
 
 switch cva.type
     case 'calibrate'
@@ -2966,19 +2966,35 @@ function autoval_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 autofill_type = "val";
-[cr_v,nr_v,sr_v,lr_v,vr_v] = autoCSV(get(handles.valPath,'string'),autofill_type);
-% set capacity data range
-set(handles.v11,'string',cr_v(1));
-set(handles.v12,'string',cr_v(2));
-% set natural zeros data range
-set(handles.v21,'string',nr_v(1));
-set(handles.v22,'string',nr_v(2));
-% set series 1 column data range
-set(handles.v31,'string',sr_v(1));
-set(handles.v32,'string',sr_v(2));
-% set load array data range
-set(handles.v41,'string',lr_v(1));
-set(handles.v42,'string',lr_v(2));
-% set voltage array data range
-set(handles.v51,'string',vr_v(1));
-set(handles.v52,'string',vr_v(2));
+ranges = autoCSV(get(handles.valPath,'string'),autofill_type);
+    % set capacity data range
+    set(handles.v11,'string',ranges.cap(1));
+    set(handles.v12,'string',ranges.cap(2));
+    % set natural zeros data range
+    set(handles.v21,'string',ranges.nat(1));
+    set(handles.v22,'string',ranges.nat(2));
+    % set series 1 column data range
+    set(handles.v31,'string',ranges.s1(1));
+    set(handles.v32,'string',ranges.s1(2));
+    % set load array data range
+    set(handles.v41,'string',ranges.L(1));
+    set(handles.v42,'string',ranges.L(2));
+    % set voltage array data range
+    set(handles.v51,'string',ranges.V(1));
+    set(handles.v52,'string',ranges.V(2));
+% [cr_v,nr_v,sr_v,lr_v,vr_v] = autoCSV(get(handles.valPath,'string'),autofill_type);
+% % set capacity data range
+% set(handles.v11,'string',cr_v(1));
+% set(handles.v12,'string',cr_v(2));
+% % set natural zeros data range
+% set(handles.v21,'string',nr_v(1));
+% set(handles.v22,'string',nr_v(2));
+% % set series 1 column data range
+% set(handles.v31,'string',sr_v(1));
+% set(handles.v32,'string',sr_v(2));
+% % set load array data range
+% set(handles.v41,'string',lr_v(1));
+% set(handles.v42,'string',lr_v(2));
+% % set voltage array data range
+% set(handles.v51,'string',vr_v(1));
+% set(handles.v52,'string',vr_v(2));

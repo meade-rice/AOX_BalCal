@@ -126,6 +126,7 @@ function [ranges] = autoCSV(fname,type)
                     varlocs(4,2) = size(Vhead,2);
                     [~,v1y] = find(contains(C(vrow,:),"N1"),1,"first");
                     varlocs(1,2) = v1y;
+                    nv = [nv2,C(varlocs(4,1),varlocs(4,2));nv1,C(varlocs(2,1),varlocs(2,2))];
                 end
             end
             %% Assign data ranges
@@ -152,14 +153,20 @@ function [ranges] = autoCSV(fname,type)
                 nc2 = varlocs(4,2);
                 lc1 = varlocs(1,2);
                 lc2 = varlocs(2,2);
+                nat0nv = 2; % assigns row of nv (variable names) to check when detecting natural zeros array
             elseif isempty(char(C(N,varlocs(3,2)))) == 1 % no natural zeros for dep. var
                 nc1 = varlocs(1,2); % nat0's correspond to independent variables
                 nc2 = varlocs(2,2);
                 lc1 = varlocs(3,2);
                 lc2 = varlocs(4,2);
+                nat0nv = 1; % assigns row of nv (variable names) to check when detecting natural zeros array
             end
             for ncheck = N:nr % iterate down the rows to find the end of natural zeros array
-                if isempty(char(C(ncheck,nc1))) == 1 || strcmp(C(ncheck,nc1),nv2) == 1
+                % Nat zeros ends either in a blank line or with header. First come first serve
+                if isempty(char(C(ncheck,nc1))) == 1 % checks for blank line
+                    n_end = ncheck-1; % assigns the last row of the natural zeros array
+                    break;
+                elseif strcmp(C(ncheck,nc1),nv(nat0nv,1)) == 1 % checks for point ID header
                     n_end = ncheck-1; % assigns the last row of the natural zeros array
                     break;
                 else
@@ -242,6 +249,7 @@ function [ranges] = autoCSV(fname,type)
                 ranges.I = Irange;
                 ranges.O = Drange;
     end
+    fprintf("CSV Data Detection finished. Refer to warnings, if any.\n");
         % debug--check the outputs
     %     disp(caprange)
     %     disp(nat0range)
