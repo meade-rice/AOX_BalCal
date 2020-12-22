@@ -24,10 +24,25 @@ for i = 1:n_dim %subplot for each series
         r = 6;
     end
     subplot(r, 1, i-sub); hold on
-    axis([-100 100 minRes maxRes]) % axis limits
+    yhigh = max(1, maxRes);
+    ylow = min(-1, minRes);
+    xthresh = linspace(-100,100,100);
+    ythreshl = -0.25;
+    ythreshh =  0.25;
+    axis([-100 100 ylow yhigh]) % axis limits
     x = pload(ASC(:,i),i);
     y = resPCT(ASC(:,i),i); 
     plot(x,y);
+    hold on
+    yline(ythreshl, '--k');
+    hold on
+    yline(ythreshh, '--k');
+    hold on
+    text(0,-0.35,'Residual -0.25%');
+    hold on
+    text(0,0.4,'Residual -0.25%');
+%     plot(xthresh, ythreshl, '--k');
+%     plot(xthresh, ythreshh, '--k');
     title("Residual; % Load Capacity vs. Applied Load; % Load Capacity");
     xlabel("Applied Load: " + string(loadlist{1,i}) + ", % of load capacity");
     ylabel("\Delta " + string(loadlist{1,i}) + "(% Load Capacity)");
