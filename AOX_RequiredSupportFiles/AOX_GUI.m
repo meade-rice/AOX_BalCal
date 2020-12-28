@@ -1485,7 +1485,8 @@ function savePath = loadCSV(cva,output_location,mode)
 % Input: type - String that changes depending on whether loading
 % calibration, validation, or approximation data.
 
-% unicode2ascii(convertCharsToStrings(cva.Path))
+unicode2ascii(convertCharsToStrings(cva.Path))
+
 
 switch cva.type
     case 'calibrate'
@@ -2921,12 +2922,12 @@ function autocal_Callback(hObject, eventdata, handles)
 % hObject    handle to autocal (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-if handles.gen_mode.Value == 1 % current behavior: general approximation just modifies the "cal" section of the GUI, so autocal is for both calibration and general approx.
+if handles.gen_mode.Value == 1 % current behavior: general approximation just modifies the "cal" section of the GUI
     autofill_type = "gen";
     ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
     % set output array
     set(handles.c41,'string',ranges.I(1));
-    set(handles.c42,'string',ranges.I(2));
+    set(handles.c42,'string',ranges.I(1));
     % set output array
     set(handles.c51,'string',ranges.O(1));
     set(handles.c52,'string',ranges.O(2));
