@@ -289,7 +289,8 @@ else
     %Standard Full, truncated, linear model, or no algebraic model
     %Select the terms to be included
     %Terms are listed in following order:
-    % (INTERCEPT), F, |F|, F*F, F*|F|, F*G, |F*G|, F*|G|, |F|*G, F*F*F, |F*F*F|, F*G*G, F*G*H
+    % (INTERCEPT), F, |F|, F*F, F*|F|, F*G, |F*G|, F*|G|, |F|*G, F*F*F,
+    % |F*F*F|, F*G*G, F*G*H, |F|*G*H, F*|G*H|
     termInclude=zeros(12,1);
     if FLAGS.model==3 %Linear eqn
         termInclude(1)=1; %Include only linear terms
@@ -600,7 +601,7 @@ if out.model~=0 %If any algebraic terms included
     if FLAGS.mode==1 %Outputs for balance calibration mode
         newStruct=struct('loadCapacities',loadCapacities,...
             'tares',tares, 'balance_type',balance_type,...
-            'tares_STDDEV',tares_STDDEV);
+            'tares_STDDEV',tares_STDDEV,'targetMatrixcalib',targetMatrix0);
         uniqueOut = cell2struct([struct2cell(uniqueOut); struct2cell(newStruct)],...
             [fieldnames(uniqueOut); fieldnames(newStruct)],1);
     end
@@ -727,7 +728,7 @@ if FLAGS.balVal == 1
         
         if FLAGS.mode==1
             newStruct=struct('loadCapacities',loadCapacitiesvalid,...
-                'tares',taresvalid,'tares_STDDEV',tares_STDEV_valid);
+                'tares',taresvalid,'tares_STDDEV',tares_STDEV_valid,'targetMatrixvalid',targetMatrixvalid);
             uniqueOut = cell2struct([struct2cell(uniqueOut); struct2cell(newStruct)],...
                 [fieldnames(uniqueOut); fieldnames(newStruct)],1);
         end
@@ -869,6 +870,12 @@ if FLAGS.balCal == 2
     
     count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location
     for u=1:numBasis
+        % snippet to investigate long RBF processing times
+        rbft = rbft2 - rbft1;
+        rbft1 = toc;
+%         checkhang = "Placed RBF # " + string(u) + ", t = " + num2str(rbft,"%.3f") + " s...\n" ;
+%         fprintf(checkhang)
+        % start rbf processing
         RBFs_added(not(self_Terminate))=u; %Counter for how many RBFs have been placed in each channel
         if FLAGS.VIF_selfTerm==1 %If self terminating based on VIF
             comIN0_RBF_VIFtest=[comIN0_RBF,zeros(numpts0,1)]; %Initialize
@@ -1361,7 +1368,7 @@ if FLAGS.balCal == 2
         [fieldnames(uniqueOut); fieldnames(newStruct)],1);
     
     if FLAGS.mode==1
-        newStruct=struct('loadCapacities',loadCapacities,'tares',taresGRBF,'tares_STDDEV',taresGRBFSTDEV);
+        newStruct=struct('loadCapacities',loadCapacities,'tares',taresGRBF,'tares_STDDEV',taresGRBFSTDEV,'targetMatrixcalib',targetMatrix0);
         uniqueOut = cell2struct([struct2cell(uniqueOut); struct2cell(newStruct)],...
             [fieldnames(uniqueOut); fieldnames(newStruct)],1);
     end
@@ -1431,7 +1438,7 @@ if FLAGS.balCal == 2
             [fieldnames(uniqueOut); fieldnames(newStruct)],1);
         
         if FLAGS.mode==1
-            newStruct=struct('loadCapacities',loadCapacitiesvalid,'tares',taresGRBFvalid,'tares_STDDEV',taresGRBFSTDEVvalid);
+            newStruct=struct('loadCapacities',loadCapacitiesvalid,'tares',taresGRBFvalid,'tares_STDDEV',taresGRBFSTDEVvalid,'targetMatrixvalid',targetMatrixvalid);
             uniqueOut = cell2struct([struct2cell(uniqueOut); struct2cell(newStruct)],...
                 [fieldnames(uniqueOut); fieldnames(newStruct)],1);
         end

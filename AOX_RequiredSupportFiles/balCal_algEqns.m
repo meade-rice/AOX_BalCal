@@ -37,7 +37,7 @@ function [in_comb,high,high_CELL] = balCal_algEqns(model_FLAG,in,series,intercep
     else
         in_n = in;
     end
-    fprintf("\n Normflag = " + string(normFLAG) + "\n");
+%     fprintf("\n Normflag = " + string(normFLAG) + "\n");
     % Detect the size of the input
     nPoint = size(in_n,1); %number of data points
     d = size(in_n,2); %data dimensionality.
@@ -48,10 +48,10 @@ function [in_comb,high,high_CELL] = balCal_algEqns(model_FLAG,in,series,intercep
     termNum([2,3,4,5,10,11])=d;
     if d >= 2
         termNum([6,7,8,9])=(d^2-d)/2;
-        termNum(12)=factorial(d)/factorial(d-2);
+        termNum(12)=factorial(d)/factorial(d-2); % nPr
     end
     if d >= 3
-        termNum(13)=factorial(d)/(factorial(3)*factorial(d-3));
+        termNum(13)=factorial(d)/(factorial(3)*factorial(d-3)); % nCr
     end
 
     glob_intercept=ones(nPoint,1); %Global Intercept Term
