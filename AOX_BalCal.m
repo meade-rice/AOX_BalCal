@@ -870,12 +870,6 @@ if FLAGS.balCal == 2
     
     count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location
     for u=1:numBasis
-        % snippet to investigate long RBF processing times
-        rbft = rbft2 - rbft1;
-        rbft1 = toc;
-%         checkhang = "Placed RBF # " + string(u) + ", t = " + num2str(rbft,"%.3f") + " s...\n" ;
-%         fprintf(checkhang)
-        % start rbf processing
         RBFs_added(not(self_Terminate))=u; %Counter for how many RBFs have been placed in each channel
         if FLAGS.VIF_selfTerm==1 %If self terminating based on VIF
             comIN0_RBF_VIFtest=[comIN0_RBF,zeros(numpts0,1)]; %Initialize
