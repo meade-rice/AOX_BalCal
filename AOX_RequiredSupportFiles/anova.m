@@ -71,7 +71,7 @@ if noVIF_FLAG==0
 else
 %     VIF={'VIF NOT CALCULATED'};
     VIF=-1;
-    VIF_warn = VIF; % value of -1 indicated VIF was not calculated at all
+    VIF_warn = -1; % value of -1 indicated VIF was not calculated at all
 end
 % if test_FLAG == 1 && max(VIF) >= 4
 %     ANOVA.test = -1;

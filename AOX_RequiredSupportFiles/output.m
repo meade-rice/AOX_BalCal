@@ -94,20 +94,23 @@ if FLAGS.print == 1 || FLAGS.disp==1
         Header_cells{8,1} = char("Math Model Refinement Used: TRUE -- " + FLAGS.AlgModelOpt);
     end
     Header_cells{9,1}=char(strcat('Number of Datapoints:',{' '},string(numpts))); % num datapoints (9)
-    if contains(section, "Calibration") % multicollinearity warnings
+    % Multicollinearity warning (for all CALIB and VALID reports)
+    if contains(section,"Validation")
+        mcwarn = "Multicollinearity in Calibration Warning Given: ";
+    else
         mcwarn = "Multicollinearity Warning Given: ";
-        vifwarn = max(horzcat(ANOVA.VIF_warn)); % takes the strongest multicollinearity reported over all load channels
-        if vifwarn == 1
-            mcwarn = mcwarn + "TRUE -- Some multicollinearity";
-        elseif vifwarn == 2
-            mcwarn = mcwarn + "TRUE -- Strong Multicollinearity";
-        elseif vifwarn == 0
-            mcwarn = mcwarn + "FALSE";
-        else
-            mcwarn = mcwarn + "FALSE -- VIF not calculated";
-        end
-        Header_cells{10,1}= mcwarn;
     end
+    vifwarn = max(horzcat(ANOVA.VIF_warn)); % takes the strongest multicollinearity reported over all load channels
+    if vifwarn == 1
+        mcwarn = mcwarn + "TRUE -- Some multicollinearity";
+    elseif vifwarn == 2
+        mcwarn = mcwarn + "TRUE -- Strong Multicollinearity";
+    elseif vifwarn == 0
+        mcwarn = mcwarn + "FALSE";
+    else
+        mcwarn = mcwarn + "FALSE -- VIF not calculated";
+    end
+    Header_cells{10,1}= char(mcwarn);
     if FLAGS.balCal == 2 % GRBF info (10,11)
         rbfflag = "GRBF Addition Performed: ";
         if contains(section, "Algebraic")
@@ -115,9 +118,9 @@ if FLAGS.print == 1 || FLAGS.disp==1
             Header_cells = Header_cells(1:11,:); % trim header by 1 row since next line is not used
         else
             rbfflag = rbfflag + "TRUE";
-            Header_cells{12,1}=char(strcat('Number of GRBFs Requested:',{' '},string(numBasis)));
+            Header_cells{12,1}=char(strcat('Number of GRBFs Requested:',{' '},string(numReq)));
         end
-        Header_cells{11,1}=rbfflag;
+        Header_cells{11,1}=char(rbfflag);
     else
         Header_cells{11,1}='GRBF Addition Performed: FALSE';
         Header_cells{12,1}='Number GRBFs: N/A';
@@ -126,15 +129,15 @@ if FLAGS.print == 1 || FLAGS.disp==1
     
 
     csv_output=[Header_cells;empty_cells];
-    %Command window printing;
-%     if FLAGS.disp==1
-%         fprintf('\n ********************************************************************* \n');
-%         for i=1:size(Header_cells,1)
-%             fprintf(Header_cells{i,:})
-%             fprintf('\n')
-%         end
-%         fprintf('\n')
-%     end
+    % Command window printing;
+    if FLAGS.disp==1
+        fprintf('\n ********************************************************************* \n');
+        for i=1:size(Header_cells,1)
+            fprintf(Header_cells{i,:})
+            fprintf('\n')
+        end
+        fprintf('\n')
+    end
       
     %Call outputs 'Load' for balance calibration, otherwise only 'Load'
     if FLAGS.mode==1
