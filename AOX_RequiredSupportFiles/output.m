@@ -64,19 +64,19 @@ end
 if FLAGS.print == 1 || FLAGS.disp==1
     %Initialize cell arrays
     empty_cells=cell(1,loaddimFlag+1);
-    Header_cells=cell(10,loaddimFlag+1);
+    Header_cells=cell(12,loaddimFlag+1);
     output_name=cell(1,loaddimFlag+1);
     load_line=[cell(1),loadlist(1:loaddimFlag)];
     
     %Define Header section
-    Header_cells{1,1}=char(strcat(section, {' '},'Results'));
+    Header_cells{1,1}=char(strcat(section, {' '},'Results')); % software mode (1,2)
     if FLAGS.mode==1
         Header_cells{2,1}='Software Mode: FORCE BALANCE CALIBRATION';
     elseif FLAGS.mode==2
         Header_cells{2,1}='Software Mode: GENERAL FUNCTION APPROXIMATION';
     end
-    Header_cells{3,1}=char(strcat('REPORT NO:',{' '},REPORT_NO));
-    Header_cells{4,1}=char(strcat(strtok(section),{' '}, 'Input File:',{' '},fileName));
+    Header_cells{3,1}=char(strcat('REPORT NO:',{' '},REPORT_NO)); % report number (3)
+    Header_cells{4,1}=char(strcat(strtok(section),{' '}, 'Input File:',{' '},fileName)); % alg calib flags (4-6)
     if FLAGS.balOut == 1
         Header_cells{5,1}='Calibration ALG Outliers Flagged: TRUE';
     else
@@ -87,25 +87,54 @@ if FLAGS.print == 1 || FLAGS.disp==1
     else
         Header_cells{6,1}='Calibration ALG Outliers Removed: FALSE';
     end
-    Header_cells{7,1}=char(strcat('Algebraic Model Used:',{' '},algebraic_model));
-    Header_cells{8,1}=char(strcat('Number of Datapoints:',{' '},string(numpts)));
-    if FLAGS.balCal == 2
-        Header_cells{9,1}='GRBF Addition Performed: TRUE';
-        Header_cells{10,1}=char(strcat('Number GRBFs:',{' '},string(numBasis)));
+    Header_cells{7,1}=char(strcat('Algebraic Model Used:',{' '},algebraic_model)); % alg model info (7,8)
+    if FLAGS.AlgModelOpt == "0"
+        Header_cells{8,1}=char("Math Model Refinement Used: FALSE");
     else
-        Header_cells{9,1}='GRBF Addition Performed: FALSE';
-        Header_cells{10,1}='Number GRBFs: N/A';
+        Header_cells{8,1} = char("Math Model Refinement Used: TRUE -- " + FLAGS.AlgModelOpt);
     end
+    Header_cells{9,1}=char(strcat('Number of Datapoints:',{' '},string(numpts))); % num datapoints (9)
+    if contains(section, "Calibration") % multicollinearity warnings
+        mcwarn = "Multicollinearity Warning Given: ";
+        vifwarn = max(horzcat(ANOVA.VIF_warn)); % takes the strongest multicollinearity reported over all load channels
+        if vifwarn == 1
+            mcwarn = mcwarn + "TRUE -- Some multicollinearity";
+        elseif vifwarn == 2
+            mcwarn = mcwarn + "TRUE -- Strong Multicollinearity";
+        elseif vifwarn == 0
+            mcwarn = mcwarn + "FALSE";
+        else
+            mcwarn = mcwarn + "FALSE -- VIF not calculated";
+        end
+        Header_cells{10,1}= mcwarn;
+    end
+    if FLAGS.balCal == 2 % GRBF info (10,11)
+        rbfflag = "GRBF Addition Performed: ";
+        if contains(section, "Algebraic")
+            rbfflag = rbfflag + "TRUE -- See 'GRBF Results' sheet";
+            Header_cells = Header_cells(1:11,:); % trim header by 1 row since next line is not used
+        else
+            rbfflag = rbfflag + "TRUE";
+            Header_cells{12,1}=char(strcat('Number of GRBFs Requested:',{' '},string(numBasis)));
+        end
+        Header_cells{11,1}=rbfflag;
+    else
+        Header_cells{11,1}='GRBF Addition Performed: FALSE';
+        Header_cells{12,1}='Number GRBFs: N/A';
+    end
+    
+    
+
     csv_output=[Header_cells;empty_cells];
     %Command window printing;
-    if FLAGS.disp==1
-        fprintf('\n ********************************************************************* \n');
-        for i=1:size(Header_cells,1)
-            fprintf(Header_cells{i,:})
-            fprintf('\n')
-        end
-        fprintf('\n')
-    end
+%     if FLAGS.disp==1
+%         fprintf('\n ********************************************************************* \n');
+%         for i=1:size(Header_cells,1)
+%             fprintf(Header_cells{i,:})
+%             fprintf('\n')
+%         end
+%         fprintf('\n')
+%     end
       
     %Call outputs 'Load' for balance calibration, otherwise only 'Load'
     if FLAGS.mode==1
@@ -115,6 +144,12 @@ if FLAGS.print == 1 || FLAGS.disp==1
     end
     
     if FLAGS.mode==1
+        % GRBF Counter (for algebraic + grbf models only)
+        if contains(section,"GRBF")
+            output_name{1}='Number of GRBFs Used';
+            section_out=[load_line;cell(1),num2cell(numRBF)];
+            csv_output=[csv_output;output_name;section_out;empty_cells];
+        end
         %Statistics output section
         output_name{1}='Percent Load Capacity of Residual Standard Deviation';
         section_out=[load_line;cell(1),num2cell(stdDevPercentCapacity)];
@@ -275,7 +310,7 @@ if FLAGS.print == 1 || FLAGS.disp==1
             if contains(section,'Algebraic')==1
                 delete(char(fullpath))
             end
-            %Print statisitics
+            %Print statistics
             sheet=contains(section,'GRBF')+1; %Set sheet to print to: 1 for algebraic, 2 for GRBF
             writetable(cell2table(csv_output),fullpath,'writevariablenames',0,'Sheet',sheet,'UseExcel', false)
             %Write filename to command window

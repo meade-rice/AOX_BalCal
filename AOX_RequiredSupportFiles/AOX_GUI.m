@@ -227,7 +227,12 @@ outStruct.calib_model_save_FLAG=get(handles.calib_model_save_FLAG,'Value');
 outStruct.input_save_FLAG=get(handles.input_save_FLAG,'Value');
 
 %Alg Model Refinement Options
-outStruct.AlgModel_opt=handles.AlgModel_opt_pop.Value;
+outStruct.AlgModel_opt=handles.AlgModel_opt_pop.Value; % flag number for optional alg model refinement
+if outStruct.AlgModel_opt > 1
+    outStruct.AlgModelName_opt=handles.AlgModel_opt_pop.String{outStruct.AlgModel_opt}; % name of alg model refinement
+else
+    outStruct.AlgModelName_opt="0";
+end
 outStruct.VIF_thresh=str2num(handles.VIF_thresh.String);
 outStruct.high_con=handles.termHigh_pop.Value-1;
 outStruct.search_metric=handles.optMet_pop.Value;
@@ -1485,7 +1490,7 @@ function savePath = loadCSV(cva,output_location,mode)
 % Input: type - String that changes depending on whether loading
 % calibration, validation, or approximation data.
 
-unicode2ascii(convertCharsToStrings(cva.Path))
+% unicode2ascii(convertCharsToStrings(cva.Path))
 
 
 switch cva.type

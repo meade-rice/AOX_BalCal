@@ -41,9 +41,9 @@ addpath(genpath('AOX_RequiredSupportFiles'))
 %                       USER INPUT SECTION
 
 out = AOX_GUI; %Call GUI
-if out.cancel == 1
-    return
-end
+% if out.cancel == 1
+%     return
+% end
 tic;
 
 FLAGS.mode=out.mode; %mode==1 for Balance Calibration, mode==2 for general approximation
@@ -135,23 +135,23 @@ FLAGS.sugEqnLeg=0; %Flag from performing search for legacy constrained (suggeste
 FLAGS.sugEqnNew=0; %Flag from performing search for updated constrained (suggested) equation
 FLAGS.back_recEqn=0; %Flag from performing search for recommended equation
 FLAGS.forward_recEqn=0; %Flag from performing search for recommended equation
-if out.AlgModel_opt>1
-    FLAGS.svd=1;
+FLAGS.AlgModelOpt = out.AlgModelName_opt; % stores name of algebra model refinement choice, "0" if no refinement
+if out.AlgModel_opt > 1
+    FLAGS.svd=1; % SVD for Non-Singularity (Permitted Math Model)
 end
 if out.AlgModel_opt==3
-    FLAGS.sugEqnLeg=1;
+    FLAGS.sugEqnLeg=1; % BALFIT Legacy Constrained (Suggested) Math Model
 elseif out.AlgModel_opt==4
-    FLAGS.sugEqnNew=1;
+    FLAGS.sugEqnNew=1; % Updated Stable Constrained (Suggested) Math Model
 elseif out.AlgModel_opt==5
-    FLAGS.forward_recEqn=1;
+    FLAGS.forward_recEqn=1; % Forward Selection Recommended Math Model
 elseif out.AlgModel_opt==6
-    FLAGS.back_recEqn=1;
+    FLAGS.back_recEqn=1; % Backwards Elimination Recommended Math Model
 end
 
 if out.AlgModel_opt<3
     FLAGS.high_con=0; %Not in mode where hierarchy is enforced
 end
-
 %Intercept Options
 if FLAGS.mode==1 %Intercept options for Balance Calibration Mode
     if out.intercept==1 %Include series intercepts
@@ -1354,6 +1354,7 @@ if FLAGS.balCal == 2
         'coeff_algRBFmodel_alg',coeff_algRBFmodel_alg,...
         'h_GRBF',h_GRBF,...
         'numBasis',max(final_RBFs_added),...
+        'numRBF',final_RBFs_added,...
         'nterms',nterms+max(final_RBFs_added)*loaddimFlag,...
         'coeff_algRBFmodel',coeff_algRBFmodel,...
         'coeff',coeff,...
@@ -1427,7 +1428,8 @@ if FLAGS.balCal == 2
         %OUTPUT FUNCTION
         %Function creates all outputs for validation, GRBF section
         section={'Validation GRBF'};
-        newStruct=struct('aprxINminTARE2valid',aprxINminTARE2valid);
+        newStruct=struct('aprxINminTARE2valid',aprxINminTARE2valid,...
+            'numRBF',final_RBFs_added);
         uniqueOut = cell2struct([struct2cell(uniqueOut); struct2cell(newStruct)],...
             [fieldnames(uniqueOut); fieldnames(newStruct)],1);
         

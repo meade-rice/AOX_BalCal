@@ -55,18 +55,23 @@ end
 %VIF calculations performed if test_FLAG=0: Do not perform during iterated
 %recommended equation solving for time saving
 if noVIF_FLAG==0
-    VIF = vif(X, FLAGS);
+    VIF = vif(X, FLAGS); % function is part of anova.m
     
 %     VIF_dl=vif_dl(X(:,2:end))';
     
     if any(VIF>=10)
         warning('VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.')
+        VIF_warn = 2; % strong multicollinearity
     elseif any(VIF>=4)
         warning('VIF calculation indicates some multicollinearity. Analysis of Variance results may be unreliable.')
+        VIF_warn = 1; % some multicollinearity
+    else
+        VIF_warn = 0; % no multicollinearity warning
     end
 else
 %     VIF={'VIF NOT CALCULATED'};
     VIF=-1;
+    VIF_warn = VIF; % value of -1 indicated VIF was not calculated at all
 end
 % if test_FLAG == 1 && max(VIF) >= 4
 %     ANOVA.test = -1;
@@ -233,6 +238,7 @@ ANOVA.beta_CI  = beta_CI;  % Coefficient Confidence Intervals
 ANOVA.T = T;               % T-statistic of coefficients
 ANOVA.p_T = p_T;           % P-value of coefficients
 ANOVA.VIF = VIF;           % Variance Inflation Factors
+ANOVA.VIF_warn = VIF_warn; % Multicollinearity warning information
 if noVIF_FLAG==0
 %     ANOVA.VIF_dl=VIF_dl;
 end
