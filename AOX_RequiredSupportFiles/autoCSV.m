@@ -50,12 +50,6 @@ function [ranges] = autoCSV(fname,type)
             A = find(contains(C,"symbols")); % numerical values always start below this string in bal file template
             hrow = A+1;
 
-        % if caloverride == 1 % for cal or val files only! replace with a check against the BalCal GUI inputs
-        %     hrow = A+1; % this find the row that defines ind. and dep. variable symbols
-        % else % if header for data analysis part is in a standard format (variable name only)
-        %     hrow = vrow; % THIS SHOULDN'T BE HERE. ONCE NON-BALCAL FORMAT IS INTEGRATED THIS HAS TO MOVE
-        % end
-
             %% Assign "varlocs" to determine range of ind. and dep. vars
             if isempty(V) == 0 && size(V,1) == 2   % expects V to exist (variable description header exists) and be size (2,n)
                 fallback = 0;
@@ -79,7 +73,7 @@ function [ranges] = autoCSV(fname,type)
                     end
                     nv1 = string(V(i,v1+1:v1end)); % NAME of first var
                     nv2 = string(V(i,v2start:v2-1)); % NAME of 2nd var, coms_i+2 because comma + space
-                    nv = [nv; [nv1 nv2]];
+                    nv = [nv; [nv1 nv2]]; % NV: FIRST ROW = IND. VAR, 2ND ROW = DEP. VAR
                     [vrow,~] = find(contains(C,nv1),1,'last'); %finds the row containing header for "data for analysis" portion
 
                     symbs = C(hrow,:);
@@ -103,21 +97,30 @@ function [ranges] = autoCSV(fname,type)
             else % fallback behavior--assumes ind vars start with "N1" and dep vars start with "rN1" or "R1"
                 warning("Unable to detect a header with a description of the independent and dependent variable names. Falling back to standard BALFIT var names detection.\n","AutoCSV:calvalFallback");
                 fallback = 1;
-                [vx,vy] = find(contains(C,"N1"),1,"last"); %check for rN1 as dep var
+                nL = ["N1","NF1","PM1"]; % recommended balfit variable names (loads)
+                for i=1:length(nL)
+                    try
+                        [vx,vy] = find(contains(C,nL(i)),1,"last"); %check each possible balfit variable name for existence of gage variable
+                        if isempty(vx) == 0 % as soon as one of the possible names works, break loop and continue
+                            bfvar = i;
+                            break;
+                        end
+                    end
+                end
                 if isempty(vx) == 1 % Irregular naming scheme and no variable names listed is unfortunate
                     % these are hard fallback values
                     varlocs(:,1) = 1;
                     varlocs(3,2) = 1;
                     varlocs(2,2) = 1;
                     varlocs(4,2) = 1;
-                    warning("Standard BALFIT detection also failed. **Please confirm filled values with source file.**\n");
+                    warning("Standard BALFIT detection also failed. **Please add information to input file according to documentation or manually fill data ranges.**\n");
                 else % standard balfit detection
-                    nv1 = "N1";
-                    nv2 = "rN1";
+                    nv1 = nL(bfvar);
+                    nv2 = "r" + nv1;
                     vrow = vx; % row of data headers
                     Vhead = C(vrow,:);
                     if vy < (size(Vhead,2)/2 + 3)
-                        [~,vy] = find(contains(Vhead,"R1"),1,"first"); % check for R1 as dep var
+                        [~,vy] = find(contains(Vhead,"R1"),1,"first"); % check for dep var written as "R1"--sometimes used instead of correct terminology ("rN1")
                         nv2 = "R1";
                     end
                     varlocs(:,1) = vrow;
@@ -126,7 +129,7 @@ function [ranges] = autoCSV(fname,type)
                     varlocs(4,2) = size(Vhead,2);
                     [~,v1y] = find(contains(C(vrow,:),"N1"),1,"first");
                     varlocs(1,2) = v1y;
-                    nv = [nv2,C(varlocs(4,1),varlocs(4,2));nv1,C(varlocs(2,1),varlocs(2,2))];
+                    nv = [nv1,C(varlocs(2,1),varlocs(2,2));nv2,C(varlocs(4,1),varlocs(4,2))];
                 end
             end
             %% Assign data ranges
@@ -175,9 +178,11 @@ function [ranges] = autoCSV(fname,type)
             end
             % Note: For balance mode, varlocs(:,1) are ALL vrow, so identical. Inputted seperately for consistency with general function mode
             % Range for "Loads" (load)
-            Lrange = [(string(alphabet(lc1)) + string(varlocs(1,1)+1)),(string(alphabet(lc2))+string(nr))];
+            indL1 = varlocs(1,1)+1;
+            Lrange = [(string(alphabet(lc1)) + string(indL1)),(string(alphabet(lc2))+string(nr))];
             % Range for "Voltages" (gage)
-            Vrange = [(string(alphabet(nc1)) + string(varlocs(3,1)+1)),(string(alphabet(nc2))+string(nr))];
+            indV1 = varlocs(3,1)+1;
+            Vrange = [(string(alphabet(nc1)) + string(indV1)),(string(alphabet(nc2))+string(nr))];
             
             % Range for Natural Zeros
             nat0range = [(string(alphabet(nc1)) + string(N)),(string(alphabet(nc2))+string(n_end))];
