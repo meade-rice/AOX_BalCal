@@ -326,6 +326,20 @@ if FLAGS.res == 1
     end
 end
 
+%% Residual vs. Applied Load as % of load capacity
+if FLAGS.res == 1
+    if exist("targetMatrixcalib") == 1 % if calibration calculations being done
+        resPLoad = targetMatrixcalib;
+    elseif exist("targetMatrixvalid") == 1 % if validation calculations being done
+        resPLoad = targetMatrixvalid;
+    end
+    if FLAGS.mode==1
+        figure('Name',char(strcat(section,{' '},'Model: Residuals of Load Versus Applied Load (% of load capacity)')),'NumberTitle','off','WindowState','maximized')
+        plotResPload(resPLoad,targetRes,loadCapacities,loadlist)
+        hold off
+    end
+end
+
 %% OUTPUT RESIDUAL HISTOGRAM PLOTS
 if FLAGS.hist == 1
     if contains(section,{'Calibration'})
