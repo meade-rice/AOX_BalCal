@@ -335,7 +335,7 @@ if FLAGS.res == 1
     end
     if FLAGS.mode==1
         figure('Name',char(strcat(section,{' '},'Model: Residuals of Load Versus Applied Load (% of load capacity)')),'NumberTitle','off','WindowState','maximized')
-        plotResPload(resPLoad,targetRes,loadCapacities,loadlist)
+        plotResPload(resPLoad,targetRes,loadCapacities,loadlist,series)%added series jp
         hold off
     end
 end
