@@ -304,9 +304,11 @@ if FLAGS.print == 1 || FLAGS.disp==1
     if FLAGS.print==1
         warning('off', 'MATLAB:xlswrite:AddSheet'); warning('off', 'MATLAB:DELETE:FileNotFound'); warning('off',  'MATLAB:DELETE:Permission')
         if contains(section,'Calibration')
-            filename='CALIB Report.xlsx';
+            outfileName = erase(fileName,'.cal'); % add the name of analyzed file to "CALIB Report"
+            filename="CALIB Report_" + outfileName + ".xlsx";
         elseif contains(section,'Validation')
-            filename='VALID Report.xlsx';
+            outfileName = erase(fileName,'.val'); % add the name of analyzed file to "VALID Report"
+            filename="VALID Report_" + outfileName + ".xlsx";
         end
         fullpath=fullfile(output_location,filename);
         try

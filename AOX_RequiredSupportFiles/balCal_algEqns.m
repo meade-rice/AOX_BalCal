@@ -22,7 +22,9 @@ function [in_comb,high,high_CELL] = balCal_algEqns(model_FLAG,in,series,intercep
     %'high_CELL' includes labels, mainly for debugging purposes
 
     % Term order for full equation set:
-    % INTERCEPT, F, |F|, F*F, F*|F|, F*G, |F*G|, F*|G|, |F|*G, F*F*F, |F*F*F|, F*G*G, F*G*H
+    % INTERCEPT (1)
+    % F, |F|, F*F, F*|F|, F*G, |F*G|, F*|G|, |F|*G (2-8)
+    % F*F*F, |F*F*F|, |F|*F*F, F*|F|*F, F*F*|F F*G*G, F*|G*G|, |F|*G*G, F*G*H, |F|*G*H, F*|G*H| (9-)
 
     if nargin <6 % checks number of arguments into function to assign normFLAG. 
         normFLAG = 0; % nominally 0
@@ -130,9 +132,9 @@ function [in_comb,high,high_CELL] = balCal_algEqns(model_FLAG,in,series,intercep
 
     if d>=2
         j = 1;
-        abs_iniinj = zeros(nPoint,(d^2-d)/2);
-        ini_absinj = zeros(nPoint,(d^2-d)/2);
-        absini_inj = zeros(nPoint,(d^2-d)/2);
+        abs_iniinj = zeros(nPoint,(d^2-d)/2); % |F*G|
+        ini_absinj = zeros(nPoint,(d^2-d)/2); % F*|G|
+        absini_inj = zeros(nPoint,(d^2-d)/2); % |F|*G
         
         abs_iniinj_high=zeros((d^2-d)/2,d); %hierarchy for absolute value cross terms
         ini_absinj_high=zeros((d^2-d)/2,2*d); %hierarchy for ini_absinj terms
@@ -156,7 +158,7 @@ function [in_comb,high,high_CELL] = balCal_algEqns(model_FLAG,in,series,intercep
         absini_inj = [];
     end
 
-    if d>=2
+    if d>=2 % cubic terms (2 unique)
         j=1;
         ini_inj_inj= zeros(nPoint, factorial(d)/factorial(d-2)); % Term F*G*G
         ini_inj_inj_high= zeros(termNum(12), sum(termNum)); %Hierarchy for Term F*G*G
@@ -183,7 +185,7 @@ function [in_comb,high,high_CELL] = balCal_algEqns(model_FLAG,in,series,intercep
         ini_inj_inj=[];
     end
 
-    if d>=3
+    if d>=3 % cubic terms (3 unique)
         j=1;
         ini_inj_ink= zeros(nPoint, factorial(d)/(factorial(3)*factorial(d-3))); %Term F*G*H
         ini_inj_ink_high= zeros(termNum(13), sum(termNum)); %hierarchy for term F*G*H
