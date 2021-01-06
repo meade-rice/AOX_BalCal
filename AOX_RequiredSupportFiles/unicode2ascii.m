@@ -65,8 +65,10 @@ end
 if(nargin == 2)
     fwrite(fin2, file, 'uchar');
     fclose(fin2);
-else
+elseif unicode~=0
     fclose('all');
+    tempsource = char(sourcefile);
+    movefile(sourcefile, string([tempsource(1:end-4),'_orig.csv']))
     delete(sourceFile);
     fin = fopen(sourceFile,'w+');
     fwrite(fin, file, 'uchar');
