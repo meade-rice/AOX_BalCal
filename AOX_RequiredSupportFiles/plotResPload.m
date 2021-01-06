@@ -28,7 +28,7 @@ pointcolor=['ys','ms','cs','rs','gs','bs','ks',...
 
 sub=0;
 r = min(n_dim,6);
-% figure()
+% figure() % uncomment this if running outside of AOX_Balcal
 h1=gcf;
 figure('Name',h1.Name,'NumberTitle','off','WindowState','maximized');
 tiledlayout(6, 1);
@@ -47,10 +47,10 @@ for i = 1:n_dim %subplot for each series
     xthresh = linspace(-100,100,100);
     ythreshl = -0.25;
     ythreshh =  0.25;
-    axis([-100 100 ylow yhigh]) % axis limits
+    axis([-100 100 ylow yhigh]); % axis limits
     x = pload(ASC(:,i),i);
     y = resPCT(ASC(:,i),i); 
-    ax=nexttile
+    ax=nexttile;
     plot(x,y);
     hold on
     for j=1:length(seriesVal)%plot diff seriesJP
@@ -80,7 +80,7 @@ for i = 1:n_dim %subplot for each series
 end
 leglabel{1} = 'All Residuals';
 for i=1:length(seriesVal)
-    leglabel{i+1} = strcat('Series ',string(seriesVal(i)))
+    leglabel{i+1} = strcat('Series ',string(seriesVal(i)));
 end
 leglabel{end+1} = 'Residual -.25%';
 leglabel{end+1} = 'Residual -.25%';
