@@ -708,9 +708,10 @@ if FLAGS.balVal == 1
         %CALCULATE PREDICTION INTERVAL FOR POINTS
         if FLAGS.loadPI==1
             [loadPI_valid]=calc_PI(ANOVA,anova_pct,comINvalid,aprxINvalid); %Calculate prediction interval for loads
-            
+            meanPI_valid = mean(loadPI_valid,1);
+            stdvPI_valid = std(loadPI_valid,1);
             %Save variables for output
-            newStruct=struct('loadPI_valid',loadPI_valid);
+            newStruct=struct('loadPI_valid',loadPI_valid,'meanPI_valid',meanPI_valid,'stdvPI_valid',stdvPI_valid);
             uniqueOut = cell2struct([struct2cell(uniqueOut); struct2cell(newStruct)],...
                 [fieldnames(uniqueOut); fieldnames(newStruct)],1);
         else
@@ -1416,9 +1417,10 @@ if FLAGS.balCal == 2
         %CALCULATE PREDICTION INTERVAL FOR POINTS
         if FLAGS.loadPI==1
             [loadPI_valid_GRBF]=calc_PI(ANOVA_GRBF,anova_pct,comINvalid_algRBF,aprxINminTARE2valid); %Calculate prediction interval for loads
-            
+            meanPI_valid_GRBF = mean(loadPI_valid_GRBF,1);
+            stdvPI_valid_GRBF = std(loadPI_valid_GRBF,1);
             %Store Variables for output
-            newStruct=struct('loadPI_valid_GRBF',loadPI_valid_GRBF);
+            newStruct=struct('loadPI_valid_GRBF',loadPI_valid_GRBF,'meanPI_valid_GRBF',meanPI_valid_GRBF,'stdvPI_valid_GRBF',stdvPI_valid_GRBF);
             uniqueOut = cell2struct([struct2cell(uniqueOut); struct2cell(newStruct)],...
                 [fieldnames(uniqueOut); fieldnames(newStruct)],1);
         else

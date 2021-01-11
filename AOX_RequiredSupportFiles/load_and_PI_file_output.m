@@ -1,10 +1,12 @@
-function []=load_and_PI_file_output(aprxINminGZ,loadPI,pointID,series1,series2,loadlist,output_location,section)
-%Functio outputs a .xlsx file containing the load approximations and
+function []=load_and_PI_file_output(aprxINminGZ,loadPI,meanPI,stdvPI,pointID,series1,series2,loadlist,output_location,section)
+%Function outputs a .xlsx file containing the load approximations and
 %prediction intervals
 
 %INPUTS:
 %  aprxINminGZ = Load approximation matrix
-%  loadPI = Matrix of Prediction interval (+/- value) for each load approximation
+%  loadPI = Matrix of Prediction interval (+/- value) for each load approximation.
+%  meanPI = array of mean prediction intervals for each load approximation
+%  stdvPI = array of standard deviation of prediction intervals for each load approximation
 %  pointID = Point ID for each approximation, as determined by input file
 %  series1 = Series1 labels for each point
 %  series2 = Series2 labels for each point
@@ -24,8 +26,10 @@ try %Check current section and determine filename accordingly
     top_row=[{'Point ID','Series1','Series2'},loadlist]; %Top label row
     full_out{1}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(aprxINminGZ)]; %full output
     full_out{2}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(cellstr(string(aprxINminGZ)+' +/- '+string(loadPI)))]; %full output
-    full_out{3}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(loadPI)]; %full output
-    
+    meanrow=[{'Mean Prediction Interval','',''},num2cell(meanPI)];
+    stdvrow=[{'Standard Deviation of Prediction Interval','',''},num2cell(stdvPI)];
+    full_out{3}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(loadPI);cell(1,9);meanrow;stdvrow]; %full output
+
     for i=1:3
         writetable(cell2table(full_out{i}),fullpath,'writevariablenames',0,'Sheet',i,'UseExcel', false); %write to xlsx
     end

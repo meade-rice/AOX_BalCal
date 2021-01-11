@@ -41,7 +41,11 @@ aprxINapprox = comINapprox*coeff;        %to find approximation AJM111516
 aprxINminGZapprox.ALG = aprxINapprox;
 
 if FLAGS.loadPI==1
-    loadPI_approx.ALG=calc_PI(ANOVA,pct,comINapprox,aprxINapprox); %Calculate load PI
+    loadPI_approx.ALG = calc_PI(ANOVA,pct,comINapprox,aprxINapprox); %Calculate load PI
+    meanPI_approx.ALG = mean(loadPI_approx(1).ALG,1); % mean load PI
+    stdvPI_approx.ALG = std(loadPI_approx(1).ALG,1); % standard deviation of load PI
+    % structure loadPI_approx has field "ALG" with 3 separate arrays: (1)
+    % is data, (2) is mean, (3) is standard deviation
 else
     loadPI_approx='PI NOT COMPUTED';
 end
@@ -55,8 +59,7 @@ if FLAGS.approx_and_PI_print==1
     else
         section='APPROX ALG Output';
     end
-    load_and_PI_file_output(aprxINminGZapprox.ALG,loadPI_approx.ALG,pointIDapprox,seriesapprox,series2approx,loadlist,output_location,section)
-    
+    load_and_PI_file_output(aprxINminGZapprox.ALG,loadPI_approx.ALG,meanPI_approx.ALG,stdvPI_approx.ALG,pointIDapprox,seriesapprox,series2approx,loadlist,output_location,section)   
 elseif FLAGS.excel == 1
     %Output approximation load approximation
     if FLAGS.mode==1
@@ -92,6 +95,10 @@ if FLAGS.balCal == 2
     
     if FLAGS.loadPI==1
         loadPI_approx.GRBF=calc_PI(GRBF.ANOVA,pct,comINapprox_algRBF,aprxINminGZ2approx); %Calculate load PI
+        meanPI_approx.GRBF = mean(loadPI_approx(1).GRBF,1); % mean load PI
+        stdvPI_approx.GRBF = std(loadPI_approx(1).GRBF,1); % standard deviation of load PI
+    % structure loadPI_approx has field "ALG" with 3 separate arrays: (1)
+    % is data, (2) is mean, (3) is standard deviation
     else
         loadPI_approx='PI NOT COMPUTED';
     end
@@ -106,7 +113,7 @@ if FLAGS.balCal == 2
         else
             section='APPROX GRBF Output';            
         end
-        load_and_PI_file_output(aprxINminGZapprox.GRBF,loadPI_approx.GRBF,pointIDapprox,seriesapprox,series2approx,loadlist,output_location,section)
+        load_and_PI_file_output(aprxINminGZapprox.GRBF,loadPI_approx.GRBF,meanPI_approx.GRBF,stdvPI_approx.GRBF,pointIDapprox,seriesapprox,series2approx,loadlist,output_location,section)
         
     elseif FLAGS.excel == 1
         %Output approximation load approximation
