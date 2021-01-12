@@ -32,6 +32,7 @@ clc;
 clearvars;
 close all;
 
+diary consoleoutput.out 
 fprintf('Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.\n')
 
 %Add path for subfolder of functions
@@ -1530,7 +1531,8 @@ runTime=toc;
 if isdeployed % Optional, use if you want the non-deployed version to not exit immediately
     input('Press enter to finish and close');
 end
-
+diary off
+movefile('consoleoutput.out', strcat(file_output_location,'consoleoutput.out'))
 
 
 
