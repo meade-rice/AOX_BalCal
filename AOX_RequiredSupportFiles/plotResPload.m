@@ -29,9 +29,9 @@ pointcolor=['ys','ms','cs','rs','gs','bs','ks',...
 sub=0;
 r = min(n_dim,6);
 % figure() % uncomment this if running outside of AOX_Balcal
-h1=gcf;
-figure('Name',h1.Name,'NumberTitle','off','WindowState','maximized');
-tiledlayout(6, 1);
+h1=tiledlayout(6, 1);
+%figure('Name',h1.Name,'NumberTitle','off','WindowState','maximized');
+
 
 for i = 1:n_dim %subplot for each series
    % if i>1 && rem(i,6) == 1 %If first subplot for new window
@@ -78,6 +78,7 @@ for i = 1:n_dim %subplot for each series
     hold on
 end
 
+
 if length(seriesVal)<(length(pointcolor)/2)+1 %only place legend if there are enough shapes/colors
     leglabel{1} = 'All Residuals';
     for i=1:length(seriesVal)
@@ -85,8 +86,10 @@ if length(seriesVal)<(length(pointcolor)/2)+1 %only place legend if there are en
     end
     leglabel{end+1} = 'Residual -.25%';
     leglabel{end+1} = 'Residual -.25%';
-    l = legend(ax,leglabel,'Location','Northoutside','orientation','horizontal');
-    l.Layout.Tile = 'North';
+    l = legend(ax,leglabel,'Location','Northoutside','orientation','horizontal','NumColumns',10);
+    if ~verLessThan('matlab','9.9')
+        l.Layout.Tile = 'North';
+    end
 end
 end
 

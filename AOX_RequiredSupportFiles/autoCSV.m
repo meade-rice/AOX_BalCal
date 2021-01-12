@@ -34,7 +34,7 @@ function [ranges] = autoCSV(fname,type)
     alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; % to map column numbers to letters--maybe change this to handle any number of excel columns?
     C = string(table2cell(readtable(fname,'Format','auto','ReadVariableNames',0))); %table gets correct size matching csv, convert to string via cell to read data
     [nr,nc] = size(C); % number of rows, columns in entire sheet
-    
+    warning('off','backtrace');
     %% detect name of first and last independent and dependent variables 
     % assume data is arranged as all independent vars followed by all dependent vars, columnwise left to right
     % expected format (see documentation--in progress)
@@ -45,7 +45,7 @@ function [ranges] = autoCSV(fname,type)
     V = char(C(find(contains(C(:,1),"VARIABLE")),1)); % detect a header with variable names
 
     switch type
-        case {"cal","val"} % Calibration File
+        case {"cal","val","app"} % Calibration File
              % find first column of data required for input to BalCal
             A = find(contains(C,"symbols")); % numerical values always start below this string in bal file template
             hrow = A+1;

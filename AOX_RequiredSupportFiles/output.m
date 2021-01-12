@@ -696,7 +696,7 @@ if strcmp(section,{'Validation Algebraic'})==1
         else
             section='VALID ALG Output';
         end
-        load_and_PI_file_output(aprxINminTAREvalid,loadPI_valid,pointID,series,series2,loadlist,output_location,section)
+        load_and_PI_file_output(aprxINminTAREvalid,loadPI_valid,meanPI_valid,stdvPI_valid,pointID,series,series2,loadlist,output_location,section)
         
         %OUTPUTING APPROXIMATION FILE
     elseif FLAGS.excel == 1
@@ -721,7 +721,7 @@ if strcmp(section,{'Validation GRBF'})==1
         else
             section='VALID GRBF Output';
         end
-        load_and_PI_file_output(aprxINminTARE2valid,loadPI_valid_GRBF,pointID,series,series2,loadlist,output_location,section)
+        load_and_PI_file_output(aprxINminTARE2valid,loadPI_valid_GRBF,meanPI_valid_GRBF,stdvPI_valid_GRBF,pointID,series,series2,loadlist,output_location,section)
         
         
     elseif FLAGS.excel == 1
