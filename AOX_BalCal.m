@@ -872,7 +872,7 @@ if FLAGS.balCal == 2
     end
     %END SELF-TERMINATION INITIALIZATION
     
-    count=zeros(size(dainputs0)); %Initialize matrix to count how many RBFs have been placed at each location
+    count=zeros(size(targetMatrix)); %Initialize matrix to count how many RBFs have been placed at each location
     for u=1:numBasis
         RBFs_added(not(self_Terminate))=u; %Counter for how many RBFs have been placed in each channel
         if FLAGS.VIF_selfTerm==1 %If self terminating based on VIF
