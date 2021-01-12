@@ -133,7 +133,7 @@ fprintf(fileID,'\n');
         fprintf(fileID,cal.Range{5});
         fprintf(fileID, '\n');
     end
-    %% VALIDATION
+%% VALIDATION
     if actionval==2&~isempty(fieldnames(val))
         fprintf(fileID,'\nVALIDATION\n');
         fprintf(fileID,'\tValidation File: ');

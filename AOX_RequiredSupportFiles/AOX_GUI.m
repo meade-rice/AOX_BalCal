@@ -306,6 +306,7 @@ switch calext
 end
 
 outStruct.valid = get(handles.validate,'Value');
+val = struct;
 if outStruct.valid == 1
     val.type = 'validate';
     val.Path = get(handles.valPath,'String');
