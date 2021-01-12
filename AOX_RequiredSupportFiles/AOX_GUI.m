@@ -408,7 +408,7 @@ else
 end
 GRBF_defaulteps = get(handles.GRBF_defaultEps,'Value');
 output2calibFlag = get(handles.output_to_calib_FLAG,'Value');
-guiInputs(outStruct,customPath,termList,cal,val,app,actionval,GRBF_defaulteps,output2calibFlag);
+guiInputs(outStruct,customPath,termList,cal,val,app,actionval,GRBF_defaulteps,output2calibFlag); 
 handles.output = outStruct;
 guidata(hObject, handles);
 
