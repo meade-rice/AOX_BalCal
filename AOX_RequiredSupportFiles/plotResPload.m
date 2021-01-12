@@ -85,7 +85,7 @@ end
 leglabel{end+1} = 'Residual -.25%';
 leglabel{end+1} = 'Residual -.25%';
 
-l = legend(ax,leglabel,'Location','Northoutside','orientation','horizontal');
+l = legend(ax,leglabel,'Location','Northoutside','orientation','horizontal','NumColumns',10);
 if ~verLessThan('matlab','9.9')
     l.Layout.Tile = 'North';
 end
