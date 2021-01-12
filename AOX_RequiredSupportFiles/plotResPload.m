@@ -29,9 +29,9 @@ pointcolor=['ys','ms','cs','rs','gs','bs','ks',...
 sub=0;
 r = min(n_dim,6);
 % figure() % uncomment this if running outside of AOX_Balcal
-h1=gcf;
-figure('Name',h1.Name,'NumberTitle','off','WindowState','maximized');
-tiledlayout(6, 1);
+h1=tiledlayout(6, 1);
+%figure('Name',h1.Name,'NumberTitle','off','WindowState','maximized');
+
 
 for i = 1:n_dim %subplot for each series
    % if i>1 && rem(i,6) == 1 %If first subplot for new window
@@ -84,11 +84,12 @@ for i=1:length(seriesVal)
 end
 leglabel{end+1} = 'Residual -.25%';
 leglabel{end+1} = 'Residual -.25%';
+
 l = legend(ax,leglabel,'Location','Northoutside','orientation','horizontal');
-v= ver('MATLAB'); 
 if ~verLessThan('matlab','9.9')
     l.Layout.Tile = 'North';
 end
+
 
 end
 
