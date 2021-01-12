@@ -172,6 +172,8 @@ outStruct.corr = get(handles.corr_FLAGcheck,'Value');
 outStruct.rescorr = get(handles.rescorr_FLAGcheck,'Value');
 outStruct.excel = get(handles.excel_FLAGcheck,'Value');
 
+termList={' F, ',' |F|, ', ' F*F, ', ' F*|F|, ', ' F*G, ', ' |F*G|, ', ' F*|G|, ', ' |F|*G, ', ' F*F*F, ', ' |F*F*F|, ',' F*G*G, ',' F*G*H '};
+customPath = '';
 switch get(get(handles.modelPanel,'SelectedObject'),'Tag')
     case 'full', outStruct.model = 1;
     case 'truncated', outStruct.model = 2;
@@ -189,7 +191,7 @@ switch get(get(handles.modelPanel,'SelectedObject'),'Tag')
         terms=handles.termSelectButton.Tooltip;
         %Terms are listed in following order:
         %  F, |F|, F*F, F*|F|, F*G, |F*G|, F*|G|, |F|*G, F*F*F, |F*F*F|, F*G*G, F*G*H
-        termList={' F, ',' |F|, ', ' F*F, ', ' F*|F|, ', ' F*G, ', ' |F*G|, ', ' F*|G|, ', ' |F|*G, ', ' F*F*F, ', ' |F*F*F|, ',' F*G*G, ',' F*G*H '};
+        
         outStruct.termInclude(1)=contains(terms,termList{1});
         outStruct.termInclude(2)=contains(terms,termList{2});
         outStruct.termInclude(3)=contains(terms,termList{3});
@@ -348,6 +350,7 @@ if outStruct.valid == 1
 end
 
 outStruct.approx = get(handles.approximate,'Value');
+app=struct;
 if outStruct.approx == 1
     app.type = 'approximate';
     app.Path = get(handles.appPath,'String');
@@ -395,6 +398,17 @@ end
 
 outStruct.cancel = 0;
 
+actionval = 0;
+if handles.calibrate.Value ==1
+    actionval=1;
+elseif handles.validate.Value ==1
+    actionval=2;
+else
+    actionval=3;
+end
+GRBF_defaulteps = get(handles.GRBF_defaultEps,'Value');
+output2calibFlag = get(handles.output_to_calib_FLAG,'Value');
+guiInputs(outStruct,customPath,termList,cal,val,app,actionval,GRBF_defaulteps,output2calibFlag);
 handles.output = outStruct;
 guidata(hObject, handles);
 
