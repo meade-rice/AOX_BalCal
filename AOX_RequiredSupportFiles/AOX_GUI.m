@@ -27,7 +27,7 @@ function varargout = AOX_GUI(varargin)
 
 % Edit the above text to modify the response to help AOX_GUI
 
-% Last Modified by GUIDE v2.5 11-Jan-2021 12:33:59
+% Last Modified by GUIDE v2.5 12-Jan-2021 16:05:34
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -160,6 +160,7 @@ end
 %outStruct.tares = get(handles.tares_FLAGcheck,'Value');
 outStruct.disp = get(handles.disp_FLAGcheck,'Value');
 %outStruct.grbftares = get(handles.grbftares_FLAGcheck,'Value');
+outStruct.dispPlot = get(handles.dispPlot_FLAGcheck,'Value');
 outStruct.print = get(handles.print_FLAGcheck,'Value');
 outStruct.res = get(handles.res_FLAGcheck,'Value');
 outStruct.hist = get(handles.hist_FLAGcheck,'Value');
@@ -1290,6 +1291,15 @@ function disp_FLAGcheck_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of disp_FLAGcheck
 
 
+function dispPlot_FLAGcheck_Callback(hObject, eventdata, handles)
+% hObject    handle to dispPlot_FLAGcheck (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of dispPlot_FLAGcheck
+
+
+
 % --- Executes on button press in print_FLAGcheck.
 function print_FLAGcheck_Callback(hObject, eventdata, handles)
 % hObject    handle to print_FLAGcheck (see GCBO)
@@ -2304,6 +2314,7 @@ default.gen_mode=handles.gen_mode.Value;
 
 %default.tares = get(handles.tares_FLAGcheck,'Value');
 default.disp = get(handles.disp_FLAGcheck,'Value');
+default.dispPlot = get(handles.dispPlot_FLAGcheck,'Value');
 %default.grbftares = get(handles.grbftares_FLAGcheck,'Value');
 default.print = get(handles.print_FLAGcheck,'Value');
 default.res = get(handles.res_FLAGcheck,'Value');
@@ -2422,6 +2433,7 @@ if exist(fullfileName,'file')
         
         %set(handles.tares_FLAGcheck,'Value',default.tares);
         set(handles.disp_FLAGcheck,'Value',default.disp);
+        set(handles.dispPlot_FLAGcheck,'Value',default.dispPlot);
         %set(handles.grbftares_FLAGcheck,'Value',default.grbftares);
         set(handles.print_FLAGcheck,'Value',default.print);
         set(handles.res_FLAGcheck,'Value',default.res);
@@ -3053,3 +3065,12 @@ ranges = autoCSV(get(handles.appPath,'string'),autofill_type);
     % set voltage array data range
     set(handles.a41,'string',ranges.V(1));
     set(handles.a42,'string',ranges.V(2));
+
+
+% --- Executes on button press in checkbox46.
+function checkbox46_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox46 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox46

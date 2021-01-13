@@ -29,7 +29,7 @@ pointcolor=['ys','ms','cs','rs','gs','bs','ks',...
 sub=0;
 r = min(n_dim,6);
 % figure() % uncomment this if running outside of AOX_Balcal
-h1=tiledlayout(6, 1);
+tiledlayout(6, 1);
 %figure('Name',h1.Name,'NumberTitle','off','WindowState','maximized');
 
 

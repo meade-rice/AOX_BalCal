@@ -266,6 +266,9 @@ fprintf(fileID,'\n');
     if outStruct.disp 
         fprintf(fileID,'\tDisplaying Performance Parameters\n');
     end
+    if outStruct.dispPlot 
+        fprintf(fileID,'\tDisplaying Plots\n');
+    end
     if outStruct.res
         fprintf(fileID,'\tPlotting Residuals\n');
     end
