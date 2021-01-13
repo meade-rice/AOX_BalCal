@@ -368,6 +368,7 @@ if FLAGS.res == 1
         figname =  strrep(figname, '%', 'Perc');
         figname =  strrep(figname, ':', '_');
         figname =  strrep(figname, ';', '_');
+        set(f2, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
         saveas(f2,strcat(output_location,figname,'fig'));
     else
         figname = char(strcat(section,{' '},'Model; Residuals of Output Versus Data Point Index'));
@@ -380,6 +381,7 @@ if FLAGS.res == 1
         figname =  strrep(figname, '%', 'Perc');
         figname =  strrep(figname, ':', '_');
         figname =  strrep(figname, ';', '_');
+        set(f2, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
         saveas(f2,strcat(output_location,figname),'fig');
     end
 end
@@ -402,6 +404,7 @@ if FLAGS.res == 1
         figname =  strrep(figname, '%', 'Perc');
         figname =  strrep(figname, ':', '_');
         figname =  strrep(figname, ';', '_');
+        set(f3, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
         saveas(f3,strcat(output_location,figname),'fig');
         hold off
     end
@@ -445,6 +448,7 @@ if FLAGS.hist == 1
     figname =  strrep(figname, '%', 'Perc');
     figname =  strrep(figname, ':', '_');
     figname =  strrep(figname, ';', '_');
+    set(f4, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
     saveas(f4,strcat(output_location,figname),'fig');
 end
     
@@ -485,6 +489,7 @@ if FLAGS.QQ == 1
     figname =  strrep(figname, '%', 'Perc');
     figname =  strrep(figname, ':', '_');
     figname =  strrep(figname, ';', '_');
+    set(f5, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
     saveas(f5,strcat(output_location,figname),'fig');
 end
 
@@ -502,6 +507,7 @@ if FLAGS.rescorr == 1
     figname =  strrep(figname, '%', 'Perc');
     figname =  strrep(figname, ':', '_');
     figname =  strrep(figname, ';', '_');
+    set(f6, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
     saveas(f6,strcat(output_location,figname),'fig');
 end
 

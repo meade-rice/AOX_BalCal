@@ -371,6 +371,7 @@ if FLAGS.corr == 1
         f1 = figure('Name','Correlation plot','NumberTitle','off','WindowState','maximized','visible','off');
     end
     correlationPlot(targetMatrix0, excessVec0, loadlist, voltagelist);
+    set(f1, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
     saveas(f1,strcat(file_output_location,'CorrelationPlot','fig'));
 end
 
