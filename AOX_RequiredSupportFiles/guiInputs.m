@@ -228,10 +228,15 @@ fprintf(fileID,'\n');
         end
     end
     if outStruct.model~=0
-        fprintf(fileID,'\t');
-        fprintf(fileID,outStruct.AlgModelName_opt);
-        fprintf(fileID,'\n');
-        if ~strcmp(outStruct.AlgModelName_opt,'No Model Refinement')
+        if strcmp(outStruct.AlgModelName_opt,'0')
+            fprintf(fileID,'\t');
+            fprintf(fileID,'No Model Refinement');
+            fprintf(fileID,'\n');
+        else 
+            fprintf(fileID,'\t');
+            fprintf(fileID,outStruct.AlgModelName_opt);
+            fprintf(fileID,'\n');
+            
             fprintf(fileID,'\tSVD Zero Threshold: %d\n',outStruct.zero_threshold);
             if ~strcmp(outStruct.AlgModelName_opt,'SVD for Non-Singularity (Permitted Math Model)')
                 fprintf(fileID,'\tVariance Infation Factor Threshold: %d\n',outStruct.VIF_thresh);
