@@ -235,12 +235,14 @@ fprintf(fileID,'\n');
             fprintf(fileID,'\tSVD Zero Threshold: %d\n',outStruct.zero_threshold);
             if ~strcmp(outStruct.AlgModelName_opt,'SVD for Non-Singularity (Permitted Math Model)')
                 fprintf(fileID,'\tVariance Infation Factor Threshold: %d\n',outStruct.VIF_thresh);
-                fprintf(fileID,'\tPercent Confidence for Term Significance: %d\n',outStruct.outStruct.sig_pct);
+                fprintf(fileID,'\tPercent Confidence for Term Significance: %d\n',outStruct.sig_pct);
 
-                if ~isEmpty(outStruct.high_con)
-                    fprintf(fileID,'\tTerm Hierarchy: ');
-                    fprintf(fileID,outStruct.high_con);
-                    fprintf(fileID,'\n');
+                if outStruct.high_con==0
+                    fprintf(fileID,'\tTerm Hierarchy Not Enforced\n');
+                elseif outStruct.high_con==1
+                    fprintf(fileID,'\tTerm Hierarchy Enforced After Search\n');
+                elseif outStruct.high_con==2
+                    fprintf(fileID,'\tTerm Hierarchy Enforced During Search\n');
                 end
                 if strcmp(outStruct.AlgModelName_opt,'Forward Selection Recommended Math Model')|strcmp(outStruct.AlgModelName_opt,'Backwards Elimination Recommended Math Model')
                     if ~isEmpty(outStruct.search_metric)
