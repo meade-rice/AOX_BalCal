@@ -35,7 +35,9 @@ fprintf(fileID,'\n');
         fprintf(fileID,'\tLinear Equations\n');    
     elseif outStruct.model==4
         fprintf(fileID,'\tCustom Equation File: ');
-        fprintf(fileID,customPath);
+        cpath = insertAfter(customPath,'/','/');
+        cpath = insertAfter(cpath,'\','\');
+        fprintf(fileID,cpath);
         fprintf(fileID,'\n');
     elseif outStruct.model==5 
         fprintf(fileID,'\tBalance Type Equations: ');
