@@ -1,0 +1,1233 @@
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+{Index in position 2 is invalid. Array indices must be positive integers or logical values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('autoCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m', 143)" style="font-weight:bold">autoCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m',143,0)">line 143</a>)
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>autocal_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 2975)" style="font-weight:bold">AOX_GUI>autocal_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',2975,0)">line 2975</a>)
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''autocal_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('autocal_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Index in position 2 is invalid. Array indices must be positive integers or logical values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('autoCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m', 143)" style="font-weight:bold">autoCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m',143,0)">line 143</a>)
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>autocal_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 2975)" style="font-weight:bold">AOX_GUI>autocal_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',2975,0)">line 2975</a>)
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''autocal_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('autocal_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+clear
+clc
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+{Index in position 2 is invalid. Array indices must be positive integers or logical values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('autoCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m', 143)" style="font-weight:bold">autoCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m',143,0)">line 143</a>)
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>autocal_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 2975)" style="font-weight:bold">AOX_GUI>autocal_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',2975,0)">line 2975</a>)
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''autocal_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('autocal_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Index in position 2 is invalid. Array indices must be positive integers or logical values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('autoCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m', 143)" style="font-weight:bold">autoCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m',143,0)">line 143</a>)
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>autocal_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 2975)" style="font-weight:bold">AOX_GUI>autocal_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',2975,0)">line 2975</a>)
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''autocal_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('autocal_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Index in position 2 is invalid. Array indices must be positive integers or logical values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('autoCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m', 143)" style="font-weight:bold">autoCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m',143,0)">line 143</a>)
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>autocal_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 2975)" style="font-weight:bold">AOX_GUI>autocal_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',2975,0)">line 2975</a>)
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''autocal_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('autocal_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+
+ Starting Test: 2021-0114-225658
+
+Working ...
+[Warning: Unable to read gage capacities for calibration data. Using maximum absolute value of voltage as gage capacity.] 
+
+ ********** Starting Calibration Algebraic Calculations **********
+
+Calculating Direct ANOVA statistics for channel 1 (NF)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+
+Calculating Direct ANOVA statistics for channel 2 (PM)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+
+Calculating Direct ANOVA statistics for channel 3 (SF)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+
+Calculating Direct ANOVA statistics for channel 4 (YM)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+
+Calculating Direct ANOVA statistics for channel 5 (RM)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+
+Calculating Direct ANOVA statistics for channel 6 (AF)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+
+Difference between tare load estimates and load approximation at tare load datapoints > Load Prediction Interval:
+    <strong>Channel</strong>    <strong>Series</strong>    <strong>Point_ID</strong>     <strong>Tare_Difference</strong>
+    <strong>_______</strong>    <strong>______</strong>    <strong>_________</strong>    <strong>_______________</strong>
+
+       1          3      {'50'   }        -1.5809    
+       1          3      {'58'   }        -1.5002    
+       1         22      {'330'  }        -2.0699    
+       1         22      {'338'  }         1.3431    
+       1         23      {'320'  }         2.4275    
+       1         25      {'ZLP25'}        -2.0253    
+       1         28      {'ZLP28'}         1.3726    
+       1         31      {'ZLP31'}          1.849    
+       1         34      {'460'  }         1.8349    
+       1         36      {'340'  }         1.4719    
+       1        106      {'960'  }         1.4504    
+       1        111      {'830'  }        -3.0373    
+       2         25      {'ZLP25'}         11.209    
+       2         28      {'ZLP28'}          47.23    
+       2         29      {'ZLP29'}        -14.773    
+       2         30      {'ZLP30'}        -15.139    
+       2         31      {'ZLP31'}         45.524    
+       2         37      {'300'  }         -12.23    
+       2         39      {'1340' }         12.918    
+       2         51      {'280'  }        -16.507    
+       2         55      {'1240' }         11.924    
+       2         57      {'1250' }         10.385    
+       2         61      {'490'  }         -10.45    
+       2        103      {'800'  }         -12.96    
+       2        108      {'910'  }        -11.394    
+       3         20      {'80'   }        0.90282    
+       3         25      {'ZLP25'}          3.495    
+       3         29      {'ZLP29'}        -2.0401    
+       3         30      {'ZLP30'}        -2.2796    
+       3         32      {'428'  }        0.92779    
+       3         34      {'468'  }         1.4216    
+       3         35      {'478'  }         1.1436    
+       3         36      {'340'  }       -0.95602    
+       3         48      {'360'  }       -0.97312    
+       3         52      {'250'  }         1.0022    
+       3         74      {'130'  }         -1.042    
+       3        105      {'810'  }        -1.1648    
+       3        106      {'968'  }       -0.88021    
+       3        111      {'830'  }       -0.91937    
+       3        117      {'920'  }        -1.0818    
+       4         20      {'80'   }         10.954    
+       4         20      {'88'   }         9.9419    
+       4         21      {'100'  }         -11.28    
+       4         21      {'108'  }        -10.195    
+       4        119      {'890'  }        -8.8577    
+       4        119      {'898'  }        -9.4033    
+       4        120      {'1900' }         22.657    
+       4        120      {'1908' }         25.118    
+       4        123      {'2900' }        -17.763    
+       4        123      {'2908' }        -19.638    
+       5          4      {'38'   }        -6.4246    
+       5          5      {'60'   }         6.7757    
+       5          5      {'68'   }         6.4541    
+       5         26      {'ZLP26'}         7.4072    
+       5         50      {'240'  }        -7.3983    
+       5         50      {'248'  }        -5.8589    
+       5         60      {'510'  }          7.688    
+       5         60      {'518'  }         6.3046    
+       5         61      {'490'  }         6.3193    
+       5         62      {'1438' }         8.2542    
+       5         64      {'1490' }        -5.8857    
+       5        108      {'910'  }         6.1772    
+       6          2      {'20'   }         1.5226    
+       6          2      {'28'   }         1.3047    
+       6         26      {'ZLP26'}        0.88778    
+       6         29      {'ZLP29'}         1.8588    
+       6         30      {'ZLP30'}         1.7729    
+       6         65      {'1510' }       -0.78784    
+       6        106      {'968'  }       -0.85879    
+       6        117      {'920'  }         2.0282    
+
+[Warning: Disagreement between calculated series intercept tare loads and tare load datapoints.  Check results.] 
+
+[Warning: Shapiro-Wilk test found non-normally distributed residuals for channels: NF, PM, SF, YM, RM, AF. Hypothesis testing
+results and calculated intervals may be inaccurate. Recommend inspection of residual histograms and Q-Q plots.] 
+
+
+ ********************************************************************* 
+Calibration Algebraic Results
+Software Mode: FORCE BALANCE CALIBRATION
+REPORT NO: 2021-0114-225658
+Calibration Input File: ARC7K2-GageSet1-CalDataOfSymmetricLoadScheduleOf2020.cal
+Calibration ALG Outliers Flagged: FALSE
+Calibration ALG Outliers Removed: FALSE
+Algebraic Model Used: TRUNCATED (BALANCE TYPE 1-A)
+Math Model Refinement Used: FALSE
+Number of Datapoints: 937
+Multicollinearity Warning Given: TRUE -- Strong Multicollinearity
+GRBF Addition Performed: TRUE -- See 'GRBF Results' sheet
+
+Percent Load Capacity of Residual Standard Deviation
+       <strong>NF</strong>           <strong>PM</strong>          <strong>SF</strong>          <strong>YM</strong>          <strong>RM</strong>          <strong>AF</strong>   
+    <strong>_________</strong>    <strong>________</strong>    <strong>________</strong>    <strong>________</strong>    <strong>________</strong>    <strong>________</strong>
+
+    0.0079798    0.022156    0.010581    0.030323    0.051121    0.084338
+
+Tares
+    <strong>Series</strong>       <strong>NF</strong>           <strong>PM</strong>         <strong>SF</strong>          <strong>YM</strong>           <strong>RM</strong>            <strong>AF</strong>     
+    <strong>______</strong>    <strong>_________</strong>    <strong>________</strong>    <strong>_______</strong>    <strong>_________</strong>    <strong>_________</strong>    <strong>___________</strong>
+
+       1      -0.076739      5.0579    -4.3386     -0.19737      -2.0936         61.572
+       2         123.07      159.36     6.8934      -4.7075      0.96825        -1.6704
+       3        -126.13     -169.78     6.9806      -3.1132        1.063        -1.1783
+       4         709.55      160.33     3.0717      -2.8059        7.144       -0.44065
+       5        -710.71     -174.31    -1.7664      -2.7049      -10.376       -0.21811
+       6         709.18      151.18     6.7103      -3.9776       3.7289       -0.70536
+       7        -713.29      -180.4     6.3577      -2.5388        1.258       -0.67283
+       8         394.86      155.88     9.5285      -5.2409       2.1599        -0.2693
+       9        -398.23     -170.27     2.0808      -3.7687       3.0083        -0.2942
+      10         394.97      155.71     8.6407      -6.6268       1.4428        -0.2336
+      11        -398.28     -170.68     2.9969      -2.8492       3.0567       -0.23349
+      12       -0.92763     -6.0796     373.11       152.27       1.2114      -0.025063
+      13       -0.15821     -6.5514    -367.72      -161.19      -1.2459        -0.3032
+      14        -1.1349     -8.7826    -367.67      -161.47      -1.1449       -0.26137
+      15         0.0571     -8.5353      373.3       152.39      0.82988    -0.00021018
+      16        -1.6796     -8.5931     443.64       150.58      -1.6513       -0.03904
+      17        -1.4955     -7.4761    -428.47      -173.56      0.84299       -0.36626
+      18        -1.7107     -10.048     443.66       150.39      -3.5865       -0.19412
+      19       -0.86226     -8.2952    -432.31      -172.53       2.4378       -0.29531
+      20        -1.5563     -2.2088     104.22       151.29       -1.489       -0.21157
+      21        0.21875     -2.2299    -109.47      -156.64      -1.3836      -0.066555
+      22         128.69      207.24    -3.4198     -0.68096      -1.8511         404.48
+      23        -128.35     -206.14    -2.4978     -0.76296    -0.050456          404.8
+      24        -208.37     -180.25    -1.5061      -3.2688       2.5541        0.11136
+      25        -210.26     -178.26      2.033      -3.2714      -8.3054        -1.1621
+      26         144.24       114.4     0.6555      -4.0376       1.1582        0.57318
+      27        -140.76     -150.29    -3.5665      -1.8593     -0.04888        -1.7933
+      28        -140.46     -150.12    -3.4227      -2.3072      -1.4063        -1.6999
+      29         144.95      115.65    0.49868       -3.794      -0.2477        0.61435
+      30         132.03      194.49       2033        10182      0.34584       -0.33886
+      31         133.96      171.51       2034      -20.835       10.438         0.3184
+      32        -133.22     -163.29     2033.2      -16.369      -14.161        0.87545
+      33        -130.67     -197.98       2034        10184      -8.5496         1.0197
+      34         716.72      205.45    -4.2901      0.19615       2.1477          405.2
+      35        -715.33     -203.54    -4.9401       1.5374       -5.461         405.11
+      36        -715.53     -212.31    -5.6078     -0.17705      0.25962         405.39
+      37         716.27      197.65    -2.7099       -2.314      -5.5126         405.08
+      38         400.77       196.9    -4.6318    -0.013142      -3.8717         405.21
+      39        -399.66     -198.79    -3.8332      -1.6535       1.2737          405.3
+      40         -399.6     -196.99    -2.1414      -1.1465     -0.26591         405.36
+      41         400.97      195.28    -5.8859      0.54011      -3.6105         405.21
+      42       -0.89921      1.8544     436.17       207.01       1.7621         405.47
+      43       -0.33089      1.0613    -443.23      -196.95      -3.0276         405.14
+      44       0.087444      3.0394    -444.19      -197.57     -0.52791         404.86
+      45       -0.31799     0.84994     429.54       208.72      -5.2433         404.78
+      46        -1.0477      3.6659     107.57          192     -0.22639         405.01
+      47       -0.41129      2.1208    -113.91      -197.86      -1.0629         404.75
+      48         980.66      155.26     8.8878      -6.0366       5010.9       -0.25534
+      49        -981.49     -158.21    -4.1993      -7.3031       4999.3       -0.56896
+      50         980.46      155.67     5.2497      -9.0672      -4992.3       -0.19111
+      51        -981.21      -156.6     1.8958      -4.6944      -5006.6       -0.46357
+      52        -982.41     -168.21    -4.3718      -4.2346         5000       -0.20574
+      53          980.7      151.49     8.9257      -2.2312       5009.9       -0.83338
+      54        -981.03      -161.8    0.36217      0.22788      -5005.2       -0.12149
+      55         980.76       153.5     4.3008      -6.3617        -4995       -0.60946
+      56         718.49      210.77     2034.7        10185       1.1087       -0.54924
+      57         721.34      168.59     2035.4      -19.053       8.3785        0.29833
+      58        -716.96     -205.63     2032.8        10189      -17.465       -0.33844
+      59        -719.06     -164.04     2030.4      -14.696      -18.057        0.11731
+      60         721.61      167.69     2030.8      -18.235       1.9519       0.029242
+      61         718.21      205.67     2035.5        10183      -2.6802       -0.55408
+      62         -720.6     -173.71     2034.6       -15.89      -5.3059        0.43456
+      63        -716.93     -207.98     2031.8        10187      -4.3605        0.20687
+      64        -3.2255     -4.6629     715.85       146.56       5001.6       0.065693
+      65        0.78957     -9.7251     712.45       148.64      -4998.9        0.41816
+      66        -3.1368     -8.6676     -698.3       -170.5      -5003.6       -0.34122
+      67        -3.0327     -10.308    -698.02      -171.86      -5001.3        -0.2943
+      68        0.98058     -11.889     712.01       146.79      -5001.2        0.24487
+      69       -0.40034     -8.4559    -699.39      -172.21       5001.8       -0.40974
+      70        -3.5017     -6.5488     715.93       145.97       5000.3       -0.08326
+      71       -0.96165     -1.3602     3623.6       138.54      -4.0889       -0.16168
+      72        0.57431      -2.005    -3631.3      -141.07      -3.1112        0.17397
+      73       -0.59731     -1.8405     3624.1       136.83      -3.0383      -0.023995
+      74        0.19147     -2.0963    -3628.8      -143.96      -2.0367     -0.0040003
+      75         -1.615      -2.933     3690.7       140.55      -3.9063        0.10316
+      76        -0.2132     -2.9736    -3694.1      -173.93      -4.0306        0.06583
+      77        -1.4867    -0.38878     3690.7       137.53      -1.3831       -0.24058
+      78        -0.1397     -1.2207    -3694.4      -175.47      -5.9382        0.15713
+      79        -0.4802      3.8482    -2.7852       0.1728     -0.97337        -58.524
+      80        -126.43     -197.31    -3.0538      -8.7709      -4.5325        -406.72
+      81        -714.03     -198.97    -6.6784       -8.528        3.471        -406.76
+      82        -713.61     -186.85     -5.986      -7.7779      -5.9836        -407.56
+      83        -397.87     -195.93    -5.9546      -8.6834       1.3475         -406.8
+      84        -397.89     -192.46    -3.8853      -7.8245      -1.7861        -406.87
+      85        -133.73     -175.08    -2041.9       1.2792       7.8154        -1.0305
+      86        -717.36     -202.34    -2041.4       -10202      0.14727      -0.017668
+      87        -717.94     -196.14    -2041.2       -10201      -6.2329       -0.56556
+      88        -128.87     -201.26    -2043.3       -10194      -3.3583        0.83167
+      89        -124.48     -174.58    -4.3163      -3.0354      -3.2547       -0.58836
+      90         127.36      201.57    -5.2094      -3.2069       -3.185        -407.04
+      91         715.71      208.49    -3.7971      -3.4471     -0.30065        -407.01
+      92         715.25      204.01    -3.4837       -4.564      -10.354        -407.31
+      93         399.98      194.35    -6.3062       2.9481      -6.6845        -406.95
+      94         399.84      196.57    -6.5559        1.471       -4.848        -407.06
+      95          136.6      176.76    -2041.3       3.6974      -15.641        -0.8245
+      96         132.33      208.28    -2042.1       -10198      -8.8628         0.1986
+      97         126.45      175.26    -5.4229      -1.8075      -2.4443        -1.2779
+      98         2.8488      2.1636    -115.39      -194.66      -2.0196        -406.74
+      99         2.6462     0.17799    -111.01      -202.55       -2.092       -0.75105
+     100         2.4598      3.4502    -441.21      -204.91      -4.0855        -406.81
+     101         2.3453      1.1608     -440.2      -201.09      -9.4492        -406.78
+     102         2.8886    -0.13931     102.09       192.16      -2.4964       -0.80865
+     103         1.6496     -2.6815     432.74       199.84        1.167        -406.83
+     104          1.481     -1.8494     432.66       197.42      -4.9406        -407.17
+     105         2.0318     -2.5401     104.48       189.87       -3.908        -407.11
+     106         59.192      198.86    -4.1687       -2.719       -3.238         45.059
+     107         54.489       197.6    -3.0201      -1.8952      -3.6488        -46.204
+
+Tares Standard Deviation
+    <strong>Series</strong>       <strong>NF</strong>          <strong>PM</strong>          <strong>SF</strong>         <strong>YM</strong>          <strong>RM</strong>          <strong>AF</strong>   
+    <strong>______</strong>    <strong>________</strong>    <strong>________</strong>    <strong>________</strong>    <strong>_______</strong>    <strong>________</strong>    <strong>________</strong>
+
+       1       0.10669    0.084509    0.050254    0.24106     0.19106     0.22451
+       2        1.1787      3.0925     0.39856    0.17397      1.0406      1.1573
+       3        1.4699      1.8768     0.23062     0.1384     0.55718     0.44505
+       4       0.23293      7.6507     0.11071     1.5111       5.391     0.13202
+       5       0.68026      3.5479    0.084672    0.79666       5.734    0.073205
+       6       0.26701      5.4969    0.044814    0.75258      2.3211     0.14897
+       7       0.45573      5.0319     0.11159    0.79524     0.70025     0.14116
+       8      0.049766     0.45703     0.34269     0.4722      1.1941    0.037223
+       9      0.019202     0.74893     0.40992    0.39407      1.1348    0.062117
+      10      0.048867     0.35458     0.28487    0.95865     0.83532     0.06653
+      11      0.048497     0.27232     0.38402    0.43141     0.51399    0.037776
+      12       0.36148      1.0955    0.092904    0.23761       1.222    0.022626
+      13       0.27551     0.91722     0.11462    0.53436      1.0395    0.030465
+      14        0.2817      0.7619     0.17893     1.1619      1.4381    0.034623
+      15       0.30413     0.93134    0.062899    0.46618       1.455    0.068749
+      16      0.058853      1.6157     0.35301     1.4822     0.59473    0.079329
+      17      0.086998     0.94237     0.36751     2.2564     0.54175     0.10747
+      18      0.046153     0.78319     0.26597     2.1597      1.4511     0.23345
+      19      0.061012     0.57264     0.38036     2.1236      1.3477     0.23656
+      20       0.10006     0.21829     0.62838     8.2758     0.33678     0.22344
+      21      0.076284     0.14752      0.4589     7.8868     0.51792     0.22695
+      22        1.8174      5.5666     0.35932    0.27068     0.86609     0.68604
+      23        1.8394      1.6453     0.16668     2.1418     0.18729     0.32999
+      24       0.75553      5.1313      1.2507    0.42416        6.03      0.4172
+      25        1.5933      6.5653     0.23955     0.6566      8.6976     0.82296
+      26       0.73186      16.622     0.58208    0.66773     0.61578      0.3132
+      27       0.86345      5.2455     0.75795    0.93928      1.9332     0.66054
+      28       0.50776      5.3566      0.9039    0.60835       1.596     0.65436
+      29        1.0011      17.083     0.44971     0.5736     0.97089     0.27857
+      30        1.1103      6.4064     0.61664    0.94037     0.94013     0.83295
+      31        1.0911      5.5587     0.69234     1.0871      2.5694      0.8352
+      32        1.4897      2.1187     0.88803    0.71332      3.4419     0.90066
+      33        0.7421      1.3035     0.84128      0.491      1.0785     0.75467
+      34       0.83588       4.672     0.56284    0.78475      2.6975     0.15043
+      35       0.18053      7.0237     0.14659     0.8457      5.0765     0.11269
+      36       0.66344      3.2595     0.27021      1.996       2.168     0.23522
+      37       0.23423      6.2189      0.2096     1.9907      5.4122    0.044394
+      38      0.045111      0.7877     0.39651    0.70239      1.2092    0.039576
+      39      0.063098     0.74589     0.36049    0.62406     0.76813    0.019881
+      40      0.067846      1.4447     0.42315     0.4343      1.2375    0.048204
+      41      0.044885      1.0923      0.3727     0.5108     0.64185    0.051529
+      42       0.11255     0.38235     0.23799     1.8892      2.2068     0.12836
+      43      0.080862      1.1771      0.4042     2.3966      1.6089    0.085049
+      44       0.12654      1.2153     0.13287     2.0984      2.3326     0.14692
+      45       0.24216      1.2833     0.10285     2.1606       2.702     0.21226
+      46       0.11208     0.80098      0.7336     5.3016      0.2179      0.1813
+      47       0.09744     0.66867     0.32576     4.3239     0.43236     0.17203
+      48       0.54456      14.456      0.2235     2.0102      6.0463     0.33859
+      49       0.46026      9.2239     0.26643    0.96214      1.8376     0.12153
+      50       0.21175      4.9444     0.51969     2.0795       4.378     0.20937
+      51       0.20635      6.5842     0.44507     3.0117      1.7762     0.13216
+      52       0.70747      6.4949     0.30364     1.7819      2.0734     0.20984
+      53       0.35981      5.9059     0.13409      1.913      3.7082     0.23083
+      54       0.30215      5.5086      0.4596     1.2657      1.1401     0.15896
+      55       0.22388      6.4184     0.16294      1.373      2.2353     0.25829
+      56       0.69248      7.6002    0.075142     3.6561      1.4201     0.37807
+      57       0.70361      7.5358     0.17349     2.2908      3.0851     0.26219
+      58       0.22071      5.6735     0.21453     2.3715      5.7809     0.32958
+      59       0.30179      5.3409     0.11806     1.7932       4.996     0.25602
+      60       0.30139       5.337    0.072224    0.68574      6.8487     0.24721
+      61       0.34375      7.7097     0.25279     1.4966      5.4505      0.1845
+      62       0.47049       5.276     0.15441     2.0867      4.4696      0.1332
+      63       0.51162      5.9487     0.31787     1.4883      4.5508     0.49912
+      64       0.12838      1.2618     0.33662     1.9589      0.8494    0.087993
+      65       0.13963      1.1479     0.21563     1.5812      1.6615     0.11785
+      66       0.10274      1.8088       0.083     2.7881      1.2995     0.12179
+      67       0.12948     0.78195     0.27585      2.908      1.6033     0.20959
+      68      0.058017      1.0048     0.27853     2.2324      1.8908     0.21471
+      69      0.088452      2.1204     0.20371     2.0698      2.2537     0.18478
+      70      0.040937     0.91736     0.20739      2.356      1.5667     0.17673
+      71       0.76985     0.41491    0.080376     1.0261      1.3678     0.06214
+      72       0.36011     0.22443     0.53946     1.1699       1.345    0.079182
+      73       0.49886     0.26778     0.25722    0.40229      1.1316    0.034126
+      74       0.72772     0.40445    0.079579    0.21035      1.4088    0.070924
+      75      0.094532      1.0808     0.12242     2.1697      1.3206     0.26108
+      76      0.052941      1.0009     0.13768     3.8902     0.59479     0.26776
+      77      0.099614     0.75201     0.20004     2.7232     0.79437     0.47195
+      78      0.088178     0.73579    0.098358     1.7052      1.0054     0.12582
+      79       0.12305     0.70712     0.16622     1.3514    0.067009      0.1868
+      80       0.99841     0.74255     0.27045     1.1155       1.181     0.55558
+      81         0.542      3.2191     0.24631     1.8143      3.6286      0.2196
+      82       0.14113       7.478     0.21162       1.67      5.1578     0.25889
+      83       0.14526     0.43757     0.34301     2.6967      1.2782     0.10341
+      84      0.068751      1.7029      0.6586     1.5747      1.4207    0.036788
+      85        1.2833       1.689     0.69152     1.5053      2.8661      0.7997
+      86       0.45246      3.4842      0.2256     4.0888      1.6753     0.40881
+      87       0.20873      9.5447    0.083397     1.6129      5.4621     0.34379
+      88       0.54798      5.2045     0.59339     2.1626      1.1179     0.45694
+      89       0.86453      1.2219     0.34945      1.377     0.81606     0.65714
+      90        2.1483      5.2644      0.5212    0.97604     0.55918     0.93196
+      91       0.48894      4.8691     0.15661    0.95828      3.5012    0.096868
+      92        0.2022      7.2546    0.094011     1.4468        5.13     0.23894
+      93      0.026392     0.92447     0.35295     1.6813      1.3596    0.040985
+      94      0.090441      1.2827     0.35209     1.5903       1.069    0.025809
+      95       0.82434      3.9279     0.79376    0.62802      3.5306     0.63643
+      96       0.30337      7.8129     0.99556     3.4176      2.2047      1.3963
+      97        1.1329      4.8589      0.3053     0.2722     0.83529     0.72894
+      98       0.15801      1.0696     0.40882     6.9952     0.42741     0.22001
+      99       0.21439     0.31771     0.29712     18.909     0.39824     0.27237
+     100      0.087784      1.3047     0.17929     1.7467      1.5634     0.14747
+     101      0.057745      1.5748     0.34978     3.0585      3.0445    0.079823
+     102       0.15909     0.34206     0.59652     14.776     0.35073     0.22616
+     103      0.044759     0.57709    0.069786     1.6915      2.6053       0.159
+     104      0.045784     0.69568     0.10733     2.4167      2.5034     0.12519
+     105       0.09733     0.38286     0.18221     1.1577      0.2817     0.26397
+     106      0.079983     0.21076     0.13075    0.30232    0.098985    0.090408
+     107      0.073648     0.52754     0.12438      1.127    0.099043     0.15746
+
+Mean Load Residual Squared
+      <strong>NF</strong>         <strong>PM</strong>        <strong>SF</strong>         <strong>YM</strong>        <strong>RM</strong>        <strong>AF</strong>   
+    <strong>_______</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>
+
+    0.31169    19.614    0.13701    9.1853    6.5265    0.11369
+
+Percent Load Capacity of Maximum Residual
+       <strong>NF</strong>         <strong>PM</strong>          <strong>SF</strong>         <strong>YM</strong>         <strong>RM</strong>         <strong>AF</strong>   
+    <strong>________</strong>    <strong>_______</strong>    <strong>________</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>
+
+    0.043391    0.23615    0.099858    0.30683    0.26818    0.50705
+
+Maximum Load Residual
+      <strong>NF</strong>        <strong>PM</strong>        <strong>SF</strong>        <strong>YM</strong>        <strong>RM</strong>        <strong>AF</strong>  
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    3.0373    27.012    2.2796    30.683    13.409    1.6183
+
+Minimum Load Residual
+      <strong>NF</strong>         <strong>PM</strong>        <strong>SF</strong>        <strong>YM</strong>         <strong>RM</strong>         <strong>AF</strong>   
+    <strong>_______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>
+
+    -2.4656    -47.23    -3.495    -25.118    -10.917    -2.0282
+
+Load Residual 2*(standard deviation)
+      <strong>NF</strong>        <strong>PM</strong>        <strong>SF</strong>        <strong>YM</strong>        <strong>RM</strong>        <strong>AF</strong>   
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>
+
+    1.1172    8.8622    0.7407    6.0647    5.1121    0.67471
+
+Ratio (Maximum Load Residual)/(Load Residual Standard Deviation)
+      <strong>NF</strong>        <strong>PM</strong>        <strong>SF</strong>        <strong>YM</strong>        <strong>RM</strong>       <strong>AF</strong>  
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_____</strong>
+
+    5.4375    10.659    9.4371    10.118    5.2459    6.012
+
+
+CALIBRATION ALGEBRAIC MODEL REPORT FILE: CALIB Report_ARC7K2-GageSet1-CalDataOfSymmetricLoadScheduleOf2020.xlsx, Sheet: 1
+
+CALIBRATION ALGEBRAIC MODEL COEFFICIENT MATRIX FILE: AOX_ALG_MODEL_COEFFICIENT_MATRIX.csv
+
+CALIB ALG METHOD ANOVA STATISTICS FILE: CALIB ALG ANOVA STATS.xlsx
+ 
+DIRECT METHOD ANOVA RECOMMENDED EQUATION MATRIX FILE: DIRECT_RECOMM_EquationMatrix.csv
+
+NF BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: NF_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+PM BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: PM_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+SF BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: SF_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+YM BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: YM_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+RM BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: RM_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+AF BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: AF_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+CALIBRATION ALGEBRAIC MODEL LOAD APPROXIMATION FILE: CALIB ALG Tare Corrected Load Approximation.csv
+
+CALIBRATION MODEL FILE: AOX_CALIBRATION_MODEL_2021-0114-225658.mat
+
+ ********** Starting Calibration GRBF Calculations **********
+[Warning: Input Max # GRBF > # Calibration datapoints. Setting Max # GRBF = # Calibration datapoints (937)] 
+{Index in position 1 exceeds array bounds (must not exceed 107).
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 1025)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',1025,0)">line 1025</a>)
+        taretalRBF=taresGRBF(series0,:);
+} 
+clear
+clc
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+{Index in position 2 is invalid. Array indices must be positive integers or logical values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('autoCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m', 143)" style="font-weight:bold">autoCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m',143,0)">line 143</a>)
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>autocal_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 2975)" style="font-weight:bold">AOX_GUI>autocal_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',2975,0)">line 2975</a>)
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''autocal_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('autocal_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Index in position 2 is invalid. Array indices must be positive integers or logical values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('autoCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m', 143)" style="font-weight:bold">autoCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/autoCSV.m',143,0)">line 143</a>)
+            units = C(urow,min(varlocs(:,2)):nc); % units of each variable
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>autocal_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 2975)" style="font-weight:bold">AOX_GUI>autocal_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',2975,0)">line 2975</a>)
+    ranges = autoCSV(get(handles.calPath,'string'),autofill_type);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''autocal_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('autocal_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+CSV Data Detection finished. Refer to warnings, if any.
+
+ Starting Test: 2021-0114-232221
+
+Working ...
+
+ ********** Starting Calibration Algebraic Calculations **********
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 1 (NT)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 2 (FF)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 3 (WC2)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 4 (EINOx)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Shapiro-Wilk test found non-normally distributed residuals for channels: NT, FF, WC2, EINOx. Hypothesis testing
+results and calculated intervals may be inaccurate. Recommend inspection of residual histograms and Q-Q plots.] 
+
+
+ ********************************************************************* 
+Calibration Algebraic Results
+Software Mode: FORCE BALANCE CALIBRATION
+REPORT NO: 2021-0114-232221
+Calibration Input File: FPR145B_engine_AOX_Format.cal
+Calibration ALG Outliers Flagged: FALSE
+Calibration ALG Outliers Removed: FALSE
+Algebraic Model Used: TRUNCATED (BALANCE TYPE 1-A)
+Math Model Refinement Used: FALSE
+Number of Datapoints: 622
+Multicollinearity Warning Given: TRUE -- Strong Multicollinearity
+GRBF Addition Performed: TRUE -- See 'GRBF Results' sheet
+
+Percent Load Capacity of Residual Standard Deviation
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    2.5689    2.1147    1.0488    3.4366
+
+Tares
+    <strong>Series</strong>    <strong>NT</strong>    <strong>FF</strong>    <strong>WC2</strong>    <strong>EINOx</strong>
+    <strong>______</strong>    <strong>__</strong>    <strong>__</strong>    <strong>___</strong>    <strong>_____</strong>
+
+      1       0     0      0       0  
+
+Tares Standard Deviation
+    <strong>Series</strong>      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+      1       737.29    169.17    15.731    2.4056
+
+Mean Load Residual Squared
+        <strong>NT</strong>         <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>__________</strong>    <strong>_____</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.4272e+05    28574    247.08    5.7777
+
+Percent Load Capacity of Maximum Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>     <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>_____</strong>    <strong>______</strong>
+
+    13.715    7.2815    9.212    12.344
+
+Maximum Load Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    3936.1    530.01    56.482    8.6408
+
+Minimum Load Residual
+      <strong>NT</strong>         <strong>FF</strong>         <strong>WC2</strong>       <strong>EINOx</strong> 
+    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>
+
+    -2821.8    -582.52    -138.18    -7.1921
+
+Load Residual 2*(standard deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    1474.6    338.35    31.463    4.8112
+
+Ratio (Maximum Load Residual)/(Load Residual Standard Deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.3386    3.4433    8.7838    3.5919
+
+
+CALIBRATION ALGEBRAIC MODEL REPORT FILE: CALIB Report_FPR145B_engine_AOX_Format.xlsx, Sheet: 1
+
+CALIBRATION ALGEBRAIC MODEL COEFFICIENT MATRIX FILE: AOX_ALG_MODEL_COEFFICIENT_MATRIX.csv
+
+CALIB ALG METHOD ANOVA STATISTICS FILE: CALIB ALG ANOVA STATS.xlsx
+ 
+DIRECT METHOD ANOVA RECOMMENDED EQUATION MATRIX FILE: DIRECT_RECOMM_EquationMatrix.csv
+
+NT BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: NT_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+FF BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: FF_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+WC2 BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: WC2_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+EINOx BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: EINOx_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+CALIBRATION ALGEBRAIC MODEL LOAD APPROXIMATION FILE: CALIB ALG Tare Corrected Load Approximation.csv
+
+CALIBRATION MODEL FILE: AOX_CALIBRATION_MODEL_2021-0114-232221.mat
+
+ ********** Starting Calibration GRBF Calculations **********
+[Warning: Input Max # GRBF > # Calibration datapoints. Setting Max # GRBF = # Calibration datapoints (622)] 
+[Warning: Ill-Conditioned matrix for load channel 1, 2, 3, 4, Terminating RBF addition. Final # RBF=0] 
+
+
+ Trimming RBFs for minimum calibration prediction interval RMS
+ Channel 1 Final # RBF=1
+ Channel 2 Final # RBF=1
+ Channel 3 Final # RBF=1
+ Channel 4 Final # RBF=1
+{Dot indexing is not supported for variables of this type.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 1340)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',1340,0)">line 1340</a>)
+                y_hat_PI2(:,i)=ANOVA_GRBF(i).y_hat_PI;
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dlmread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m', 147)" style="font-weight:bold">dlmread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m',147,0)">line 147</a>)
+Mismatch between file and format character vector.
+Trouble reading 'Numeric' field from file (row number 1, field number 5) ==> NF,PM,SF,YM,RM,AF,rNF1,rPM,rSF,rYM,rRM,rAF1\n
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('csvread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m', 50)" style="font-weight:bold">csvread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m',50,0)">line 50</a>)
+    m=dlmread(filename, ',', r, c, rng);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>loadCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 1556)" style="font-weight:bold">AOX_GUI>loadCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',1556,0)">line 1556</a>)
+        targetMatrix0 =      csvread(cal.Path,cal.CSV(4,1),cal.CSV(4,2),cal.Range{4});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>runbutton_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 286)" style="font-weight:bold">AOX_GUI>runbutton_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',286,0)">line 286</a>)
+        outStruct.savePathcal = loadCSV(cal,outStruct.output_location,outStruct.mode);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''runbutton_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('runbutton_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Unrecognized method, property, or field 'cancel' for class 'matlab.ui.Figure'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 45)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',45,0)">line 45</a>)
+if out.cancel == 1
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+{Index in position 2 exceeds array bounds (must not exceed 2).
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dlmread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m', 159)" style="font-weight:bold">dlmread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m',159,0)">line 159</a>)
+        result= result(:,1:ncols);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('csvread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m', 50)" style="font-weight:bold">csvread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m',50,0)">line 50</a>)
+    m=dlmread(filename, ',', r, c, rng);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>loadCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 1541)" style="font-weight:bold">AOX_GUI>loadCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',1541,0)">line 1541</a>)
+            natzeros =           csvread(cal.Path,cal.CSV(2,1),cal.CSV(2,2),cal.Range{2});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>runbutton_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 286)" style="font-weight:bold">AOX_GUI>runbutton_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',286,0)">line 286</a>)
+        outStruct.savePathcal = loadCSV(cal,outStruct.output_location,outStruct.mode);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''runbutton_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('runbutton_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Unrecognized method, property, or field 'cancel' for class 'matlab.ui.Figure'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 45)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',45,0)">line 45</a>)
+if out.cancel == 1
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+{Index in position 2 exceeds array bounds (must not exceed 2).
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dlmread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m', 159)" style="font-weight:bold">dlmread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m',159,0)">line 159</a>)
+        result= result(:,1:ncols);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('csvread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m', 50)" style="font-weight:bold">csvread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m',50,0)">line 50</a>)
+    m=dlmread(filename, ',', r, c, rng);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>loadCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 1541)" style="font-weight:bold">AOX_GUI>loadCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',1541,0)">line 1541</a>)
+            natzeros =           csvread(cal.Path,cal.CSV(2,1),cal.CSV(2,2),cal.Range{2});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>runbutton_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 286)" style="font-weight:bold">AOX_GUI>runbutton_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',286,0)">line 286</a>)
+        outStruct.savePathcal = loadCSV(cal,outStruct.output_location,outStruct.mode);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''runbutton_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('runbutton_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Unrecognized method, property, or field 'cancel' for class 'matlab.ui.Figure'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 45)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',45,0)">line 45</a>)
+if out.cancel == 1
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+{Index in position 2 exceeds array bounds (must not exceed 2).
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dlmread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m', 159)" style="font-weight:bold">dlmread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/dlmread.m',159,0)">line 159</a>)
+        result= result(:,1:ncols);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('csvread', '/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m', 50)" style="font-weight:bold">csvread</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/iofun/csvread.m',50,0)">line 50</a>)
+    m=dlmread(filename, ',', r, c, rng);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>loadCSV', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 1541)" style="font-weight:bold">AOX_GUI>loadCSV</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',1541,0)">line 1541</a>)
+            natzeros =           csvread(cal.Path,cal.CSV(2,1),cal.CSV(2,2),cal.Range{2});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI>runbutton_Callback', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 286)" style="font-weight:bold">AOX_GUI>runbutton_Callback</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',286,0)">line 286</a>)
+        outStruct.savePathcal = loadCSV(cal,outStruct.output_location,outStruct.mode);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gui_mainfcn', '/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m', 95)" style="font-weight:bold">gui_mainfcn</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/guide/gui_mainfcn.m',95,0)">line 95</a>)
+        feval(varargin{:});
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_GUI', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m', 47)" style="font-weight:bold">AOX_GUI</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_RequiredSupportFiles/AOX_GUI.m',47,0)">line 47</a>)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI(''runbutton_Callback'',hObject,eventdata,guidata(hObject))')" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read>@(hObject,eventdata)AOX_GUI('runbutton_Callback',hObject,eventdata,guidata(hObject))</a>} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiwait', '/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m', 81)" style="font-weight:bold">uiwait</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2020b.app/toolbox/matlab/uitools/uiwait.m',81,0)">line 81</a>)
+Error while evaluating UIControl Callback.
+
+{Unrecognized method, property, or field 'cancel' for class 'matlab.ui.Figure'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 45)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',45,0)">line 45</a>)
+if out.cancel == 1
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+CSV Data Detection finished. Refer to warnings, if any.
+CSV Data Detection finished. Refer to warnings, if any.
+
+ Starting Test: 2021-0114-232519
+
+Working ...
+
+ ********** Starting Calibration Algebraic Calculations **********
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 1 (NT)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 2 (FF)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 3 (WC2)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 4 (EINOx)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Shapiro-Wilk test found non-normally distributed residuals for channels: NT, FF, WC2, EINOx. Hypothesis testing
+results and calculated intervals may be inaccurate. Recommend inspection of residual histograms and Q-Q plots.] 
+
+
+ ********************************************************************* 
+Calibration Algebraic Results
+Software Mode: FORCE BALANCE CALIBRATION
+REPORT NO: 2021-0114-232519
+Calibration Input File: FPR145B_engine_AOX_Format.cal
+Calibration ALG Outliers Flagged: FALSE
+Calibration ALG Outliers Removed: FALSE
+Algebraic Model Used: TRUNCATED (BALANCE TYPE 1-A)
+Math Model Refinement Used: FALSE
+Number of Datapoints: 622
+Multicollinearity Warning Given: TRUE -- Strong Multicollinearity
+GRBF Addition Performed: TRUE -- See 'GRBF Results' sheet
+
+Percent Load Capacity of Residual Standard Deviation
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    2.5689    2.1147    1.0488    3.4366
+
+Tares
+    <strong>Series</strong>    <strong>NT</strong>    <strong>FF</strong>    <strong>WC2</strong>    <strong>EINOx</strong>
+    <strong>______</strong>    <strong>__</strong>    <strong>__</strong>    <strong>___</strong>    <strong>_____</strong>
+
+      1       0     0      0       0  
+
+Tares Standard Deviation
+    <strong>Series</strong>      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+      1       737.29    169.17    15.731    2.4056
+
+Mean Load Residual Squared
+        <strong>NT</strong>         <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>__________</strong>    <strong>_____</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.4272e+05    28574    247.08    5.7777
+
+Percent Load Capacity of Maximum Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>     <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>_____</strong>    <strong>______</strong>
+
+    13.715    7.2815    9.212    12.344
+
+Maximum Load Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    3936.1    530.01    56.482    8.6408
+
+Minimum Load Residual
+      <strong>NT</strong>         <strong>FF</strong>         <strong>WC2</strong>       <strong>EINOx</strong> 
+    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>
+
+    -2821.8    -582.52    -138.18    -7.1921
+
+Load Residual 2*(standard deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    1474.6    338.35    31.463    4.8112
+
+Ratio (Maximum Load Residual)/(Load Residual Standard Deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.3386    3.4433    8.7838    3.5919
+
+
+CALIBRATION ALGEBRAIC MODEL REPORT FILE: CALIB Report_FPR145B_engine_AOX_Format.xlsx, Sheet: 1
+
+CALIBRATION ALGEBRAIC MODEL COEFFICIENT MATRIX FILE: AOX_ALG_MODEL_COEFFICIENT_MATRIX.csv
+
+CALIB ALG METHOD ANOVA STATISTICS FILE: CALIB ALG ANOVA STATS.xlsx
+ 
+NT BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: NT_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+FF BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: FF_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+WC2 BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: WC2_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+EINOx BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: EINOx_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+CALIBRATION ALGEBRAIC MODEL LOAD APPROXIMATION FILE: CALIB ALG Tare Corrected Load Approximation.csv
+
+CALIBRATION MODEL FILE: AOX_CALIBRATION_MODEL_2021-0114-232519.mat
+
+ ********** Starting Calibration GRBF Calculations **********
+[Warning: Ill-Conditioned matrix for load channel 1, 2, 3, 4, Terminating RBF addition. Final # RBF=0] 
+
+
+ Trimming RBFs for minimum calibration prediction interval RMS
+ Channel 1 Final # RBF=1
+ Channel 2 Final # RBF=1
+ Channel 3 Final # RBF=1
+ Channel 4 Final # RBF=1
+{Dot indexing is not supported for variables of this type.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 1340)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',1340,0)">line 1340</a>)
+                y_hat_PI2(:,i)=ANOVA_GRBF(i).y_hat_PI;
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+CSV Data Detection finished. Refer to warnings, if any.
+
+ Starting Test: 2021-0114-232735
+
+Working ...
+
+ ********** Starting Calibration Algebraic Calculations **********
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 1 (NT)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 2 (FF)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 3 (WC2)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 4 (EINOx)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Shapiro-Wilk test found non-normally distributed residuals for channels: NT, FF, WC2, EINOx. Hypothesis testing
+results and calculated intervals may be inaccurate. Recommend inspection of residual histograms and Q-Q plots.] 
+
+
+ ********************************************************************* 
+Calibration Algebraic Results
+Software Mode: FORCE BALANCE CALIBRATION
+REPORT NO: 2021-0114-232735
+Calibration Input File: FPR145B_engine_AOX_Format.cal
+Calibration ALG Outliers Flagged: FALSE
+Calibration ALG Outliers Removed: FALSE
+Algebraic Model Used: TRUNCATED (BALANCE TYPE 1-A)
+Math Model Refinement Used: FALSE
+Number of Datapoints: 622
+Multicollinearity Warning Given: TRUE -- Strong Multicollinearity
+GRBF Addition Performed: TRUE -- See 'GRBF Results' sheet
+
+Percent Load Capacity of Residual Standard Deviation
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    2.5689    2.1147    1.0488    3.4366
+
+Tares
+    <strong>Series</strong>     <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>       <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>_____</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>
+
+      1       15620    1477.5    1564.2    -11.357
+
+Tares Standard Deviation
+    <strong>Series</strong>      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+      1       737.29    169.17    15.731    2.4056
+
+Mean Load Residual Squared
+        <strong>NT</strong>         <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>__________</strong>    <strong>_____</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.4272e+05    28574    247.08    5.7777
+
+Percent Load Capacity of Maximum Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>     <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>_____</strong>    <strong>______</strong>
+
+    13.715    7.2815    9.212    12.344
+
+Maximum Load Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    3936.1    530.01    56.482    8.6408
+
+Minimum Load Residual
+      <strong>NT</strong>         <strong>FF</strong>         <strong>WC2</strong>       <strong>EINOx</strong> 
+    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>
+
+    -2821.8    -582.52    -138.18    -7.1921
+
+Load Residual 2*(standard deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    1474.6    338.35    31.463    4.8112
+
+Ratio (Maximum Load Residual)/(Load Residual Standard Deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.3386    3.4433    8.7838    3.5919
+
+
+CALIBRATION ALGEBRAIC MODEL REPORT FILE: CALIB Report_FPR145B_engine_AOX_Format.xlsx, Sheet: 1
+
+CALIBRATION ALGEBRAIC MODEL COEFFICIENT MATRIX FILE: AOX_ALG_MODEL_COEFFICIENT_MATRIX.csv
+
+CALIB ALG METHOD ANOVA STATISTICS FILE: CALIB ALG ANOVA STATS.xlsx
+ 
+NT BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: NT_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+FF BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: FF_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+WC2 BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: WC2_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+EINOx BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: EINOx_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+CALIBRATION ALGEBRAIC MODEL LOAD APPROXIMATION FILE: CALIB ALG Tare Corrected Load Approximation.csv
+
+CALIBRATION MODEL FILE: AOX_CALIBRATION_MODEL_2021-0114-232735.mat
+
+ ********** Starting Calibration GRBF Calculations **********
+[Warning: Ill-Conditioned matrix for load channel 1, 2, 3, 4, Terminating RBF addition. Final # RBF=0] 
+
+
+ Trimming RBFs for minimum calibration prediction interval RMS
+ Channel 1 Final # RBF=1
+ Channel 2 Final # RBF=1
+ Channel 3 Final # RBF=1
+ Channel 4 Final # RBF=1
+{Dot indexing is not supported for variables of this type.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 1340)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',1340,0)">line 1340</a>)
+                y_hat_PI2(:,i)=ANOVA_GRBF(i).y_hat_PI;
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
+
+ Starting Test: 2021-0114-233639
+
+Working ...
+
+ ********** Starting Calibration Algebraic Calculations **********
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 1 (NT)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 2 (FF)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 3 (WC2)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Rank deficient, rank = 10, tol =  3.444497e-12.] 
+
+Calculating Direct ANOVA statistics for channel 4 (EINOx)....
+[Warning: VIF calculation indicates strong multicollinearity. Analysis of Variance results are unreliable.] 
+Complete
+[Warning: Shapiro-Wilk test found non-normally distributed residuals for channels: NT, FF, WC2, EINOx. Hypothesis testing
+results and calculated intervals may be inaccurate. Recommend inspection of residual histograms and Q-Q plots.] 
+
+
+ ********************************************************************* 
+Calibration Algebraic Results
+Software Mode: FORCE BALANCE CALIBRATION
+REPORT NO: 2021-0114-233639
+Calibration Input File: FPR145B_engine_AOX_Format.cal
+Calibration ALG Outliers Flagged: FALSE
+Calibration ALG Outliers Removed: FALSE
+Algebraic Model Used: TRUNCATED (BALANCE TYPE 1-A)
+Math Model Refinement Used: FALSE
+Number of Datapoints: 622
+Multicollinearity Warning Given: TRUE -- Strong Multicollinearity
+GRBF Addition Performed: TRUE -- See 'GRBF Results' sheet
+
+Percent Load Capacity of Residual Standard Deviation
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    2.5689    2.1147    1.0488    3.4366
+
+Tares
+    <strong>Series</strong>     <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>       <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>_____</strong>    <strong>______</strong>    <strong>______</strong>    <strong>_______</strong>
+
+      1       15620    1477.5    1564.2    -11.357
+
+Tares Standard Deviation
+    <strong>Series</strong>      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+      1       737.29    169.17    15.731    2.4056
+
+Mean Load Residual Squared
+        <strong>NT</strong>         <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>__________</strong>    <strong>_____</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.4272e+05    28574    247.08    5.7777
+
+Percent Load Capacity of Maximum Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>     <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>_____</strong>    <strong>______</strong>
+
+    13.715    7.2815    9.212    12.344
+
+Maximum Load Residual
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    3936.1    530.01    56.482    8.6408
+
+Minimum Load Residual
+      <strong>NT</strong>         <strong>FF</strong>         <strong>WC2</strong>       <strong>EINOx</strong> 
+    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>
+
+    -2821.8    -582.52    -138.18    -7.1921
+
+Load Residual 2*(standard deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    1474.6    338.35    31.463    4.8112
+
+Ratio (Maximum Load Residual)/(Load Residual Standard Deviation)
+      <strong>NT</strong>        <strong>FF</strong>       <strong>WC2</strong>      <strong>EINOx</strong> 
+    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>    <strong>______</strong>
+
+    5.3386    3.4433    8.7838    3.5919
+
+
+CALIBRATION ALGEBRAIC MODEL REPORT FILE: CALIB Report_FPR145B_engine_AOX_Format.xlsx, Sheet: 1
+
+CALIBRATION ALGEBRAIC MODEL COEFFICIENT MATRIX FILE: AOX_ALG_MODEL_COEFFICIENT_MATRIX.csv
+
+CALIB ALG METHOD ANOVA STATISTICS FILE: CALIB ALG ANOVA STATS.xlsx
+ 
+NT BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: NT_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+FF BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: FF_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+WC2 BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: WC2_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+EINOx BALFIT REGRESSION COEFFICIENT MATRIX IN AMES FORMAT FILE: EINOx_BALFIT_REGRESSION_COEFFICIENT_MATRIX_IN_AMES_FORMAT.txt
+
+CALIBRATION ALGEBRAIC MODEL LOAD APPROXIMATION FILE: CALIB ALG Tare Corrected Load Approximation.csv
+
+CALIBRATION MODEL FILE: AOX_CALIBRATION_MODEL_2021-0114-233639.mat
+
+ ********** Starting Calibration GRBF Calculations **********
+[Warning: Ill-Conditioned matrix for load channel 1, 2, 3, 4, Terminating RBF addition. Final # RBF=0] 
+
+{Dot indexing is not supported for variables of this type.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('AOX_BalCal', '/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m', 1340)" style="font-weight:bold">AOX_BalCal</a> (<a href="matlab: opentoline('/Users/ameade/Desktop/UPDATING AOX BalCal PROJECT/AOX_BalCal/AOX_BalCal.m',1340,0)">line 1340</a>)
+                y_hat_PI2(:,i)=ANOVA_GRBF(i).y_hat_PI;
+} 
+AOX_BalCal
+Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.
+Default Settings Loaded
