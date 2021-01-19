@@ -3079,12 +3079,6 @@ ranges = autoCSV(get(handles.appPath,'string'),autofill_type);
 
 
 
-% --- Executes on button press in dispPlot_FLAGcheck.
-function dispPlot_FLAGcheck_Callback(hObject, eventdata, handles)
-% hObject    handle to dispPlot_FLAGcheck (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 
-% Hint: get(hObject,'Value') returns toggle state of dispPlot_FLAGcheck
 
 
