@@ -27,7 +27,7 @@ function varargout = AOX_GUI(varargin)
 
 % Edit the above text to modify the response to help AOX_GUI
 
-% Last Modified by GUIDE v2.5 11-Jan-2021 12:33:59
+% Last Modified by GUIDE v2.5 19-Jan-2021 15:19:14
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -3063,3 +3063,39 @@ ranges = autoCSV(get(handles.appPath,'string'),autofill_type);
     % set voltage array data range
     set(handles.a41,'string',ranges.V(1));
     set(handles.a42,'string',ranges.V(2));
+
+
+% --- Executes on button press in dispPlot_FLAGcheck.
+function dispPlot_FLAGcheck_Callback(hObject, eventdata, handles)
+% hObject    handle to dispPlot_FLAGcheck (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of dispPlot_FLAGcheck
+
+
+% --- Executes on button press in checkbox47.
+function checkbox47_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox47 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox47
+
+
+% --- Executes on button press in checkbox48.
+function checkbox48_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox48 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox48
+
+
+% --- Executes on button press in checkbox49.
+function checkbox49_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox49 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox49
