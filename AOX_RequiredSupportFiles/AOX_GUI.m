@@ -281,8 +281,11 @@ switch calext
         cal.CSV(4,:) = a12rc(get(handles.c41,'String'));
         cal.Range{5} = [get(handles.c51,'String'),'..',get(handles.c52,'String')];
         cal.CSV(5,:) = a12rc(get(handles.c51,'String'));
-        
-        
+        if exist("ranges.varlocs",'var')
+            cal.varlocs = ranges.varlocs;
+        else
+            cal.varlocs = 0;
+        end
         outStruct.savePathcal = loadCSV(cal,outStruct.output_location,outStruct.mode);
         outStruct.cal_create=1; %track if .cal file was created
     case '.cal'
@@ -1524,7 +1527,7 @@ function savePath = loadCSV(cva,output_location,mode)
 % Input: type - String that changes depending on whether loading
 % calibration, validation, or approximation data.
 
-% unicode2ascii(convertCharsToStrings(cva.Path))
+unicode2ascii(convertCharsToStrings(cva.Path))
 
 
 switch cva.type
@@ -1573,7 +1576,14 @@ switch cva.type
                     all_text_points_split(i,:)=cellstr(strsplit(string(all_text_points(i)),',','CollapseDelimiters',false)); %Extract row with labels
                 end
                 first_col=all_text_points_split(:,1);
+                p1_split    = find(contains(first_col,'Part 1')); % where part 1 starts (applied loads)
+                p2_split    = find(contains(first_col,'Part 2'));% where part 2 starts (gage outputs)
+                if isempty(p1_split) == 0 && isempty(p2_split) == 0
+                    part1_dat   = excessVec0(1:p2_split-1,:); % part 1 data (applied loads)
+                    part1_dat   = excessVec0(p2_split+1:end,:); % part 2 data (gage)
+                end
                 ignore_row=find(contains(first_col,';')); %Find rows with semicolons in the first column
+                    % find part 1 and part 2 style balcal file -- Akshay Naik AOX 1/2021
                 
                 excessVec0(ignore_row,:)=[];
                 targetMatrix0(ignore_row,:)=[];
