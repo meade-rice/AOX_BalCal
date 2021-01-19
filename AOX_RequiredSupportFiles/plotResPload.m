@@ -20,16 +20,16 @@ for i = 1:length(seriesVal)
 end
 
 %create array of colors and shapes 
-pointcolor=['ys','ms','cs','rs','gs','bs','ks',...
-            'yd','md','cd','rd','gd','bd','kd',...
-            'yo','mo','co','ro','go','bo','ko',...
-            'yx','mx','cx','rx','gx','bx','kx'];
+pointcolor=['ms','cs','rs','gs','bs','ks','ys',...
+            'md','cd','rd','gd','bd','kd','yd',...
+            'mo','co','ro','go','bo','ko','yo',...
+            'mx','cx','rx','gx','bx','kx''yx',];
 
 
 sub=0;
 r = min(n_dim,6);
 % figure() % uncomment this if running outside of AOX_Balcal
-h1=tiledlayout(6, 1);
+tiledlayout(6, 1);
 %figure('Name',h1.Name,'NumberTitle','off','WindowState','maximized');
 
 
@@ -58,7 +58,7 @@ for i = 1:n_dim %subplot for each series
             ind=find(series_adjusted==j);
             x1 = pload(ind,i);
             y1 = resPCT(ind,i);
-            scatter(x1,y1,pointcolor(j));
+            scatter(x1,y1,pointcolor((j*2)-1:j*2));
             hold on
         end
     end
@@ -72,7 +72,9 @@ for i = 1:n_dim %subplot for each series
     text(0,0.4,'Residual -0.25%');
 %     plot(xthresh, ythreshl, '--k');
 %     plot(xthresh, ythreshh, '--k');
-    title("Residual; % Load Capacity vs. Applied Load; % Load Capacity");
+    titlestr = strcat(string(loadlist{1,i}), "   Residual; % Load Capacity vs. Applied Load; % Load Capacity   StdDev: ");
+    titlestr = strcat(titlestr, num2str(std(resPCT(:,i))));
+    title(titlestr);
     xlabel("Applied Load: " + string(loadlist{1,i}) + ", % of load capacity");
     ylabel("\Delta " + string(loadlist{1,i}) + "(% Load Capacity)");
     hold on

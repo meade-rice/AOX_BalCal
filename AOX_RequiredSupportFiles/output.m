@@ -358,11 +358,31 @@ end
 %% Residual vs datapoint plot
 if FLAGS.res == 1
     if FLAGS.mode==1
-         figure('Name',char(strcat(section,{' '},'Model; Residuals of Load Versus Data Point Index')),'NumberTitle','off','WindowState','maximized')
+        figname = char(strcat(section,{' '},'Model; Residuals of Load Versus Data Point Index'));
+        if FLAGS.dispPlot
+            f2=figure('Name',figname,'NumberTitle','off','WindowState','maximized');
+        else
+            f2=figure('Name',figname,'NumberTitle','off','WindowState','maximized','visible','off');
+        end
         plotResPages(series, targetRes, loadlist, stdDevPercentCapacity, loadCapacities)
+        figname =  strrep(figname, '%', 'Perc');
+        figname =  strrep(figname, ':', '_');
+        figname =  strrep(figname, ';', '_');
+        set(f2, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
+        saveas(f2,strcat(output_location,figname,'fig'));
     else
-        figure('Name',char(strcat(section,{' '},'Model; Residuals of Output Versus Data Point Index')),'NumberTitle','off','WindowState','maximized')
+        figname = char(strcat(section,{' '},'Model; Residuals of Output Versus Data Point Index'));
+        if FLAGS.dispPlot
+            f2 = figure('Name',figname,'NumberTitle','off','WindowState','maximized');
+        else
+            f2 = figure('Name',figname,'NumberTitle','off','WindowState','maximized','visible','off');
+        end
         plotResPages(series, targetRes, loadlist, standardDev)
+        figname =  strrep(figname, '%', 'Perc');
+        figname =  strrep(figname, ':', '_');
+        figname =  strrep(figname, ';', '_');
+        set(f2, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
+        saveas(f2,strcat(output_location,figname),'fig');
     end
 end
 
@@ -374,8 +394,18 @@ if FLAGS.res == 1
         resPLoad = targetMatrixvalid;
     end
     if FLAGS.mode==1
-        figure('Name',char(strcat(section,{' '},'Model: Residuals of Load Versus Applied Load (% of load capacity)')),'NumberTitle','off','WindowState','maximized')
-        plotResPload(resPLoad,targetRes,loadCapacities,loadlist,series)%added series jp
+        figname = char(strcat(section,{' '},'Model: Residuals of Load Versus Applied Load (% of load capacity)'));
+        if FLAGS.dispPlot
+            f3 = figure('Name',figname,'NumberTitle','off','WindowState','maximized');
+        else
+            f3 = figure('Name',figname,'NumberTitle','off','WindowState','maximized','visible','off');
+        end
+        plotResPload(resPLoad,targetRes,loadCapacities,loadlist,series)
+        figname =  strrep(figname, '%', 'Perc');
+        figname =  strrep(figname, ':', '_');
+        figname =  strrep(figname, ';', '_');
+        set(f3, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
+        saveas(f3,strcat(output_location,figname),'fig');
         hold off
     end
 end
@@ -385,8 +415,12 @@ if FLAGS.hist == 1
     if contains(section,{'Calibration'})
         NotNormConf=100*(1-SW_pValue);
     end
-   
-    figure('Name',strcat(char(section)," Residual Histogram"),'NumberTitle','off','WindowState','maximized')
+    figname = strcat(char(section)," Residual Histogram");
+    if FLAGS.dispPlot
+        f4 = figure('Name',figname,'NumberTitle','off','WindowState','maximized');
+    else
+        f4 = figure('Name',figname,'NumberTitle','off','WindowState','maximized','visible','off');
+    end
     for k0=1:length(targetRes(1,:))
         subplot(2,ceil(loaddimFlag/2),k0)
         binWidth = 0.25;
@@ -411,6 +445,11 @@ if FLAGS.hist == 1
             end
         end
     end
+    figname =  strrep(figname, '%', 'Perc');
+    figname =  strrep(figname, ':', '_');
+    figname =  strrep(figname, ';', '_');
+    set(f4, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
+    saveas(f4,strcat(output_location,figname),'fig');
 end
     
 %% OUTPUT RESIDUAL QQ PLOTS
@@ -418,8 +457,12 @@ if FLAGS.QQ == 1
     if contains(section,{'Calibration'})
         NotNormConf=100*(1-SW_pValue);
     end
-    
-    figure('Name',strcat(char(section)," Residual Q-Q Plot"),'NumberTitle','off','WindowState','maximized')
+    figname = strcat(char(section)," Residual Q-Q Plot");
+    if FLAGS.dispPlot
+        f5 = figure('Name',figname,'NumberTitle','off','WindowState','maximized');
+    else
+        f5 = figure('Name',figname,'NumberTitle','off','WindowState','maximized','visible','off');
+    end
     for k0=1:length(targetRes(1,:))
         subplot(2,ceil(loaddimFlag/2),k0)
         qqplot(targetRes(:,k0)/standardDev(k0,:))
@@ -443,14 +486,29 @@ if FLAGS.QQ == 1
             end
         end
     end
+    figname =  strrep(figname, '%', 'Perc');
+    figname =  strrep(figname, ':', '_');
+    figname =  strrep(figname, ';', '_');
+    set(f5, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
+    saveas(f5,strcat(output_location,figname),'fig');
 end
 
 %END SAME
 
 %% Prints residual vs. input and calculates correlations
 if FLAGS.rescorr == 1
-    figure('Name',char(strcat(section,{' '},'Residual Correlation Plot')),'NumberTitle','off','WindowState','maximized');
+    figname = char(strcat(section,{' '},'Residual Correlation Plot'));
+    if FLAGS.dispPlot
+        f6 = figure('Name',figname,'NumberTitle','off','WindowState','maximized');
+    else
+        f6 = figure('Name',figname,'NumberTitle','off','WindowState','maximized','visible','off');
+    end
     correlationPlot(excessVec0, targetRes, voltagelist, reslist);
+    figname =  strrep(figname, '%', 'Perc');
+    figname =  strrep(figname, ':', '_');
+    figname =  strrep(figname, ';', '_');
+    set(f6, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
+    saveas(f6,strcat(output_location,figname),'fig');
 end
 
 

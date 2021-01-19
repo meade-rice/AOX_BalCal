@@ -70,6 +70,9 @@ FLAGS.VIF_selfTerm=match(5);
 %                                                                             4 (custom)
 FLAGS.model = out.model;
 %
+%TO DISPLAY PLOTS
+FLAGS.dispPlot = out.dispPlot;
+%
 %TO PRINT LOAD PERFORMANCE PARAMETERS TO CSV                set FLAGS.print = 1;
 FLAGS.print = out.print;
 %
@@ -362,8 +365,14 @@ end
 
 % Prints output vs. input and calculates correlations
 if FLAGS.corr == 1
-    figure('Name','Correlation plot','NumberTitle','off','WindowState','maximized');
+    if FLAGS.dispPlot
+        f1 = figure('Name','Correlation plot','NumberTitle','off','WindowState','maximized');
+    else
+        f1 = figure('Name','Correlation plot','NumberTitle','off','WindowState','maximized','visible','off');
+    end
     correlationPlot(targetMatrix0, excessVec0, loadlist, voltagelist);
+    set(f1, 'CreateFcn', 'set(gcbo,''Visible'',''on'')'); 
+    saveas(f1,strcat(file_output_location,'CorrelationPlot','fig'));
 end
 
 %                       END INITIALIZATION SECTION
