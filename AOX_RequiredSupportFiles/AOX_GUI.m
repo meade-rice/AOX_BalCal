@@ -652,8 +652,9 @@ function valFind_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 cpath = get(handles.calPath,'String');
+cpath(strfind(cpath,'\'))='/'; % "/" works on windows but "\" does not work on mac/unix
 if isempty(cpath) == 0 % puts in a default path based on the calibration file picked
-    def_find = strfind(cpath,"\");
+    def_find = strfind(cpath,"/");
     def_find  = def_find(end);
     defpath = cpath(1:def_find);
     fspec = char(string(defpath) + "*.csv;*.val");
@@ -1479,8 +1480,9 @@ function appFind_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 cpath = get(handles.calPath,'String');
+cpath(strfind(cpath,'\'))='/'; % "/" works on windows but "\" does not work on mac/unix
 if isempty(cpath) == 0 % puts in a default path based on the calibration file picked
-    def_find = strfind(cpath,"\");
+    def_find = strfind(cpath,"/");
     def_find  = def_find(end);
     defpath = cpath(1:def_find);
     fspec = char(string(defpath) + "*.csv;*.app");
@@ -1527,7 +1529,7 @@ function savePath = loadCSV(cva,output_location,mode)
 % Input: type - String that changes depending on whether loading
 % calibration, validation, or approximation data.
 
-unicode2ascii(convertCharsToStrings(cva.Path))
+% unicode2ascii(convertCharsToStrings(cva.Path))
 
 
 switch cva.type
@@ -1576,14 +1578,33 @@ switch cva.type
                     all_text_points_split(i,:)=cellstr(strsplit(string(all_text_points(i)),',','CollapseDelimiters',false)); %Extract row with labels
                 end
                 first_col=all_text_points_split(:,1);
+                % detect part 1 and part 2 load and gage split balcal file -- Akshay Naik, AOX 1/2021
                 p1_split    = find(contains(first_col,'Part 1')); % where part 1 starts (applied loads)
                 p2_split    = find(contains(first_col,'Part 2'));% where part 2 starts (gage outputs)
-                if isempty(p1_split) == 0 && isempty(p2_split) == 0
-                    part1_dat   = excessVec0(1:p2_split-1,:); % part 1 data (applied loads)
-                    part1_dat   = excessVec0(p2_split+1:end,:); % part 2 data (gage)
-                end
+%                 if isempty(p1_split) == 0 && isempty(p2_split) == 0
+%                     % split data arrays into part 1 and part 2
+%                     part1_excv  = excessVec0(1:p2_split-1,:); % part 1 (applied loads) for gage array
+%                     part2_excv  = excessVec0(p2_split:end,:); % part 2 (gage) for gage array
+%                     part1_targ  = targetMatrix0(1:p2_split-1,:); % part 1 (applied loads) for load array
+%                     part2_targ  = targetMatrix0(p2_split:end,:); % part 2 (gage) for gage array
+%                     
+%                     % Assumes part 1 is applied loads, part 2 is gage outputs: excessVec0 is part 2 only, targetMatrix0 is part 1 only. 
+%                     % Do I want to check label to make sure it really is as assumed?
+%                     % find rows in each part with semicolons in first column
+%                     first_p1    = first_col(1:p2_split-1,:); % first column --all rows in part 1
+%                     first_p2    = first_col(p2_split:end,:); % first column--all rows in part 2
+%                     ignore_rp1  = find(contains(first_p1,';')); %Find rows with semicolons in the first column of part 1
+%                     ignore_rp2  = find(contains(first_p2,';')); %Find rows with semicolons in the first column of part 1
+%                     % ignore the rows with semicolons
+% %                     part1_excv(ignore_rp1,:) = [];
+%                     part1_targ(ignore_rp1,:) = [];
+%                     part2_excv(ignore_rp2,:) = [];
+% %                     part2_targ(ignore_rp2,:) = [];
+%                     % reassemble excessVec0 and targetMatrix0
+%                     excessVec0 = part2_excv;
+%                     targetMatrix0 = part1_targ;
+%                 end
                 ignore_row=find(contains(first_col,';')); %Find rows with semicolons in the first column
-                    % find part 1 and part 2 style balcal file -- Akshay Naik AOX 1/2021
                 
                 excessVec0(ignore_row,:)=[];
                 targetMatrix0(ignore_row,:)=[];
