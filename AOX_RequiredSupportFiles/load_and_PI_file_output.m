@@ -26,8 +26,8 @@ try %Check current section and determine filename accordingly
     top_row=[{'Point ID','Series1','Series2'},loadlist]; %Top label row
     full_out{1}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(aprxINminGZ)]; %full output
     full_out{2}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(cellstr(string(aprxINminGZ)+' +/- '+string(loadPI)))]; %full output
-    meanrow=[{'Mean Prediction Interval','',''},num2cell(meanPI)];
-    stdvrow=[{'Standard Deviation of Prediction Interval','',''},num2cell(stdvPI)];
+    meanrow=[{'Mean PI','',''},num2cell(meanPI)];
+    stdvrow=[{'Std. Dev of PI','',''},num2cell(stdvPI)];
     full_out{3}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(loadPI);cell(1,9);meanrow;stdvrow]; %full output
 
     for i=1:3

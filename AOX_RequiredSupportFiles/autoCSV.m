@@ -254,6 +254,7 @@ function [ranges] = autoCSV(fname,type)
                 ranges.I = Irange;
                 ranges.O = Drange;
     end
+    ranges.varlocs = varlocs;
     fprintf("CSV Data Detection finished. Refer to warnings, if any.\n");
         % debug--check the outputs
     %     disp(caprange)
