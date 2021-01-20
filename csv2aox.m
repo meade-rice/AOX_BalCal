@@ -21,10 +21,12 @@ fclose('all');
 fileID = fopen([foutname '.csv'],'w');                                      %create or rewrite output file
 fprintf(fileID, ';,%s\n', C_text1);                                         %print the 2 headers
 fprintf(fileID, ';,%s\n', C_text2);
-
-fprintf(fileID, '\n\n\n\n\n\n;\n');                                         %print headers, load capacities, etc
+fprintf(fileID, '\n\n');
+fprintf(fileID, '"INDEP VARIABLE=(Alt,T4/T2,Mach)"\n');
+fprintf(fileID, '"DEP VARIABLE=(Net Thrust,Fuel Flow,WC2,EINOx)"\n');
+fprintf(fileID, '\n\n\n\n\n');                                         %print headers, load capacities, etc
 fprintf(fileID, ';load and response symbols\n');
-fprintf(fileID, ',,,,Net Thrust, Fuel Flow, WC2, EINOx,ALT,T4/T2,Mach\n');
+fprintf(fileID, ',,,,Net Thrust, Fuel Flow, WC2, EINOx,Alt,T4/T2,Mach\n');
 fprintf(fileID, ';load and response units\n');
 fprintf(fileID, ',,,,lbs,lbs/min,lbs/min,1,ft,1,1\n');
 fprintf(fileID, ';,load capacities\n');
@@ -40,7 +42,7 @@ fprintf(fileID, ';,natural zeros\n');
 for i = 1:4                                                                 %natural zeros section
     fprintf(fileID, ',%d,A,%d,,,,,0,0,0\n',1000+i, 90*(i-1));
 end
-fprintf(fileID,'\n;,Point ID,Series1,Series2,Net Thrust,Fuel Flow,WC2,EINOx,Alt,T4/T2,M\n');
+fprintf(fileID,'\n;,Point ID,Series1,Series2,Net Thrust,Fuel Flow,WC2,EINOx,Alt,T4/T2,Mach\n');
 
 for i = 1:length(data)                                                      %printing data
    fprintf(fileID,',%d,1,A,%f,%f,%f,%f,%d,%f,%f\n',i,data(i,7),data(i,8),data(i,11),data(i,14),data(i,4),data(i,13)./data(i,12),data(i,3)); 
