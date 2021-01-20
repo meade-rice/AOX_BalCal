@@ -17,18 +17,19 @@ function []=load_and_PI_file_output(aprxINminGZ,loadPI,meanPI,stdvPI,pointID,ser
 %OUTPUTS:
 % []
 
+
 warning('off', 'MATLAB:xlswrite:AddSheet'); warning('off', 'MATLAB:DELETE:FileNotFound'); warning('off',  'MATLAB:DELETE:Permission') %Surpress warnings
 description=[upper(section), ' APPROXIMATION WITH PREDICTION INTERVAL']; %Text description for command window output
 try %Check current section and determine filename accordingly
     filename=[section,' Approximation w PI.xlsx'];
     fullpath=fullfile(output_location,filename); %Full path for file output
-    
     top_row=[{'Point ID','Series1','Series2'},loadlist]; %Top label row
-    full_out{1}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(aprxINminGZ)]; %full output
-    full_out{2}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(cellstr(string(aprxINminGZ)+' +/- '+string(loadPI)))]; %full output
+    ncol = size(top_row,2); % to make sure number of columns match when assembling output tables
+    full_out{1}=[top_row; pointID, num2cell(series1), num2cell(series2),num2cell(aprxINminGZ)]; %full output
+    full_out{2}=[top_row; pointID, num2cell(series1), num2cell(series2),num2cell(cellstr(string(aprxINminGZ)+' +/- '+string(loadPI)))]; %full output
     meanrow=[{'Mean PI','',''},num2cell(meanPI)];
     stdvrow=[{'Std. Dev of PI','',''},num2cell(stdvPI)];
-    full_out{3}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(loadPI);cell(1,9);meanrow;stdvrow]; %full output
+    full_out{3}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(loadPI);cell(1,ncol);meanrow;stdvrow]; %full output
 
     for i=1:3
         writetable(cell2table(full_out{i}),fullpath,'writevariablenames',0,'Sheet',i,'UseExcel', false); %write to xlsx

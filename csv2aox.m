@@ -8,8 +8,8 @@ clear
 clc
 
 %% Reading in data
-filename = 'FPR140_engine_ColumnData';                                      %name of the input engine deck
-foutname = 'FPR140_engine_AOX_Format';                                      %name of the output file
+filename = 'FPR120_engine_ColumnData';                                      %name of the input engine deck2
+foutname = 'FPR120_engine_AOX_Format';                                      %name of the output file
 
 fileID = fopen([filename '.csv'],'r'); 
 C_text1 = fgetl(fileID);                                                    %get first 2 lines of headers
