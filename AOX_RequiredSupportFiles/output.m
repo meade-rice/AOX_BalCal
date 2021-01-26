@@ -165,7 +165,7 @@ if FLAGS.print == 1 || FLAGS.disp==1
         end
         
         output_name{1}='Tares';
-        section_out=[{'Series'},loadlist(1:loaddimFlag);num2cell([(1:nseries0)', tares])];
+        section_out=[{'Series'},loadlist(1:loaddimFlag);num2cell([unique(series), tares])];
         csv_output=[csv_output;output_name;section_out;empty_cells];
         %Command window printing;
         if FLAGS.disp==1
@@ -175,7 +175,7 @@ if FLAGS.print == 1 || FLAGS.disp==1
         end
         
         output_name{1}='Tares Standard Deviation';
-        section_out=[{'Series'},loadlist(1:loaddimFlag);num2cell([(1:nseries0)', tares_STDDEV])];
+        section_out=[{'Series'},loadlist(1:loaddimFlag);num2cell([unique(series), tares_STDDEV])];
         csv_output=[csv_output;output_name;section_out;empty_cells];
         %Command window printing;
         if FLAGS.disp==1

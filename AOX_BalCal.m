@@ -218,16 +218,14 @@ end
 
 series0 = series;
 
+series20=series2;
+pointID0=pointID;
+[seriesVal,s_1st0,~] = unique(series0);
+nseries0 = length(s_1st0);
 series0_adjusted =series0;
-seriesVal = unique(series);
 for i = 1:length(seriesVal)
     series0_adjusted(series0_adjusted == seriesVal(i)) = i;
 end
-
-series20=series2;
-pointID0=pointID;
-[~,s_1st0,~] = unique(series0);
-nseries0 = length(s_1st0);
 [numpts0, voltdimFlag] = size(excessVec0); %Size of voltage input (input variables)
 loaddimFlag=size(targetMatrix0,2); %Dimension of load input (desired output variable)
 
@@ -540,8 +538,14 @@ if FLAGS.balOut == 1
         series20(OUTLIER_ROWS)=[];
         pointID0(OUTLIER_ROWS)=[];
         comIN0(OUTLIER_ROWS,:) = [];
-        [~,s_1st0,~] = unique(series0);
+        [seriesVal,s_1st0,~] = unique(series0);
         nseries0 = length(s_1st0);
+        
+        series0_adjusted =series0;
+        for i = 1:length(seriesVal)
+            series0_adjusted(series0_adjusted == seriesVal(i)) = i;
+        end
+
         fprintf('Complete\n')
         
         %Calculate xcalib (coefficients)
@@ -645,8 +649,7 @@ if FLAGS.balVal == 1
     [validSeries,s_1stV,~] = unique(seriesvalid); %Define series for validation data
     
     seriesvalid_adjusted =seriesvalid;
-    seriesVal = unique(seriesvalid);
-    for i = 1:length(seriesVal)
+    for i = 1:length(validSeries)
         seriesvalid_adjusted(seriesvalid_adjusted == seriesVal(i)) = i;
     end
     
@@ -682,7 +685,7 @@ if FLAGS.balVal == 1
     end
     
     %find number of series0; this will tell us the number of tares
-    nseriesvalid = max(seriesvalid);
+    nseriesvalid = max(seriesvalid_adjusted);
     
     % Call the Algebraic Subroutine
     comINvalid = balCal_algEqns(FLAGS.model,dainputsvalid,seriesvalid,0); %Generate term combinations
@@ -1031,7 +1034,7 @@ if FLAGS.balCal == 2
         else
             taresGRBF=zeros(nseries0,loaddimFlag); %Else set to zero (no series intercepts)
         end
-        taretalRBF=taresGRBF(series0,:);
+        taretalRBF=taresGRBF(series0_adjusted,:);
         tareGRBFHist{u} = taresGRBF;
         
         %update the approximation
