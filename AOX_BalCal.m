@@ -32,7 +32,7 @@ clc;
 clearvars;
 close all;
 
-diary consoleoutput.out 
+diary consoleoutput.txt
 fprintf('Copyright 2019 Andrew Meade, Ali Arya Mokhtarzadeh, Javier Villarreal, and John Potthoff.  All Rights Reserved.\n')
 
 %Add path for subfolder of functions
@@ -1543,8 +1543,18 @@ runTime=toc;
 if isdeployed % Optional, use if you want the non-deployed version to not exit immediately
     input('Press enter to finish and close');
 end
+format compact
 diary off
-movefile('consoleoutput.out', strcat(file_output_location,'consoleoutput.out'))
+texttemp = regexprep(fileread('consoleoutput.txt'), '<.*?>', '');
+%texttemp = regexprep(texttemp, ' </strong>', ' ');
+texttemp(double(texttemp)==8)='';
+texttemp= insertAfter(texttemp,'/','/');
+texttemp = insertAfter(texttemp,'\','\');
+fileID = fopen('consoleoutput.txt', 'w');
+fprintf(fileID, texttemp);
+fclose(fileID);
+
+movefile('consoleoutput.txt', strcat(file_output_location,'consoleoutput.txt'))
 
 
 
