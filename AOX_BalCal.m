@@ -1305,7 +1305,7 @@ if FLAGS.balCal == 2
         else
             taresGRBF=zeros(nseries0,loaddimFlag); %Else set to zero (no series intercepts)
         end
-        taretalRBF=taresGRBF(series0,:);
+        taretalRBF=taresGRBF(series0_adjusted,:);
         tareGRBFHist{u+1} = taresGRBF;
         
         %update the approximation
