@@ -1546,10 +1546,11 @@ end
 format compact
 diary off
 texttemp = regexprep(fileread('consoleoutput.txt'), '<.*?>', '');
-%texttemp = regexprep(texttemp, ' </strong>', ' ');
+texttemp = regexprep(texttemp, 'style="font-weight:bold"', '');
 texttemp(double(texttemp)==8)='';
-texttemp= insertAfter(texttemp,'/','/');
-texttemp = insertAfter(texttemp,'\','\');
+%texttemp= insertAfter(texttemp,'/','/');
+%texttemp = insertAfter(texttemp,'\','\');
+texttemp = regexprep(texttemp, '\', '/');
 fileID = fopen('consoleoutput.txt', 'w');
 fprintf(fileID, texttemp);
 fclose(fileID);
