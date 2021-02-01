@@ -700,21 +700,25 @@ if strcmp(section,{'Calibration GRBF'})==1
         print_dlmwrite(filename,input,precision,description,output_location);
         
         %Output GRBF center INDICES
-        filename = 'AOX_GRBF_Centers.csv';
+        filename = 'AOX_GRBF_Indices.csv';
         input=centerIndexHist;
         precision='%.16f';
         description='CALIBRATION GRBF CENTER INDICES';
         print_dlmwrite(filename,input,precision,description,output_location);
         
         %Output GRBF Centers for each load channel
-        for f=1:loaddimFlag % iterate over load channels (dim 3 of center_daHist)
-            filename = "AOX_GRBF_Centers_Channel" + string(f) + ".csv";
-            input = center_daHist(:,:,f);
-            precision = '%.16f';
-            description = "CALIBRATION GRBF CENTERS -- LOAD CHANNEL " + string(f);
-            print_dlmwrite(filename,input,precision,description,output_location);
-        end
-        
+        filename = "AOX_GRBF_Centers.xlsx";
+        centers_out = center_daHist; % output of centers is from center_daHist. 3rd dim is load channels 
+        indices = centerIndexHist;
+        centers_output(filename,centers_out,indices,pointID,series,series2,loadlist,voltagelist,output_location,loaddimFlag)
+        % for f=1:loaddimFlag % iterate over load channels (dim 3 of center_daHist)
+        %     filename = "AOX_GRBF_Centers_Channel" + string(f) + ".csv";
+        %     input = center_daHist(:,:,f);
+        %     precision = '%.16f';
+        %     description = "CALIBRATION GRBF CENTERS -- LOAD CHANNEL " + string(f);
+        %     print_dlmwrite(filename,input,precision,description,output_location);
+        % end
+
         %Output GRBF h value
         filename = 'AOX_GRBF_h.csv';
         input=h_GRBF;
@@ -800,93 +804,132 @@ end
 end
 
 function [RECOMM_ALG_EQN]=anova_output(ANOVA,nterms,numpts,loaddimFlag,section,output_location,Term_Names,loadlist,tR2,gee)
-%Function creates all the outputs for ANOVA results
+    %Function creates all the outputs for ANOVA results
 
-%INPUTS:
-%  ANOVA = Structure containing results from ANOVA analysis
-%  nterms = Number of terms (predictor variables) in regression model
-%  nseries0 = Number of series
-%  numpts = Number of datapoints (observations)
-%  loaddimFlag = Dimension of load data (# channels)
-%  section = current section of code. Expected values: 'Calibration Algebraic', 'Calibration GRBF', 'Validation Algebraic', 'Validation GRBF'
-%  output_location = Path for output files
-%  Term_Names =  Term labels for predictor variables
-%  loadlist = Labels for load variables
-%  tR2 = target residuals squared
-%  gee = mean of target residuals in each channel
+    %INPUTS:
+    %  ANOVA = Structure containing results from ANOVA analysis
+    %  nterms = Number of terms (predictor variables) in regression model
+    %  nseries0 = Number of series
+    %  numpts = Number of datapoints (observations)
+    %  loaddimFlag = Dimension of load data (# channels)
+    %  section = current section of code. Expected values: 'Calibration Algebraic', 'Calibration GRBF', 'Validation Algebraic', 'Validation GRBF'
+    %  output_location = Path for output files
+    %  Term_Names =  Term labels for predictor variables
+    %  loadlist = Labels for load variables
+    %  tR2 = target residuals squared
+    %  gee = mean of target residuals in each channel
 
-%OUTPUTS:
-%  RECOMM_ALG_EQN = Matrix for recommended regression model.  1's and 0's for which predictor variables to include in the model
+    %OUTPUTS:
+    %  RECOMM_ALG_EQN = Matrix for recommended regression model.  1's and 0's for which predictor variables to include in the model
 
-%Output ANOVA results
+    %Output ANOVA results
 
-totalnum = size(ANOVA(1).sig,1);
-totalnumcoeffs = [1:totalnum];
-totalnumcoeffs2 = [2:totalnum+1];
-dsof = numpts-nterms-1;
+    totalnum = size(ANOVA(1).sig,1);
+    totalnumcoeffs = [1:totalnum];
+    totalnumcoeffs2 = [2:totalnum+1];
+    dsof = numpts-nterms-1;
 
-loadstatlist = {'Load', 'Sum_Sqrs', 'PRESS_Stat', 'DOF', 'Mean_Sqrs', 'F_Value', 'P_Value', 'R_sq', 'Adj_R_sq', 'PRESS_R_sq'};
-regresslist = {'Term_Index','Term_Name', 'Coeff_Value', 'CI_95cnt', 'T_Stat', 'P_Value', 'VIF_A', 'Signif'};
+    loadstatlist = {'Load', 'Sum_Sqrs', 'PRESS_Stat', 'DOF', 'Mean_Sqrs', 'F_Value', 'P_Value', 'R_sq', 'Adj_R_sq', 'PRESS_R_sq'};
+    regresslist = {'Term_Index','Term_Name', 'Coeff_Value', 'CI_95cnt', 'T_Stat', 'P_Value', 'VIF_A', 'Signif'};
 
-STAT_LOAD=cell(loaddimFlag,1);
-REGRESS_COEFFS=cell(loaddimFlag,1);
-for k=1:loaddimFlag
-    RECOMM_ALG_EQN(:,k) = [1.0*ANOVA(k).sig([1:nterms])];
-    manoa2(k,:) = [loadlist(k), tR2(1,k), ANOVA(k).PRESS, dsof, gee(1,k), ANOVA(k).F, ANOVA(k).p_F, ANOVA(k).R_sq, ANOVA(k).R_sq_adj, ANOVA(k).R_sq_p];
-    ANOVA01(:,:) = [totalnumcoeffs; ANOVA(k).beta'; ANOVA(k).beta_CI'; ANOVA(k).T'; ANOVA(k).p_T'; ANOVA(k).VIF'; 1.0*ANOVA(k).sig']';
-    ANOVA1_2(:,:) = num2cell([ANOVA01([1:nterms],:)]);
-    STAT_LOAD{k} = array2table(manoa2(k,:),'VariableNames',loadstatlist(1:10));
-    REGRESS_COEFFS{k} = cell2table([ANOVA1_2(:,1),Term_Names,ANOVA1_2(:,2:end)],'VariableNames',regresslist);
-end
-
-warning('off', 'MATLAB:xlswrite:AddSheet'); warning('off', 'MATLAB:DELETE:FileNotFound'); warning('off',  'MATLAB:DELETE:Permission')
-filename = [section,' ANOVA STATS.xlsx'];
-fullpath=fullfile(output_location,filename);
-
-try
-    delete(char(fullpath))
+    STAT_LOAD=cell(loaddimFlag,1);
+    REGRESS_COEFFS=cell(loaddimFlag,1);
     for k=1:loaddimFlag
-        writetable(STAT_LOAD{k},fullpath,'Sheet',k,'Range','A1');
-        writetable(REGRESS_COEFFS{k},fullpath,'Sheet',k,'Range','A4');
+        RECOMM_ALG_EQN(:,k) = [1.0*ANOVA(k).sig([1:nterms])];
+        manoa2(k,:) = [loadlist(k), tR2(1,k), ANOVA(k).PRESS, dsof, gee(1,k), ANOVA(k).F, ANOVA(k).p_F, ANOVA(k).R_sq, ANOVA(k).R_sq_adj, ANOVA(k).R_sq_p];
+        ANOVA01(:,:) = [totalnumcoeffs; ANOVA(k).beta'; ANOVA(k).beta_CI'; ANOVA(k).T'; ANOVA(k).p_T'; ANOVA(k).VIF'; 1.0*ANOVA(k).sig']';
+        ANOVA1_2(:,:) = num2cell([ANOVA01([1:nterms],:)]);
+        STAT_LOAD{k} = array2table(manoa2(k,:),'VariableNames',loadstatlist(1:10));
+        REGRESS_COEFFS{k} = cell2table([ANOVA1_2(:,1),Term_Names,ANOVA1_2(:,2:end)],'VariableNames',regresslist);
     end
-    fprintf(['\n',section,' METHOD ANOVA STATISTICS FILE: ']); fprintf(filename); fprintf('\n ');
-catch ME
-    fprintf(['\nUNABLE TO PRINT ',section,' METHOD ANOVA STATISTICS FILE. ']);
-    if (strcmp(ME.identifier,'MATLAB:table:write:FileOpenInAnotherProcess'))
-        fprintf('ENSURE "'); fprintf(char(filename)); fprintf('" IS NOT OPEN AND TRY AGAIN')
+
+    warning('off', 'MATLAB:xlswrite:AddSheet'); warning('off', 'MATLAB:DELETE:FileNotFound'); warning('off',  'MATLAB:DELETE:Permission')
+    filename = [section,' ANOVA STATS.xlsx'];
+    fullpath=fullfile(output_location,filename);
+
+    try
+        delete(char(fullpath))
+        for k=1:loaddimFlag
+            writetable(STAT_LOAD{k},fullpath,'Sheet',k,'Range','A1');
+            writetable(REGRESS_COEFFS{k},fullpath,'Sheet',k,'Range','A4');
+        end
+        fprintf(['\n',section,' METHOD ANOVA STATISTICS FILE: ']); fprintf(filename); fprintf('\n ');
+    catch ME
+        fprintf(['\nUNABLE TO PRINT ',section,' METHOD ANOVA STATISTICS FILE. ']);
+        if (strcmp(ME.identifier,'MATLAB:table:write:FileOpenInAnotherProcess'))
+            fprintf('ENSURE "'); fprintf(char(filename)); fprintf('" IS NOT OPEN AND TRY AGAIN')
+        end
+        fprintf('\n')
     end
-    fprintf('\n')
-end
-warning('on',  'MATLAB:DELETE:Permission'); warning('on', 'MATLAB:xlswrite:AddSheet'); warning('on', 'MATLAB:DELETE:FileNotFound')
+    warning('on',  'MATLAB:DELETE:Permission'); warning('on', 'MATLAB:xlswrite:AddSheet'); warning('on', 'MATLAB:DELETE:FileNotFound')
 end
 
 
 function []=print_coeff(filename,coeff_input,description,termList,loadlist,output_location)
-%Function prints coefficients to csv file.  Error handling
-%included to catch if the file is open and unable to write
+    %Function prints coefficients to csv file.  Error handling
+    %included to catch if the file is open and unable to write
 
-%INPUTS:
-%  filename = Filename for file to write
-%  coeff_input = Matrix of coefficients to write to file
-%  description = Description of file for Command Window output
-%  termList = List of term labels for predictor variables
-%  loadlist = Labels for load variables
-%  output_location = Path for location of output files
+    %INPUTS:
+    %  filename = Filename for file to write
+    %  coeff_input = Matrix of coefficients to write to file
+    %  description = Description of file for Command Window output
+    %  termList = List of term labels for predictor variables
+    %  loadlist = Labels for load variables
+    %  output_location = Path for location of output files
 
-%OUTPUTS:
-%  []
+    %OUTPUTS:
+    %  []
 
-fullpath=fullfile(output_location,filename);
-try
-    top_row=[{'Term Name'},loadlist]; %Top label row
-    full_out=[top_row; termList, num2cell(coeff_input)]; %full output
-    writetable(cell2table(full_out),fullpath,'writevariablenames',0); %write to csv
-    fprintf('\n'); fprintf(description); fprintf(' FILE: '); fprintf(filename); fprintf('\n');
-catch ME
-    fprintf('\nUNABLE TO PRINT '); fprintf('%s %s', upper(description),'FILE. ');
-    if (strcmp(ME.identifier,'MATLAB:table:write:FileOpenInAnotherProcess')) || (strcmp(ME.identifier,'MATLAB:table:write:FileOpenError'))
-        fprintf('ENSURE "'); fprintf(char(filename));fprintf('" IS NOT OPEN AND TRY AGAIN')
+    fullpath=fullfile(output_location,filename);
+    try
+        top_row=[{'Term Name'},loadlist]; %Top label row
+        full_out=[top_row; termList, num2cell(coeff_input)]; %full output
+        writetable(cell2table(full_out),fullpath,'writevariablenames',0); %write to csv
+        fprintf('\n'); fprintf(description); fprintf(' FILE: '); fprintf(filename); fprintf('\n');
+    catch ME
+        fprintf('\nUNABLE TO PRINT '); fprintf('%s %s', upper(description),'FILE. ');
+        if (strcmp(ME.identifier,'MATLAB:table:write:FileOpenInAnotherProcess')) || (strcmp(ME.identifier,'MATLAB:table:write:FileOpenError'))
+            fprintf('ENSURE "'); fprintf(char(filename));fprintf('" IS NOT OPEN AND TRY AGAIN')
+        end
+        fprintf('\n')
     end
-    fprintf('\n')
 end
+
+function [] = centers_output(filename,centers,indices,pointID,series1,series2,loadlist,voltagelist,output_location,loaddimFlag) % output centers file in .xlsx with multiple sheets
+    warning('off', 'MATLAB:xlswrite:AddSheet'); warning('off', 'MATLAB:DELETE:FileNotFound'); warning('off',  'MATLAB:DELETE:Permission') %Surpress warnings
+    % Output GRBF Centers for each load channel in one .xlsx file. Every tab is a channel.
+    centerpath = fullfile(output_location,filename); % full path for file output
+    description = [];    % description to identify load channel sheet
+    for f=1:loaddimFlag % iterate over load channels (dim 3 of centers aka center_daHist)
+        description = [description;"Centers: Channel " + string(loadlist{f})];
+        centers_row = voltagelist; %1 x loaddimFlag size cell --original centers file did not have a header so it is possible to leave it out
+        wr_centers = num2cell(centers(:,:,f)); % take the current load channel, convert to cell
+    
+        sheet_out = [centers_row;wr_centers]; % data for current load channel
+        % precision = '%.16f';
+        writetable(cell2table(sheet_out),centerpath,'writevariablenames',0,'Sheet',f,'UseExcel', false); %write to xlsx
+    end
+
+    % try renaming excel sheets (only possible on PC)
+    try %Rename excel sheets and delete extra sheets, only possible on PC
+        [~,sheets]=xlsfinfo(centerpath);
+        s = what;
+        e = actxserver('Excel.Application'); % # open Activex server
+        e.DisplayAlerts = false;
+        e.Visible=false;
+        ewb = e.Workbooks.Open(char(centerpath)); % # open file (enter full path!)
+        if max(size(sheets))>loaddimFlag
+            %cycle through, deleting all sheets other than the 1st loaddimFlag sheets
+            for i=loaddimFlag+1:max(size(sheets))
+                ewb.Sheets.Item(i).Delete;  %Delete sheets
+            end
+        end
+        for i=1:loaddimFlag
+            ewb.Worksheets.Item(i).Name = description(i); % rename each sheet to the correct load channel
+        end        
+        ewb.Save % # save to the same file
+        ewb.Close
+        e.Quit
+        delete(e);
+    end
 end
