@@ -69,10 +69,10 @@ function [ranges] = autoCSV(fname,type)
                     else
                         solo = 0; % indicates multiple variables
                         v1end = coms_i(1)-1;
-                        v2start = coms_i(end)+2;
+                        v2start = coms_i(end)+1;
                     end
-                    nv1 = string(V(i,v1+1:v1end)); % NAME of first var
-                    nv2 = string(V(i,v2start:v2-1)); % NAME of 2nd var, coms_i+2 because comma + space
+                    nv1 = string(V(i,v1+1:v1end)); nv1 = strtrim(nv1); % NAME of first var
+                    nv2 = string(V(i,v2start:v2-1)); nv2 = strtrim(nv2); % NAME of 2nd var, coms_i+2 because comma + space
                     nv = [nv; [nv1 nv2]]; % NV: FIRST ROW = IND. VAR, 2ND ROW = DEP. VAR
                     [vrow,~] = find(contains(C,nv1),1,'last'); %finds the row containing header for "data for analysis" portion
 
@@ -205,54 +205,54 @@ function [ranges] = autoCSV(fname,type)
             ranges.V = Vrange;
         case "gen"
             %% Variables Already Detected. Finds their locations and assigns data ranges.
-             vcount = 1;
-                % iterate over independent and dependent variables (loops twice:
-                % 1st for indep., 2nd for dep.
-                nv = []; % initialize array containing names of variables (strings)
-                for i=1:size(V,1) 
-                    % detect names of first and last variable
-                    coms_i = strfind(V(i,:),','); % find commas to separate variable names
-                    v1 = strfind(V(i,:),'(');
-                    v2 = strfind(V(i,:),')');
-                    if isempty(coms_i) == 1 %in the case of only 1 variable
-                        solo = 1; % indicates 1 variable
-                        v1end = v2-1;
-                        v2start = v1+1;
-                    else
-                        solo = 0; % indicates multiple variables
-                        v1end = coms_i(1)-1;
-                        v2start = coms_i(end)+2;
-                    end
-                    nv1 = string(V(i,v1+1:v1end)); % NAME of first var
-                    nv2 = string(V(i,v2start:v2-1)); % NAME of 2nd var, coms_i+2 because comma + space
-                    nv = [nv; [nv1 nv2]];
-                    [vrow,~] = find(contains(C,nv1),1,'last'); %finds the row containing header for "data for analysis" portion
+            vcount = 1;
+            % iterate over independent and dependent variables (loops twice:
+            % 1st for indep., 2nd for dep. 
+            nv = []; % initialize array containing names of first and last variables
+            for i=1:size(V,1) 
+                % detect names of first and last variable
+                coms_i = strfind(V(i,:),','); % find commas to separate variable names
+                v1 = strfind(V(i,:),'(');
+                v2 = strfind(V(i,:),')');
+                if isempty(coms_i) == 1 %in the case of only 1 variable
+                    solo = 1; % indicates 1 variable
+                    v1end = v2-1;
+                    v2start = v1+1;
+                else
+                    solo = 0; % indicates multiple variables
+                    v1end = coms_i(1)-1;
+                    v2start = coms_i(end)+1;
+                end
+                nv1 = string(V(i,v1+1:v1end)); nv1 = strtrim(nv1); % NAME of first var
+                nv2 = string(V(i,v2start:v2-1)); nv2 = strtrim(nv2); % NAME of 2nd var, coms_i+2 because comma + space
+                nv = [nv; [nv1 nv2]]; % NV: FIRST ROW = IND. VAR, 2ND ROW = DEP. VAR
+                [vrow,~] = find(contains(C,nv1),1,'last'); %finds the row containing header for "data for analysis" portion
 
-                    symbs = C(vrow,:);
-                    %find columns of the first and last variable
-                    vcol = zeros(1,2);
-                    for n=1:nv.size(2)
-                        for j = 1:length(symbs) % checks along header row
-                            if strcmp(nv(i,n),symbs(j)) == 1 % find column of FIRST variable
-                                vcol(n) = j;
-                            end
+                symbs = C(vrow,:);
+                %find columns of the first and last variable
+                vcol = zeros(1,2);
+                for n=1:nv.size(2)
+                    for j = 1:length(symbs)
+                        if strcmp(nv(i,n),symbs(j)) == 1 % find column of FIRST variable
+                            vcol(n) = j;
                         end
                     end
-                    % assign to varlocs -- stores the limits of independent variable data and dependent variable data
-                    varlocs(vcount,1) = vrow; % this is the header row for data array
-                    varlocs(vcount,2) = vcol(1); % column for first variable
-                    vcount = vcount +1;
-                    varlocs(vcount,1) = vrow; % this is the header row for data array
-                    varlocs(vcount,2) = vcol(2); % column for second variable
-                    vcount = vcount +1;
                 end
-                 % Range for Independent Variable
-                Irange = [(string(alphabet(varlocs(1,2))) + string(varlocs(1,1)+1)),(string(alphabet(varlocs(2,2)))+string(nr))];
-                % Range for Dependent Variable
-                Drange = [(string(alphabet(varlocs(3,2))) + string(varlocs(3,1)+1)),(string(alphabet(varlocs(4,2)))+string(nr))];
-                %% Write to output structure
-                ranges.I = Irange;
-                ranges.O = Drange;
+                % assign to varlocs -- stores the limits of independent variable data and dependent variable data
+                varlocs(vcount,1) = vrow; % this is the header row for data array
+                varlocs(vcount,2) = vcol(1); % column for first variable
+                vcount = vcount +1;
+                varlocs(vcount,1) = vrow; % this is the header row for data array
+                varlocs(vcount,2) = vcol(2); % column for second variable
+                vcount = vcount +1;
+            end
+                % Range for Independent Variable
+            Irange = [(string(alphabet(varlocs(1,2))) + string(varlocs(1,1)+1)),(string(alphabet(varlocs(2,2)))+string(nr))];
+            % Range for Dependent Variable
+            Drange = [(string(alphabet(varlocs(3,2))) + string(varlocs(3,1)+1)),(string(alphabet(varlocs(4,2)))+string(nr))];
+            %% Write to output structure
+            ranges.I = Irange;
+            ranges.O = Drange;
     end
     ranges.varlocs = varlocs;
     fprintf("CSV Data Detection finished. Refer to warnings, if any.\n");
