@@ -277,13 +277,13 @@ switch calext
             cal.CSV(3,:) = a12rc(get(handles.c31,'String'));
         end
         
-        cal.loadend          = a12rc(get(handles.c42,'String'));
-        cal.voltend          = a12rc(get(handles.c52,'String'));
+        cal.loadend          = a12rc(get(handles.c42,'String')); % general approximation 
+        cal.voltend          = a12rc(get(handles.c52,'String')); % general approximation
         cal.Range{4} = [get(handles.c41,'String'),'..',get(handles.c42,'String')];
         cal.CSV(4,:) = a12rc(get(handles.c41,'String'));
         cal.Range{5} = [get(handles.c51,'String'),'..',get(handles.c52,'String')];
         cal.CSV(5,:) = a12rc(get(handles.c51,'String'));
-        if exist("ranges.varlocs",'var')
+        if exist("ranges.varlocs",'var') % possible enhancement for loadCSV (does nothing rn)
             cal.varlocs = ranges.varlocs;
         else
             cal.varlocs = 0;

@@ -929,7 +929,8 @@ function [] = centers_output(filename,centers,indices,pointID,series1,series2,lo
         end        
         ewb.Save % # save to the same file
         ewb.Close
-        e.Quit
+%         e.Quit
+        invoke(e, 'Quit'); % new method found online
         delete(e);
     end
 end

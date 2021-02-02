@@ -86,7 +86,8 @@ if xlsx==1 %If xlsx file was written
         
         ewb.Save % # save to the same file
         ewb.Close
-        e.Quit
+%         e.Quit %--this is not actually quitting excel!
+        invoke(e, 'Quit'); % new method found online
         delete(e);
     end
     
