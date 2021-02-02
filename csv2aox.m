@@ -8,22 +8,24 @@ clear
 clc
 
 %% Reading in data
-filename = 'FPR120_engine_ColumnData';                                      %name of the input engine deck2
-foutname = 'FPR120_engine_AOX_Format';                                      %name of the output file
+filename = '../FPR125_engine_ColumnData';                                      %name of the input engine deck2
+foutname = '../FPR125_engine_AOX_Format';                                      %name of the output file
 
 fileID = fopen([filename '.csv'],'r'); 
 C_text1 = fgetl(fileID);                                                    %get first 2 lines of headers
 C_text2 = fgetl(fileID);
+C_text1 = regexprep(C_text1, ',', '');
+C_text2 = regexprep(C_text2, ',', '');
 data = readmatrix([filename '.csv']);                                       %read data
 
 fclose('all');
 %%
 fileID = fopen([foutname '.csv'],'w');                                      %create or rewrite output file
-fprintf(fileID, ';,%s\n', C_text1);                                         %print the 2 headers
-fprintf(fileID, ';,%s\n', C_text2);
+fprintf(fileID, ';,%s,,,,,,,,,\n', C_text1);                                         %print the 2 headers
+fprintf(fileID, ';,%s,,,,,,,,,\n', C_text2);
 fprintf(fileID, ',,,,,,,,,,\n,,,,,,,,,,\n');
-fprintf(fileID, '"INDEP VARIABLE=(Alt,T4/T2,Mach)",,,,,,,,,,\n');
-fprintf(fileID, '"DEP VARIABLE=(Net Thrust,Fuel Flow,WC2,EINOx)",,,,,,,,,,\n');
+fprintf(fileID, '"INDEP VARIABLE=(Alt, T4/T2, Mach)",,,,,,,,,,\n');
+fprintf(fileID, '"DEP VARIABLE=(Net Thrust, Fuel Flow, WC2, EINOx)",,,,,,,,,,\n');
 fprintf(fileID, ',,,,,,,,,,\n,,,,,,,,,,\n,,,,,,,,,,\n,,,,,,,,,,\n;,,,,,,,,,,\n');                                         %print headers, load capacities, etc
 fprintf(fileID, ';load and response symbols,,,,,,,,,,\n');
 fprintf(fileID, ',,,,Net Thrust, Fuel Flow, WC2, EINOx,Alt,T4/T2,Mach\n');
