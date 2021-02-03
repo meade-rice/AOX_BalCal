@@ -25,14 +25,15 @@ try %Check current section and determine filename accordingly
     fullpath=fullfile(output_location,filename); %Full path for file output
     top_row=[{'Point ID','Series1','Series2'},loadlist]; %Top label row
     ncol = size(top_row,2); % to make sure number of columns match when assembling output tables
-    full_out{1}=[top_row; pointID, num2cell(series1), num2cell(series2),num2cell(aprxINminGZ)]; %full output
-    full_out{2}=[top_row; pointID, num2cell(series1), num2cell(series2),num2cell(cellstr(string(aprxINminGZ)+' +/- '+string(loadPI)))]; %full output
+    full_out{1}=[top_row; pointID, num2cell(series1), series2, num2cell(aprxINminGZ)]; %full output
+    full_out{2}=[top_row; pointID, num2cell(series1), series2, cellstr(string(aprxINminGZ)+" +/- "+string(loadPI))]; %full output
     meanrow=[{'Mean PI','',''},num2cell(meanPI)];
     stdvrow=[{'Std. Dev of PI','',''},num2cell(stdvPI)];
-    full_out{3}=[top_row; pointID, num2cell(num2cell(series1)), num2cell(series2),num2cell(loadPI);cell(1,ncol);meanrow;stdvrow]; %full output
+    full_out{3}=[top_row; pointID, num2cell(series1), series2, num2cell(loadPI);cell(1,ncol);meanrow;stdvrow]; %full output
 
     for i=1:3
-        writetable(cell2table(full_out{i}),fullpath,'writevariablenames',0,'Sheet',i,'UseExcel', false); %write to xlsx
+%         writetable(cell2table(full_out{i}),fullpath,'writevariablenames',0,'Sheet',i,'UseExcel', false); %write to xlsx
+        writecell(full_out{i},fullpath,'Sheet',i,'UseExcel', false); %write to xlsx
     end
     fprintf('\n'); fprintf(description); fprintf(' FILE: '); fprintf(filename); fprintf('\n'); %Command Window output
     xlsx=1; %Tracking variable that xlsx write was successful
@@ -86,12 +87,10 @@ if xlsx==1 %If xlsx file was written
         
         ewb.Save % # save to the same file
         ewb.Close
-%         e.Quit %--this is not actually quitting excel!
-        invoke(e, 'Quit'); % new method found online
+        e.Quit %--this is not actually quitting excel!
+%         invoke(e, 'Quit'); % new method found online
         delete(e);
-    end
-    
-    
+    end   
 end
 warning('on',  'MATLAB:DELETE:Permission'); warning('on', 'MATLAB:xlswrite:AddSheet'); warning('on', 'MATLAB:DELETE:FileNotFound') %Reset warning states
 end

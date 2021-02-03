@@ -711,6 +711,7 @@ if strcmp(section,{'Calibration GRBF'})==1
         centers_out = center_daHist; % output of centers is from center_daHist. 3rd dim is load channels 
         indices = centerIndexHist;
         centers_output(filename,centers_out,indices,pointID,series,series2,loadlist,voltagelist,output_location,loaddimFlag)
+        fprintf("\nCenters file has been written as AOX_GRBF_Centers.xlsx");
         % for f=1:loaddimFlag % iterate over load channels (dim 3 of center_daHist)
         %     filename = "AOX_GRBF_Centers_Channel" + string(f) + ".csv";
         %     input = center_daHist(:,:,f);
@@ -901,36 +902,37 @@ function [] = centers_output(filename,centers,indices,pointID,series1,series2,lo
     centerpath = fullfile(output_location,filename); % full path for file output
     description = [];    % description to identify load channel sheet
     for f=1:loaddimFlag % iterate over load channels (dim 3 of centers aka center_daHist)
-        description = [description;"Centers: Channel " + string(loadlist{f})];
+        description = [description;"Centers for Load Channel " + string(loadlist{f})];
         centers_row = voltagelist; %1 x loaddimFlag size cell --original centers file did not have a header so it is possible to leave it out
-        wr_centers = num2cell(centers(:,:,f)); % take the current load channel, convert to cell
-    
+        wr_centers = num2cell(centers(:,:,f)); % take the current load channel, convert to cell from string (avoids issues with leading zeros(?))
         sheet_out = [centers_row;wr_centers]; % data for current load channel
         % precision = '%.16f';
-        writetable(cell2table(sheet_out),centerpath,'writevariablenames',0,'Sheet',f,'UseExcel', false); %write to xlsx
+        writecell(sheet_out,centerpath,'Sheet',f,'UseExcel', false); %write to xlsx
     end
 
     % try renaming excel sheets (only possible on PC)
     try %Rename excel sheets and delete extra sheets, only possible on PC
         [~,sheets]=xlsfinfo(centerpath);
-        s = what;
-        e = actxserver('Excel.Application'); % # open Activex server
-        e.DisplayAlerts = false;
-        e.Visible=false;
-        ewb = e.Workbooks.Open(char(centerpath)); % # open file (enter full path!)
+%         s = what;
+        c = actxserver('Excel.Application'); % # open Activex server
+        c.DisplayAlerts = false;
+        c.Visible=false;
+        cwb = c.Workbooks.Open(char(centerpath)); % # open file (enter full path!)
         if max(size(sheets))>loaddimFlag
             %cycle through, deleting all sheets other than the 1st loaddimFlag sheets
             for i=loaddimFlag+1:max(size(sheets))
-                ewb.Sheets.Item(i).Delete;  %Delete sheets
+                cwb.Sheets.Item(i).Delete;  %Delete sheets
             end
         end
         for i=1:loaddimFlag
-            ewb.Worksheets.Item(i).Name = description(i); % rename each sheet to the correct load channel
+            cwb.Worksheets.Item(i).Name = description(i); % rename each sheet to the correct load channel
         end        
-        ewb.Save % # save to the same file
-        ewb.Close
-%         e.Quit
-        invoke(e, 'Quit'); % new method found online
-        delete(e);
+        cwb.Save; % # save to the same file
+        cwb.Close;
+        c.Quit; % quits Activexserver
+        delete(c);
+    catch ME
+        fprintf("   Not on PC; AOX_GRBF_Centers not modified");
     end
+    warning('on',  'MATLAB:DELETE:Permission'); warning('on', 'MATLAB:xlswrite:AddSheet'); warning('on', 'MATLAB:DELETE:FileNotFound') %Reset warning states
 end
