@@ -932,7 +932,7 @@ function [] = centers_output(filename,centers,indices,pointID,series1,series2,lo
         c.Quit; % quits Activexserver
         delete(c);
     catch ME
-        fprintf("   Not on PC; AOX_GRBF_Centers not modified");
+        ismac = 1;
     end
     warning('on',  'MATLAB:DELETE:Permission'); warning('on', 'MATLAB:xlswrite:AddSheet'); warning('on', 'MATLAB:DELETE:FileNotFound') %Reset warning states
 end
