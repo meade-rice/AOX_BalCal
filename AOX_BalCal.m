@@ -1305,7 +1305,7 @@ if FLAGS.balCal == 2
         else
             taresGRBF=zeros(nseries0,loaddimFlag); %Else set to zero (no series intercepts)
         end
-        taretalRBF=taresGRBF(series0,:);
+        taretalRBF=taresGRBF(series0_adjusted,:);
         tareGRBFHist{u+1} = taresGRBF;
         
         %update the approximation
@@ -1546,10 +1546,11 @@ end
 format compact
 diary off
 texttemp = regexprep(fileread('consoleoutput.txt'), '<.*?>', '');
-%texttemp = regexprep(texttemp, ' </strong>', ' ');
+texttemp = regexprep(texttemp, 'style="font-weight:bold"', '');
 texttemp(double(texttemp)==8)='';
-texttemp= insertAfter(texttemp,'/','/');
-texttemp = insertAfter(texttemp,'\','\');
+%texttemp= insertAfter(texttemp,'/','/');
+%texttemp = insertAfter(texttemp,'\','\');
+texttemp = regexprep(texttemp, '\', '/');
 fileID = fopen('consoleoutput.txt', 'w');
 fprintf(fileID, texttemp);
 fclose(fileID);
