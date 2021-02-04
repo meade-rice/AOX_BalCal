@@ -711,7 +711,8 @@ if strcmp(section,{'Calibration GRBF'})==1
         centers_out = center_daHist; % output of centers is from center_daHist. 3rd dim is load channels 
         indices = centerIndexHist;
         centers_output(filename,centers_out,indices,pointID,series,series2,loadlist,voltagelist,output_location,loaddimFlag)
-        fprintf("\nCenters file has been written as AOX_GRBF_Centers.xlsx");
+        fprintf("\nCALIBRATION GRBF CENTER COORDINATES FILE: AOX_GRBF_Centers.xlsx");
+        fprintf("\n ");
         % for f=1:loaddimFlag % iterate over load channels (dim 3 of center_daHist)
         %     filename = "AOX_GRBF_Centers_Channel" + string(f) + ".csv";
         %     input = center_daHist(:,:,f);
